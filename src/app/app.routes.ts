@@ -3,9 +3,12 @@ import { Home } from './pages/home/home';
 import { Footer } from './components/footer/footer';
 import { About } from './pages/about/about';
 import { Contact } from './pages/contact/contact';
-import { CulturalProjects } from './pages/cultural-projects/cultural-projects';
-import { SocialProjects } from './pages/social-projects/social-projects';
 import { Registration } from './pages/registration/registration';
+import { TadaborYoussoufComponent } from './pages/tadabor-youssouf/tadabor-youssouf';
+import { MakassidSowarComponent } from './pages/makassid-sowar/makassid-sowar';
+import { TahfidZahrawanComponent } from './pages/tahfid-zahrawan/tahfid-zahrawan';
+import { NadiAtrijaComponent } from './pages/nadi-atrija/nadi-atrija';
+
 
 export const routes: Routes = [
     {
@@ -24,16 +27,15 @@ export const routes: Routes = [
         path:"contact",
         component: Contact
     },
-    {
-        path:"cultural-projects",
-        component: CulturalProjects
-    },
-    {
-        path:"social-projects",
-        component: SocialProjects
-    },
+    
     {
         path:"registration",
         component: Registration
-    }
+    },
+
+{ path: 'youssouf', component: TadaborYoussoufComponent },
+{ path: 'makassid', component: MakassidSowarComponent },
+{ path: 'zahrawan', component: TahfidZahrawanComponent },
+{ path: 'atrija', component: NadiAtrijaComponent },
+{ path: '', redirectTo: '/youssouf', pathMatch: 'full' }
 ];
