@@ -1,0 +1,74 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<div class="creative-page" dir="rtl">
+  <div class="pattern-bg"></div>
+
+  <div class="container-wrapper">
+    <header class="hero-section">
+      <div class="image-box">
+        <img src="kifala.jpeg" alt="كفالة اليتيم" class="main-img">
+      </div>
+      <div class="header-text">
+        <h1 class="main-title">كفالة اليتيم</h1>
+        <h2 class="sub-title">"عطاءٌ يغيّر حياة، وأجرٌ لا ينقطع"</h2>
+        <p class="curriculum-intro">برنامج إنساني متكامل يهدف إلى مرافقة الأطفال اليتامى، وتوفير الدعم المادي والمعنوي لضمان عيش كريم ومستقبل أفضل.</p>
+      </div>
+    </header>
+
+    <section class="details-section">
+      <h3 class="section-title">بطاقة التعريف بالكفالة</h3>
+      <div class="content-card">
+        <p><i class="fas fa-hand-holding-heart icon-gold"></i> <strong>نوع المساهمة:</strong> كفالة شهرية، فصلية أو سنوية.</p>
+        <p><i class="fas fa-users icon-gold"></i> <strong>الفئة المستهدفة:</strong> الأطفال اليتامى في وضعية هشاشة.</p>
+      </div>
+    </section>
+
+    <section class="cards-section">
+      <h3 class="section-title">لماذا نكفل اليتيم؟</h3>
+      <div class="cards-grid">
+        <div class="flip-card" *ngFor="let card of cards">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <span class="emoji">{{card.emoji}}</span>
+              <h4>{{card.title}}</h4>
+              <p class="tap-hint">اضغط للمزيد ✨</p>
+            </div>
+            <div class="flip-card-back">
+              <p class="card-desc">{{card.desc}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="modal-overlay" *ngIf="showModal" (click)="toggleModal()">
+      <div class="modal-window" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+          <h2 class="modal-title">تبرع سريع</h2>
+          <span class="close-icon" (click)="toggleModal()">×</span>
+        </div>
+        <div class="modal-body">
+          <div class="packages-grid">
+            <button class="pkg-btn" [class.active]="selectedOption === 'month'" (click)="setAmount('month', 250)">كفالة شهر</button>
+            <button class="pkg-btn" [class.active]="selectedOption === '3months'" (click)="setAmount('3months', 750)">كفالة 3 أشهر</button>
+            <button class="pkg-btn" [class.active]="selectedOption === '6months'" (click)="setAmount('6months', 1500)">كفالة 6 أشهر</button>
+            <button class="pkg-btn" [class.active]="selectedOption === 'year'" (click)="setAmount('year', 3000)">كفالة سنة كاملة</button>
+          </div>
+          <div class="amount-field-container">
+            <input type="number" [(ngModel)]="donationAmount" class="amount-input">
+            <label class="amount-label">مبلغ التبرع (درهم)</label>
+          </div>
+          <div class="modal-actions">
+            <button class="mini-cart-btn" (click)="addToCart()">🛒</button>
+            <button class="confirm-donate-btn" (click)="confirmDonation()">تبرع الآن 💰</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="floating-trigger-btn" (click)="toggleModal()">
+      <span class="btn-text">تبرع سريع</span>
+      <div class="dollar-circle">$</div>
+    </button>
+  </div>
+</div>
