@@ -9,6 +9,7 @@ import { MakassidSowarComponent } from './pages/makassid-sowar/makassid-sowar';
 import { TahfidZahrawanComponent } from './pages/tahfid-zahrawan/tahfid-zahrawan';
 import { NadiAtrijaComponent } from './pages/nadi-atrija/nadi-atrija';
 import { KoniSahabiaComponent } from './pages/koni-sahabia/koni-sahabia';
+import { MatanAljazriaComponent } from './pages/matan-aljazria/matan-aljazria';
 
 
 
@@ -40,5 +41,6 @@ export const routes: Routes = [
 { path: 'zahrawan', component: TahfidZahrawanComponent },
 { path: 'atrija', component: NadiAtrijaComponent },
 { path: 'koni-sahabia', component: KoniSahabiaComponent },
+{ path: 'matan-aljazria', component: MatanAljazriaComponent },
 { path: '', redirectTo: '/youssouf', pathMatch: 'full' }
 ];
