@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Reem+Kufi:wght@400;700&display=swap');
+
+.creative-page {
+  font-family: 'Amiri', serif;
+  background-color: #fff9fb; /* خلفية تميل للوردي خفيف جداً */
+  min-height: 100vh;
+  position: relative;
+  color: #4a1a1c; /* بني محمر داكن للنصوص */
+}
+
+.pattern-bg {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png'); 
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.container-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-section {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+.main-img {
+  width: 380px;
+  border-radius: 30px;
+  border: 6px solid #e91e63; /* وردي فاقع مائل للأحمر (مثل الفيش) */
+  box-shadow: 0 15px 35px rgba(233, 30, 99, 0.2);
+  animation: floatImage 4s ease-in-out infinite; 
+}
+
+@keyframes floatImage {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+.main-title {
+  font-size: 3.8rem;
+  color: #ad1457; /* وردي داكن احترافي */
+  margin: 0;
+  font-family: 'Reem Kufi', sans-serif;
+}
+
+.sub-title {
+  color: #ec407a; /* وردي متوسط */
+  font-size: 1.8rem;
+  margin-top: 5px;
+}
+
+.content-card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  border-right: 10px solid #ad1457;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  font-size: 1.3rem;
+}
+
+.section-title {
+  font-family: 'Reem Kufi', sans-serif;
+  font-size: 2.5rem;
+  color: #ad1457;
+  margin-bottom: 30px;
+}
+.section-title {
+  font-family: 'Reem Kufi', sans-serif;
+  font-size: 2.8rem;
+  color: #ad1457;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 35px;
+  padding-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 60%;
+  height: 4px;
+  background-color: #c2aeb5;
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+.section-title:hover {
+  color: #ad1457;
+  transform: scale(1.05) skewX(-3deg);
+}
+
+.section-title:hover::after {
+  width: 100%;
+  background-color: #c2aeb5;
+}
+
+.footer-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.info-card {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  text-align: center;
+  border: 2px solid #fce4ec;
+  transition: 0.4s;
+}
+
+.info-card:hover {
+  background: #ad1457;
+  color: white;
+  transform: scale(1.05);
+}
+.detailed-list li {
+  background: rgba(179, 89, 27, 0.08);
+  margin-bottom: 15px;
+  padding: 15px;
+  border-right: 5px solid #ad1457;
+  border-radius: 0 10px 10px 0;
+  font-size: 1.2rem;
+  color: black;
+}
+
+.detailed-list li strong {
+  color: #ad1457;
+}
+
+.btn-register-unique {
+  display: inline-block;
+  background: #ad1457;
+  color: white;
+  padding: 18px 40px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 1.4rem;
+  font-weight: bold;
+  box-shadow: 0 10px 20px rgba(173, 20, 87, 0.3);
+}
+
+.btn-register-unique:hover {
+  background: #4a1a1c;
+  transform: translateY(-3px);
+}
+
+.icon-pink { color: #ec407a; margin-left: 10px; }
