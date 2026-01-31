@@ -1,72 +1,117 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 <div class="creative-page" dir="rtl">
-  <div class="pattern-bg"></div>
-
   <div class="container-wrapper">
-    <header class="hero-section">
+    
+    <header class="hero-section reveal">
       <div class="image-box">
         <img src="kifala.jpeg" alt="كفالة اليتيم" class="main-img">
       </div>
       <div class="header-text">
         <h1 class="main-title">كفالة اليتيم</h1>
         <h2 class="sub-title">"عطاءٌ يغيّر حياة، وأجرٌ لا ينقطع"</h2>
-        <p class="curriculum-intro">برنامج إنساني متكامل يهدف إلى مرافقة الأطفال اليتامى، وتوفير الدعم المادي والمعنوي لضمان عيش كريم ومستقبل أفضل.</p>
+        <p class="curriculum-intro">برنامج إنساني متكامل يهدف إلى مرافقة الأطفال اليتامى لضمان عيش كريم ومستقبل أفضل.</p>
       </div>
     </header>
 
-    <section class="details-section">
-      <h3 class="section-title">بطاقة التعريف بالكفالة</h3>
-      <div class="content-card">
-        <p><i class="fas fa-hand-holding-heart icon-gold"></i> <strong>نوع المساهمة:</strong> كفالة شهرية، فصلية أو سنوية.</p>
-        <p><i class="fas fa-users icon-gold"></i> <strong>الفئة المستهدفة:</strong> الأطفال اليتامى في وضعية هشاشة.</p>
+    <section class="axe-section reveal">
+      <h3 class="axe-header">✨ أثر الصدقة اليومي</h3>
+      <div class="axe-list-container">
+        
+        <div class="axe-list-item reveal delay-1">
+          <div class="axe-icon-box">
+            <i class="fas fa-coffee"></i>
+          </div>
+          <div class="axe-text-content">
+            <strong>بثمن قهوتك:</strong>
+            <span>وجبة إفطارٍ صحية يبدأ بها يومه.</span>
+          </div>
+        </div>
+
+        <div class="axe-list-item reveal delay-2">
+          <div class="axe-icon-box">
+            <i class="fas fa-gift"></i>
+          </div>
+          <div class="axe-text-content">
+            <strong>بثمن نزهتك:</strong>
+            <span>كسوةٍ جديدة أو هديةٍ تفرح قلبه.</span>
+          </div>
+        </div>
+
+        <div class="axe-list-item reveal delay-3">
+          <div class="axe-icon-box">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <div class="axe-text-content">
+            <strong>بثمن اشتراكك:</strong>
+            <span>بيئة تعليمية تفتح له المستقبل.</span>
+          </div>
+        </div>
+
+        <div class="axe-list-item reveal delay-4">
+          <div class="axe-icon-box">
+            <i class="fas fa-utensils"></i>
+          </div>
+          <div class="axe-text-content">
+            <strong>بثمن وليمتك:</strong>
+            <span>تُطعم عائلة يتيمٍ تعففت عن السؤال.</span>
+          </div>
+        </div>
+
       </div>
     </section>
 
+    <div class="moukib-banner reveal">
+      <h3>موكبُ الكرماء</h3>
+      <p>"انضم إلى قوافل الكافلين الذين اختاروا أن يكونوا السند والظهير لأيتامنا."</p>
+    </div>
+
     <section class="cards-section">
-      <h3 class="section-title">لماذا نكفل اليتيم؟</h3>
       <div class="cards-grid">
-        <div class="flip-card" *ngFor="let card of cards">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-              <span class="emoji">{{card.emoji}}</span>
-              <h4>{{card.title}}</h4>
-              <p class="tap-hint">اضغط للمزيد ✨</p>
-            </div>
-            <div class="flip-card-back">
-              <p class="card-desc">{{card.desc}}</p>
-            </div>
-          </div>
+        <div class="charity-card reveal delay-1" (click)="activeCard = 1" [class.is-active]="activeCard === 1">
+          <i class="fas fa-heart card-icon"></i>
+          <h4 class="card-title">رفقة المصطفى</h4>
+          <p class="card-desc">أتطمع أن تكون جار النبي ﷺ في الجنة؟ مسحة على رأس يتيم تفتح لك أبواب الجنان.</p>
+        </div>
+        <div class="charity-card reveal delay-2" (click)="activeCard = 2" [class.is-active]="activeCard === 2">
+          <i class="fas fa-infinity card-icon"></i>
+          <h4 class="card-title">أثرٌ لا ينقطع</h4>
+          <p class="card-desc">صدقتك هي النبض الذي يستمر حتى بعد رحيلك، بركة في مالك وأهلك.</p>
+        </div>
+        <div class="charity-card reveal delay-3" (click)="activeCard = 3" [class.is-active]="activeCard === 3">
+          <i class="fas fa-gem card-icon"></i>
+          <h4 class="card-title">أمانةٌ وعهد</h4>
+          <p class="card-desc">نلتزم بوضع جودك في أيدٍ أمينة ترعى اليتيم بصدق وتصنع منه عضواً صالحاً.</p>
         </div>
       </div>
     </section>
 
     <div class="modal-overlay" *ngIf="showModal" (click)="toggleModal()">
       <div class="modal-window" (click)="$event.stopPropagation()">
-        <div class="modal-header">
-          <h2 class="modal-title">تبرع سريع</h2>
-          <span class="close-icon" (click)="toggleModal()">×</span>
+        <div class="modal-header-custom">
+          <button class="close-btn" (click)="toggleModal()">×</button>
+          <h2 class="form-title">تبرع سريع</h2>
         </div>
-        <div class="modal-body">
-          <div class="packages-grid">
-            <button class="pkg-btn" [class.active]="selectedOption === 'month'" (click)="setAmount('month', 250)">كفالة شهر</button>
-            <button class="pkg-btn" [class.active]="selectedOption === '3months'" (click)="setAmount('3months', 750)">كفالة 3 أشهر</button>
-            <button class="pkg-btn" [class.active]="selectedOption === '6months'" (click)="setAmount('6months', 1500)">كفالة 6 أشهر</button>
-            <button class="pkg-btn" [class.active]="selectedOption === 'year'" (click)="setAmount('year', 3000)">كفالة سنة كاملة</button>
+        <div class="modal-body-custom">
+          <div class="packages-grid-custom">
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'month'" (click)="setAmount('month', 250)">كفالة شهر</button>
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === '3months'" (click)="setAmount('3months', 750)">كفالة 3 أشهر</button>
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === '6months'" (click)="setAmount('6months', 1500)">كفالة 6 أشهر</button>
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'year'" (click)="setAmount('year', 3000)">كفالة سنة كاملة</button>
           </div>
-          <div class="amount-field-container">
-            <input type="number" [(ngModel)]="donationAmount" class="amount-input">
-            <label class="amount-label">مبلغ التبرع (درهم)</label>
+          <div class="amount-container-custom">
+            <input type="number" [(ngModel)]="donationAmount" class="amount-display-input">
+            <span class="currency-label">درهم</span>
           </div>
-          <div class="modal-actions">
-            <button class="mini-cart-btn" (click)="addToCart()">🛒</button>
-            <button class="confirm-donate-btn" (click)="confirmDonation()">تبرع الآن 💰</button>
+          <div class="actions-container-custom">
+             <button class="donate-now-gold-btn" (click)="confirmDonation()">تبرع الآن 💰</button>
+             <button class="cart-icon-btn" (click)="addToCart()"><i class="fas fa-shopping-cart"></i></button>
           </div>
         </div>
       </div>
     </div>
 
-    <button class="floating-trigger-btn" (click)="toggleModal()">
+    <button class="floating-trigger-btn reveal" (click)="toggleModal()">
       <span class="btn-text">تبرع سريع</span>
       <div class="dollar-circle">$</div>
     </button>
