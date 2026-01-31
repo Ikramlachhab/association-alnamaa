@@ -114,6 +114,37 @@
       </div>
     </div>
 
+    <div class="modal-overlay" *ngIf="showStep2" (click)="showStep2 = false">
+      <div class="modal-window" (click)="$event.stopPropagation()">
+        <div class="modal-header-custom" style="background: #c5a059;">
+          <span class="close-x" (click)="showStep2 = false">×</span>
+          <h2 class="form-title">معلومات الكفيل</h2>
+        </div>
+        <div class="modal-body-custom">
+          <div class="rib-container-new">
+            <label>رقم الحساب البنكي (RIB):</label>
+            <div class="rib-box-new">007 810 0000123456789012 34</div>
+          </div>
+          
+          <div class="step-input-group">
+            <label>رقم الهاتف (المغرب)</label>
+            <input type="text" [(ngModel)]="donorPhone" placeholder="06XXXXXXXX" class="step-field">
+          </div>
+
+          <div class="step-input-group">
+            <label>البريد الإلكتروني</label>
+            <input type="email" [(ngModel)]="donorEmail" placeholder="example@mail.com" class="step-field">
+          </div>
+
+          <p class="error-msg-new" *ngIf="formError">يرجى ملء الاستمارة كاملة</p>
+
+          <button class="donate-now-gold-btn" style="width: 100%;" (click)="finalSubmit()">إرسال التبرع ✅</button>
+          
+          <p class="trust-notice">نضمن لكم المصداقية التامة. جزاكم الله خيراً.</p>
+        </div>
+      </div>
+    </div>
+
     <div class="toast-error" [class.show]="showToast">
       <div class="toast-content">
         <div class="toast-header">
