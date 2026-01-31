@@ -83,4 +83,8 @@ export class BinaaMasajidComponent implements AfterViewInit {
       alert('تمت إضافة المساهمة إلى سلة التبرعات 🛒');
     }
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 61ff2872947f908cce71121aeb04fb4fc7854508
