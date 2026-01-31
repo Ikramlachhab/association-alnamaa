@@ -1,1 +1,154 @@
-<p>binaa-masajid works!</p>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<div class="creative-page" dir="rtl">
+  <div class="container-wrapper">
+    
+    <header class="hero-section reveal">
+      <div class="header-text">
+        <h1 class="main-title">بناء المساجد</h1>
+        <h2 class="sub-title">ضع لَبِنتك في أحب البقاع إلى الله</h2>
+        <p class="hero-desc">
+          ساهم في تشييد منارةٍ للهدى، واجعل لك بيتاً في الجنة يُبنى كما تُبنى مساجد الله في الأرض. 
+          صدقةٌ جارية ترفعُ ذكرك، وتُثقّل ميزانك، وتبقى ذخراً لك ولأهلك أبد الدهر.
+        </p>
+      </div>
+      <div class="image-box">
+        <img src="mosque_image.jpg" alt="بناء مسجد" class="main-img">
+      </div>
+    </header>
+
+    <section class="axe-section reveal">
+      <h3 class="axe-header">✨ واقعُ الحاجة</h3>
+      <div class="axe-list-container">
+        <div class="axe-list-item" style="grid-column: span 2;">
+          <div class="axe-icon-box"><i class="fas fa-map-marker-alt"></i></div>
+          <div class="axe-text-content">
+            <strong>لماذا هذا المشروع؟</strong>
+            <span>في هذه المنطقة، يقطع المصلون مسافات طويلة للوصول إلى أقرب مسجد. بناء هذا الصرح ليس مجرد تشييدٍ لبناء، بل هو استجابة لنداء قلوبٍ تفتقت شوقاً لسجدةٍ في بيت الله، وإيجادُ حضنٍ آمن لأطفال القرية لتعلم القرآن وقيم الإسلام.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="moukib-banner-new reveal">
+      <div class="moukib-icon"><i class="fas fa-file-contract"></i></div>
+      <div class="moukib-content">
+        <h3>أمانةٌ وعهد</h3>
+        <p>"أمانتكم هي عهدنا أمام الله. نلتزم بموافاتكم بتقارير هندسية دورية، وصور حية توثق مراحل البناء من وضع حجر الأساس وحتى رفع أول أذان."</p>
+      </div>
+    </div>
+
+    <section class="cards-section">
+      <div class="cards-grid">
+        <div class="charity-card-smart reveal" (click)="activeCard = 1" [class.is-active]="activeCard === 1">
+          <div class="card-inner">
+            <i class="fas fa-cubes card-icon"></i>
+            <h4 class="card-title">سهمُ الأساس والتمكين</h4>
+            <div class="card-expandable">
+              <p class="card-desc">كن شريكاً في وضع اللبنات الأولى. مساهمتك في القواعد والجدران هي الأصل الذي تقوم عليه الصلاة، ولك أجر كل من دخل وذكر الله فيه.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="charity-card-smart reveal" (click)="activeCard = 2" [class.is-active]="activeCard === 2">
+          <div class="card-inner">
+            <i class="fas fa-rug card-icon"></i>
+            <h4 class="card-title">باقةُ السجود والسكينة</h4>
+            <div class="card-expandable">
+              <p class="card-desc">توفير السجاد الفاخر وأنظمة الإضاءة. تخيل أجر كل سجدة، وكل تلاوة، وكل لحظة خشوع يمر بها المصلون بفضل جودك وكرمك.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="charity-card-smart reveal" (click)="activeCard = 3" [class.is-active]="activeCard === 3">
+          <div class="card-inner">
+            <i class="fas fa-microphone-alt card-icon"></i>
+            <h4 class="card-title">باقةُ نداء الحق</h4>
+            <div class="card-expandable">
+              <p class="card-desc">تشييد المئذنة وتجهيز أنظمة الصوت. اجعل لك نصيباً في كل مرة يُرفع فيها الأذان ويُنادى للصلاة، لتكون شريكاً في إحياء شعائر الله.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="reveal" style="text-align: center; margin-top: 60px; padding: 40px; background: #fff; border-radius: 30px;">
+        <p style="font-family: 'Amiri'; font-size: 1.6rem; line-height: 2; color: #1b4d2e;">
+            "غداً ستتوقف الأنفاس، ويبقى صوت الأذان في مسجِدك يصدحُ بالخير عنك. اجعل لك خبيئةً صالحة لا يمحوها الزمن، وكن من الذين بنوا لله بيوتاً، فبنى الله لهم بيوتاً في أعلى الجنان."
+        </p>
+    </footer>
+
+    <div class="modal-overlay" *ngIf="showModal" (click)="toggleModal()">
+      <div class="modal-window" (click)="$event.stopPropagation()">
+        <div class="modal-header-custom">
+          <span class="close-x" (click)="toggleModal()">×</span>
+          <h2 class="form-title">صدقة جارية</h2>
+        </div>
+        <div class="modal-body-custom">
+          <div class="packages-grid-custom">
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'foundation'" (click)="setAmount('foundation', 1000)">سهم الأساس</button>
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'prayer'" (click)="setAmount('prayer', 500)">سهم السجود</button>
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'call'" (click)="setAmount('call', 2000)">سهم المئذنة</button>
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'brick'" (click)="setAmount('brick', 100)">لَبِنة واحدة</button>
+          </div>
+          <div class="amount-container-custom">
+            <span class="currency-label">درهم</span>
+            <input type="number" [(ngModel)]="donationAmount" class="amount-display-input">
+            <span class="amount-label">مبلغ المساهمة</span>
+          </div>
+          <div class="actions-container-custom">
+             <button class="donate-now-gold-btn" (click)="confirmDonation()">متابعة المساهمة 💰</button>
+             <button class="cart-icon-btn" (click)="addToCart()"><i class="fas fa-shopping-cart"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" *ngIf="showStep2" (click)="showStep2 = false">
+      <div class="modal-window" (click)="$event.stopPropagation()">
+        <div class="modal-header-custom" style="background: #c5a059;">
+          <span class="close-x" (click)="showStep2 = false">×</span>
+          <h2 class="form-title">إتمام العطاء</h2>
+        </div>
+        <div class="modal-body-custom">
+          <div class="rib-container-new">
+            <label>رقم حساب الجمعية (RIB):</label>
+            <div class="rib-box-new">007 810 0000123456789012 34</div>
+          </div>
+          
+          <div class="step-input-group">
+            <label>رقم هاتف المتبرع</label>
+            <input type="text" [(ngModel)]="donorPhone" placeholder="06XXXXXXXX" class="step-field">
+          </div>
+
+          <div class="step-input-group">
+            <label>البريد الإلكتروني (لتلقي التقارير)</label>
+            <input type="email" [(ngModel)]="donorEmail" placeholder="example@mail.com" class="step-field">
+          </div>
+
+          <p class="error-msg-new" *ngIf="formError">يرجى تعبئة كافة الحقول</p>
+
+          <button class="donate-now-gold-btn" style="width: 100%;" (click)="finalSubmit()">تأكيد المساهمة ✅</button>
+          <p class="trust-notice">سيتم تزويدكم بإحداثيات الموقع الدقيقة فور التأكيد.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast-error" [class.show]="showToast">
+      <div class="toast-content">
+        <div class="toast-header">
+          <span class="close-toast" (click)="showToast = false">×</span>
+          <span class="toast-title">خطأ في المبلغ</span>
+        </div>
+        <div class="toast-body">
+          الحد الأدنى للمساهمة في بناء المسجد هو 20 درهم.
+        </div>
+      </div>
+    </div>
+
+    <button class="custom-pill-btn" (click)="toggleModal()">
+      <span class="btn-text">ابنِ مسجداً</span>
+      <div class="icon-circle"><i class="fas fa-kaaba"></i></div>
+    </button>
+  </div>
+</div>
