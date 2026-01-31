@@ -15,7 +15,7 @@ export class KafalatYatimComponent implements AfterViewInit {
   donationAmount = 250;
   selectedOption = 'month';
   activeCard = 0;
-  showToast = false;
+  showToast = false; // التحكم في ظهور التنبيه الأحمر
 
   // بيانات المتبرع
   donorPhone = '';
@@ -40,7 +40,7 @@ export class KafalatYatimComponent implements AfterViewInit {
 
   toggleModal() { 
     this.showModal = !this.showModal; 
-    this.showToast = false; 
+    this.showToast = false; // إغلاق التنبيه عند فتح/إغلاق المودال
     this.showStep2 = false; // إغلاق الصفحة الثانية إذا أغلق المستخدم النافذة
   }
 
@@ -52,6 +52,7 @@ export class KafalatYatimComponent implements AfterViewInit {
   private validateDonation(): boolean {
     if (this.donationAmount < 20) {
       this.showToast = true;
+      // إخفاء التنبيه تلقائياً بعد 5 ثوانٍ
       setTimeout(() => this.showToast = false, 5000);
       return false;
     }
