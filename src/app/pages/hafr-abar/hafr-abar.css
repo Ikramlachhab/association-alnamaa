@@ -1,0 +1,257 @@
+/* استيراد الخطوط العربية الفخمة */
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@400;700&display=swap');
+
+/* الإعدادات العامة للصفحة */
+.creative-page { 
+    font-family: 'Amiri', serif; 
+    background-color: #f0f4f3; /* لون خلفية مريح يميل للزرقة الخفيفة (لون الماء) */
+    color: #1b4d2e; 
+    direction: rtl; 
+}
+
+.container-wrapper { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 40px 20px; 
+}
+
+/* تأثيرات الظهور التدريجي (Reveal) */
+.reveal { 
+    opacity: 0; 
+    transform: translateY(30px); 
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); 
+}
+
+.reveal.active { 
+    opacity: 1; 
+    transform: translateY(0); 
+}
+
+/* قسم الهيدر (Hero Section) */
+.hero-section { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    gap: 40px; 
+    margin-bottom: 60px; 
+}
+
+.header-text { flex: 1; order: 2; }
+
+.image-box { 
+    flex: 0 0 435px; 
+    height: 460px; 
+    order: 1; 
+    border-radius: 30px; 
+    border: 10px solid #c5a059; /* الإطار الذهبي الملكي */
+    overflow: hidden; 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15); 
+    transition: 0.5s ease; 
+}
+
+.image-box:hover { 
+    transform: translateY(-15px) rotate(-1deg); 
+    border-color: #1b4d2e; 
+}
+
+.main-img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+}
+
+.main-title { 
+    font-family: 'Aref Ruqaa'; 
+    font-size: 3.8rem; 
+    color: #1b4d2e; 
+    margin: 0; 
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+}
+
+.sub-title { 
+    font-size: 1.8rem; 
+    color: #c5a059; 
+    margin-top: 10px; 
+    font-weight: bold;
+}
+
+/* قسم أثر الصدقة (Axe Section) */
+.axe-section { 
+    background: white; 
+    border-radius: 40px; 
+    padding: 50px; 
+    margin-bottom: 50px; 
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05); 
+    border-bottom: 5px solid #c5a059;
+}
+
+.axe-header { 
+    font-family: 'Aref Ruqaa'; 
+    font-size: 2.5rem; 
+    text-align: center; 
+    margin-bottom: 40px; 
+    color: #1b4d2e;
+}
+
+.axe-list-container { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 25px; 
+}
+
+.axe-list-item { 
+    background: #f9fbf9; 
+    border-radius: 20px; 
+    display: flex; 
+    padding: 20px; 
+    border-right: 6px solid #c5a059; 
+    transition: 0.4s ease; 
+}
+
+.axe-list-item:hover { 
+    background: #1b4d2e; 
+    color: white; 
+    transform: scale(1.02); 
+}
+
+.axe-icon-box { 
+    background: white; 
+    width: 70px; 
+    height: 70px; 
+    border-radius: 15px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    margin-left: 20px; 
+    color: #1b4d2e; 
+    font-size: 1.8rem; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* تصميم المودال الاحترافي */
+.modal-overlay { 
+    position: fixed; 
+    inset: 0; 
+    background: rgba(13, 38, 23, 0.85); /* تعتيم أخضر داكن */
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    z-index: 3000; 
+    backdrop-filter: blur(8px); 
+}
+
+.modal-window { 
+    background: white; 
+    width: 450px; 
+    border-radius: 30px; 
+    overflow: hidden; 
+    box-shadow: 0 30px 60px rgba(0,0,0,0.3); 
+    animation: modalSlide 0.4s ease-out;
+}
+
+@keyframes modalSlide {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-header-custom { 
+    background: linear-gradient(135deg, #1b4d2e, #2d7a48); 
+    padding: 25px; 
+    color: white; 
+    text-align: right; 
+    position: relative; 
+}
+
+/* أزرار اختيار الباقة */
+.packages-grid-custom { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 15px; 
+    margin-bottom: 25px; 
+}
+
+.pkg-opt { 
+    padding: 18px; 
+    border: 2px solid #eee; 
+    border-radius: 15px; 
+    background: white; 
+    font-family: 'Tajawal'; 
+    cursor: pointer; 
+    transition: 0.3s; 
+    text-align: center;
+}
+
+.pkg-opt.active-pkg { 
+    background: #f0f7f2; 
+    border-color: #1b4d2e; 
+    color: #1b4d2e; 
+    font-weight: bold; 
+    box-shadow: 0 5px 15px rgba(27,77,46,0.1);
+}
+
+/* مدخلات المعلومات في المرحلة الثانية */
+.rib-info-box {
+    background: #f4f4f4;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 1px dashed #c5a059;
+}
+
+.form-group-step {
+    margin-bottom: 15px;
+}
+
+.form-group-step label {
+    display: block;
+    font-family: 'Tajawal';
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.step-input {
+    width: 100%;
+    padding: 12px;
+    border: 1.5px solid #ddd;
+    border-radius: 10px;
+    font-family: 'Tajawal';
+}
+
+/* الزر العائم (Pill Button) */
+.custom-pill-btn { 
+    position: fixed; 
+    bottom: 30px; 
+    left: 30px; 
+    display: flex; 
+    align-items: center; 
+    background: white; 
+    border-radius: 50px; 
+    padding: 8px 8px 8px 30px; 
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15); 
+    border: 1.5px solid #1b4d2e; 
+    cursor: pointer; 
+    z-index: 2000; 
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+}
+
+.custom-pill-btn:hover { transform: scale(1.1) rotate(-2deg); }
+
+.icon-circle { 
+    background: #1b4d2e; 
+    width: 55px; 
+    height: 55px; 
+    border-radius: 50%; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    color: white; 
+    font-size: 1.6rem; 
+}
+
+/* تحسينات الشاشات الصغيرة */
+@media (max-width: 992px) {
+    .hero-section { flex-direction: column-reverse; text-align: center; }
+    .image-box { width: 100%; height: 350px; }
+    .axe-list-container { grid-template-columns: 1fr; }
+    .main-title { font-size: 2.8rem; }
+}

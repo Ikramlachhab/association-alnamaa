@@ -1,0 +1,94 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<div class="creative-page" dir="rtl">
+  <div class="container-wrapper">
+    
+    <header class="hero-section reveal">
+      <div class="header-text">
+        <h1 class="main-title">حفر الآبار</h1>
+        <h2 class="sub-title">"وخَيرُ الصَّدقةِ سَقْيُ الماء"</h2>
+        <p class="hero-desc">برنامج إنساني يهدف إلى توفير المياه الصالحة للشرب في المناطق النائية لضمان حياة كريمة.</p>
+      </div>
+      <div class="image-box">
+        <img src="assets/well.jpeg" alt="حفر الآبار" class="main-img">
+      </div>
+    </header>
+
+    <section class="axe-section reveal">
+      <h3 class="axe-header">✨ أثر سقي الماء</h3>
+      <div class="axe-list-container">
+        <div class="axe-list-item">
+          <div class="axe-icon-box"><i class="fas fa-tint"></i></div>
+          <div class="axe-text-content">
+            <strong>ارتواء عائلة:</strong>
+            <span>توفير مياه نظيفة تحميهم من الأمراض.</span>
+          </div>
+        </div>
+        <div class="axe-list-item">
+          <div class="axe-icon-box"><i class="fas fa-seedling"></i></div>
+          <div class="axe-text-content">
+            <strong>إحياء أرض:</strong>
+            <span>سقي الزرع والماشية في المناطق الجافة.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="modal-overlay" *ngIf="showModal" (click)="toggleModal()">
+      <div class="modal-window" (click)="$event.stopPropagation()">
+        <div class="modal-header-custom">
+          <span class="close-x" (click)="toggleModal()">×</span>
+          <h2 class="form-title">صدقة جارية</h2>
+        </div>
+        <div class="modal-body-custom">
+          <div class="packages-grid-custom">
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'small'" (click)="setAmount('small', 5000)">بئر سطحي</button>
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'medium'" (click)="setAmount('medium', 15000)">بئر ارتوازي</button>
+          </div>
+          <div class="amount-container-custom">
+            <span class="currency-label">درهم</span>
+            <input type="number" [(ngModel)]="donationAmount" class="amount-display-input">
+            <span class="amount-label">مبلغ التبرع</span>
+          </div>
+          <div class="actions-container-custom">
+             <button class="donate-now-gold-btn" (click)="confirmDonation()">تبرع الآن 💧</button>
+             <button class="cart-icon-btn" (click)="addToCart()"><i class="fas fa-shopping-cart"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" *ngIf="showStep2" (click)="showStep2 = false">
+      <div class="modal-window" (click)="$event.stopPropagation()">
+        <div class="modal-header-custom" style="background: #c5a059;">
+          <span class="close-x" (click)="showStep2 = false">×</span>
+          <h2 class="form-title">إتمام التبرع</h2>
+        </div>
+        <div class="modal-body-custom">
+          <div class="rib-info-box">
+            <label>رقم الحساب (RIB):</label>
+            <p>007 810 0000123456789012 34</p>
+          </div>
+          <div class="form-group-step">
+            <label>رقم الهاتف</label>
+            <input type="text" [(ngModel)]="donorPhone" placeholder="06XXXXXXXX" class="step-input">
+          </div>
+          <div class="form-group-step">
+            <label>البريد الإلكتروني</label>
+            <input type="email" [(ngModel)]="donorEmail" placeholder="example@mail.com" class="step-input">
+          </div>
+          <button class="donate-now-gold-btn" style="width: 100%;" (click)="submitFinal()">إرسال ✅</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast-error" [class.show]="showToast">
+      <div class="toast-body">الحد الأدنى للمساهمة هو 50 درهم</div>
+    </div>
+
+    <button class="custom-pill-btn" (click)="toggleModal()">
+      <span class="btn-text">احفر بئراً</span>
+      <div class="icon-circle"><i class="fas fa-faucet"></i></div>
+    </button>
+  </div>
+</div>

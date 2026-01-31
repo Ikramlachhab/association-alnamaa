@@ -2,18 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
-<<<<<<< HEAD
   standalone: true,
-  templateUrl: './footer.html',
-  styleUrls: ['./footer.css']
+  template: `<footer><p dir="rtl">جميع الحقوق محفوظة © 2026</p></footer>`,
+  styles: [`footer { text-align: center; padding: 20px; background: #f1f1f1; }`]
 })
-export class FooterComponent { } // Vérifie bien l'orthographe exacte
-=======
-  imports: [],
-  templateUrl: './footer.html',
-  styleUrl: './footer.css',
-})
-export class Footer {
-
-}
->>>>>>> 097e52967e07d046b078d3c2a7980b6268b02df9
+export class FooterComponent {}
