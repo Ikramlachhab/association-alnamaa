@@ -17,28 +17,28 @@
     <section class="axe-section reveal">
       <h3 class="axe-header">✨ أثر الصدقة اليومي</h3>
       <div class="axe-list-container">
-        <div class="axe-list-item reveal delay-1">
+        <div class="axe-list-item">
           <div class="axe-icon-box"><i class="fas fa-coffee"></i></div>
           <div class="axe-text-content">
             <strong>بثمن قهوتك:</strong>
             <span>وجبة إفطارٍ صحية يبدأ بها يومه.</span>
           </div>
         </div>
-        <div class="axe-list-item reveal delay-2">
+        <div class="axe-list-item">
           <div class="axe-icon-box"><i class="fas fa-gift"></i></div>
           <div class="axe-text-content">
             <strong>بثمن نزهتك:</strong>
             <span>كسوةٍ جديدة أو هديةٍ تفرح قلبه.</span>
           </div>
         </div>
-        <div class="axe-list-item reveal delay-3">
+        <div class="axe-list-item">
           <div class="axe-icon-box"><i class="fas fa-graduation-cap"></i></div>
           <div class="axe-text-content">
             <strong>بثمن اشتراكك:</strong>
             <span>بيئة تعليمية تفتح له المستقبل.</span>
           </div>
         </div>
-        <div class="axe-list-item reveal delay-4">
+        <div class="axe-list-item">
           <div class="axe-icon-box"><i class="fas fa-utensils"></i></div>
           <div class="axe-text-content">
             <strong>بثمن وليمتك:</strong>
@@ -48,27 +48,42 @@
       </div>
     </section>
 
-    <div class="moukib-banner reveal">
-      <h3>موكبُ الكرماء</h3>
-      <p>"انضم إلى قوافل الكافلين الذين اختاروا أن يكونوا السند والظهير لأيتامنا."</p>
+    <div class="moukib-banner-new reveal">
+      <div class="moukib-icon"><i class="fas fa-users-rays"></i></div>
+      <div class="moukib-content">
+        <h3>موكبُ الكرماء</h3>
+        <p>"انضم إلى قوافل الكافلين الذين اختاروا أن يكونوا السند والظهير لأيتامنا."</p>
+      </div>
     </div>
 
     <section class="cards-section">
       <div class="cards-grid">
-        <div class="charity-card reveal delay-1" (click)="activeCard = 1" [class.is-active]="activeCard === 1">
-          <i class="fas fa-heart card-icon"></i>
-          <h4 class="card-title">رفقة المصطفى</h4>
-          <p class="card-desc">أتطمع أن تكون جار النبي ﷺ في الجنة؟ مسحة على رأس يتيم تفتح لك أبواب الجنان.</p>
+        <div class="charity-card-smart reveal delay-1" (click)="activeCard = 1" [class.is-active]="activeCard === 1">
+          <div class="card-inner">
+            <i class="fas fa-heart card-icon"></i>
+            <h4 class="card-title">رفقة المصطفى</h4>
+            <div class="card-expandable">
+              <p class="card-desc">أتطمع أن تكون جار النبي ﷺ في الجنة؟ مسحة على رأس يتيم تفتح لك أبواب الجنان.</p>
+            </div>
+          </div>
         </div>
-        <div class="charity-card reveal delay-2" (click)="activeCard = 2" [class.is-active]="activeCard === 2">
-          <i class="fas fa-infinity card-icon"></i>
-          <h4 class="card-title">أثرٌ لا ينقطع</h4>
-          <p class="card-desc">صدقتك هي النبض الذي يستمر حتى بعد رحيلك، بركة في مالك وأهلك.</p>
+        <div class="charity-card-smart reveal delay-2" (click)="activeCard = 2" [class.is-active]="activeCard === 2">
+          <div class="card-inner">
+            <i class="fas fa-infinity card-icon"></i>
+            <h4 class="card-title">أثرٌ لا ينقطع</h4>
+            <div class="card-expandable">
+              <p class="card-desc">صدقتك هي النبض الذي يستمر حتى بعد رحيلك، بركة في مالك وأهلك.</p>
+            </div>
+          </div>
         </div>
-        <div class="charity-card reveal delay-3" (click)="activeCard = 3" [class.is-active]="activeCard === 3">
-          <i class="fas fa-gem card-icon"></i>
-          <h4 class="card-title">أمانةٌ وعهد</h4>
-          <p class="card-desc">نلتزم بوضع جودك في أيدٍ أمينة ترعى اليتيم بصدق وتصنع منه عضواً صالحاً.</p>
+        <div class="charity-card-smart reveal delay-3" (click)="activeCard = 3" [class.is-active]="activeCard === 3">
+          <div class="card-inner">
+            <i class="fas fa-gem card-icon"></i>
+            <h4 class="card-title">أمانةٌ وعهد</h4>
+            <div class="card-expandable">
+              <p class="card-desc">نلتزم بوضع جودك في أيدٍ أمينة ترعى اليتيم بصدق وتصنع منه عضواً صالحاً.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -87,8 +102,9 @@
             <button class="pkg-opt" [class.active-pkg]="selectedOption === '6months'" (click)="setAmount('6months', 1500)">كفالة 6 أشهر</button>
           </div>
           <div class="amount-container-custom">
-            <span class="currency-label">(درهم) مبلغ التبرع</span>
+            <span class="currency-label">درهم</span>
             <input type="number" [(ngModel)]="donationAmount" class="amount-display-input">
+            <span class="amount-label">مبلغ التبرع</span>
           </div>
           <div class="actions-container-custom">
              <button class="donate-now-gold-btn" (click)="confirmDonation()">تبرع الآن 💰</button>
@@ -104,6 +120,5 @@
         <i class="fas fa-hand-holding-usd"></i>
       </div>
     </button>
-
   </div>
 </div>
