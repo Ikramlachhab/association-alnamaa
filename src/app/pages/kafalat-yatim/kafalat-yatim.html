@@ -58,7 +58,7 @@
 
     <section class="cards-section">
       <div class="cards-grid">
-        <div class="charity-card-smart reveal delay-1" (click)="activeCard = 1" [class.is-active]="activeCard === 1">
+        <div class="charity-card-smart reveal" (click)="activeCard = 1" [class.is-active]="activeCard === 1">
           <div class="card-inner">
             <i class="fas fa-heart card-icon"></i>
             <h4 class="card-title">رفقة المصطفى</h4>
@@ -67,7 +67,7 @@
             </div>
           </div>
         </div>
-        <div class="charity-card-smart reveal delay-2" (click)="activeCard = 2" [class.is-active]="activeCard === 2">
+        <div class="charity-card-smart reveal" (click)="activeCard = 2" [class.is-active]="activeCard === 2">
           <div class="card-inner">
             <i class="fas fa-infinity card-icon"></i>
             <h4 class="card-title">أثرٌ لا ينقطع</h4>
@@ -76,7 +76,7 @@
             </div>
           </div>
         </div>
-        <div class="charity-card-smart reveal delay-3" (click)="activeCard = 3" [class.is-active]="activeCard === 3">
+        <div class="charity-card-smart reveal" (click)="activeCard = 3" [class.is-active]="activeCard === 3">
           <div class="card-inner">
             <i class="fas fa-gem card-icon"></i>
             <h4 class="card-title">أمانةٌ وعهد</h4>
@@ -114,11 +114,21 @@
       </div>
     </div>
 
+    <div class="toast-error" [class.show]="showToast">
+      <div class="toast-content">
+        <div class="toast-header">
+          <span class="close-toast" (click)="showToast = false">×</span>
+          <span class="toast-title">تعذر الإضافة للسلة</span>
+        </div>
+        <div class="toast-body">
+          الحد الأدنى للتبرع لصالح <strong>كفالة الأيتام</strong> هو 20 درهم
+        </div>
+      </div>
+    </div>
+
     <button class="custom-pill-btn" (click)="toggleModal()">
       <span class="btn-text">تبرع سريع</span>
-      <div class="icon-circle">
-        <i class="fas fa-hand-holding-usd"></i>
-      </div>
+      <div class="icon-circle"><i class="fas fa-hand-holding-usd"></i></div>
     </button>
   </div>
 </div>
