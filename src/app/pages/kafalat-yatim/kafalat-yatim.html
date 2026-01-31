@@ -4,60 +4,47 @@
   <div class="container-wrapper">
     
     <header class="hero-section reveal">
-      <div class="image-box">
-        <img src="kifala.jpeg" alt="كفالة اليتيم" class="main-img">
-      </div>
       <div class="header-text">
         <h1 class="main-title">كفالة اليتيم</h1>
         <h2 class="sub-title">"عطاءٌ يغيّر حياة، وأجرٌ لا ينقطع"</h2>
-        <p class="curriculum-intro">برنامج إنساني متكامل يهدف إلى مرافقة الأطفال اليتامى لضمان عيش كريم ومستقبل أفضل.</p>
+        <p class="hero-desc">برنامج إنساني متكامل يهدف إلى مرافقة الأطفال اليتامى لضمان عيش كريم ومستقبل أفضل.</p>
+      </div>
+      <div class="image-box">
+        <img src="kifala.jpeg" alt="كفالة اليتيم" class="main-img">
       </div>
     </header>
 
     <section class="axe-section reveal">
       <h3 class="axe-header">✨ أثر الصدقة اليومي</h3>
       <div class="axe-list-container">
-        
         <div class="axe-list-item reveal delay-1">
-          <div class="axe-icon-box">
-            <i class="fas fa-coffee"></i>
-          </div>
+          <div class="axe-icon-box"><i class="fas fa-coffee"></i></div>
           <div class="axe-text-content">
             <strong>بثمن قهوتك:</strong>
             <span>وجبة إفطارٍ صحية يبدأ بها يومه.</span>
           </div>
         </div>
-
         <div class="axe-list-item reveal delay-2">
-          <div class="axe-icon-box">
-            <i class="fas fa-gift"></i>
-          </div>
+          <div class="axe-icon-box"><i class="fas fa-gift"></i></div>
           <div class="axe-text-content">
             <strong>بثمن نزهتك:</strong>
             <span>كسوةٍ جديدة أو هديةٍ تفرح قلبه.</span>
           </div>
         </div>
-
         <div class="axe-list-item reveal delay-3">
-          <div class="axe-icon-box">
-            <i class="fas fa-graduation-cap"></i>
-          </div>
+          <div class="axe-icon-box"><i class="fas fa-graduation-cap"></i></div>
           <div class="axe-text-content">
             <strong>بثمن اشتراكك:</strong>
             <span>بيئة تعليمية تفتح له المستقبل.</span>
           </div>
         </div>
-
         <div class="axe-list-item reveal delay-4">
-          <div class="axe-icon-box">
-            <i class="fas fa-utensils"></i>
-          </div>
+          <div class="axe-icon-box"><i class="fas fa-utensils"></i></div>
           <div class="axe-text-content">
             <strong>بثمن وليمتك:</strong>
             <span>تُطعم عائلة يتيمٍ تعففت عن السؤال.</span>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -89,19 +76,19 @@
     <div class="modal-overlay" *ngIf="showModal" (click)="toggleModal()">
       <div class="modal-window" (click)="$event.stopPropagation()">
         <div class="modal-header-custom">
-          <button class="close-btn" (click)="toggleModal()">×</button>
+          <span class="close-x" (click)="toggleModal()">×</span>
           <h2 class="form-title">تبرع سريع</h2>
         </div>
         <div class="modal-body-custom">
           <div class="packages-grid-custom">
-            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'month'" (click)="setAmount('month', 250)">كفالة شهر</button>
             <button class="pkg-opt" [class.active-pkg]="selectedOption === '3months'" (click)="setAmount('3months', 750)">كفالة 3 أشهر</button>
-            <button class="pkg-opt" [class.active-pkg]="selectedOption === '6months'" (click)="setAmount('6months', 1500)">كفالة 6 أشهر</button>
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'month'" (click)="setAmount('month', 250)">كفالة شهر</button>
             <button class="pkg-opt" [class.active-pkg]="selectedOption === 'year'" (click)="setAmount('year', 3000)">كفالة سنة كاملة</button>
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === '6months'" (click)="setAmount('6months', 1500)">كفالة 6 أشهر</button>
           </div>
           <div class="amount-container-custom">
+            <span class="currency-label">(درهم) مبلغ التبرع</span>
             <input type="number" [(ngModel)]="donationAmount" class="amount-display-input">
-            <span class="currency-label">درهم</span>
           </div>
           <div class="actions-container-custom">
              <button class="donate-now-gold-btn" (click)="confirmDonation()">تبرع الآن 💰</button>
@@ -111,9 +98,12 @@
       </div>
     </div>
 
-    <button class="floating-trigger-btn reveal" (click)="toggleModal()">
+    <button class="custom-pill-btn" (click)="toggleModal()">
       <span class="btn-text">تبرع سريع</span>
-      <div class="dollar-circle">$</div>
+      <div class="icon-circle">
+        <i class="fas fa-hand-holding-usd"></i>
+      </div>
     </button>
+
   </div>
 </div>
