@@ -53,7 +53,7 @@
 
     <section class="cards-section">
       <div class="cards-grid">
-        <div class="charity-card-smart reveal water-fill-card" (click)="activeCard = 1" [class.is-active]="activeCard === 1">
+        <div class="water-fill-card reveal" (click)="activeCard = 1" [class.is-active]="activeCard === 1">
           <div class="water-bg"></div>
           <div class="card-inner">
             <i class="fas fa-droplet card-icon"></i>
@@ -64,7 +64,7 @@
           </div>
         </div>
 
-        <div class="charity-card-smart reveal water-fill-card" (click)="activeCard = 2" [class.is-active]="activeCard === 2">
+        <div class="water-fill-card reveal" (click)="activeCard = 2" [class.is-active]="activeCard === 2">
           <div class="water-bg"></div>
           <div class="card-inner">
             <i class="fas fa-faucet card-icon"></i>
@@ -75,7 +75,7 @@
           </div>
         </div>
 
-        <div class="charity-card-smart reveal water-fill-card" (click)="activeCard = 3" [class.is-active]="activeCard === 3">
+        <div class="water-fill-card reveal" (click)="activeCard = 3" [class.is-active]="activeCard === 3">
           <div class="water-bg"></div>
           <div class="card-inner">
             <i class="fas fa-water card-icon"></i>
@@ -140,7 +140,7 @@
     </div>
 
     <div class="toast-error" [class.show]="showToast">
-      <div class="toast-body">أقل مبلغ للمساهمة هو 50 درهم</div>
+      <div>أقل مبلغ للمساهمة هو 50 درهم</div>
     </div>
 
     <button class="custom-pill-btn" (click)="toggleModal()">
