@@ -18,7 +18,7 @@ export class HafrAbarComponent implements AfterViewInit {
   showToast = false;
 
   donorPhone = '';
-  donorEmail = ''; // نستخدمه لاسم اللوحة الرخامية
+  donorEmail = ''; // نستخدمه للبريد الإلكتروني
   formError = false;
 
   constructor(private el: ElementRef, private renderer: Renderer2) {}
@@ -58,12 +58,35 @@ export class HafrAbarComponent implements AfterViewInit {
   }
 
   finalSubmit() {
+    // التحقق من صيغة الهاتف المغربي
+    const phoneRegex = /^(05|06|07)[0-9]{8}$/;
+    
+    // التحقق من صيغة البريد الإلكتروني
+    const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+
     if (!this.donorPhone || !this.donorEmail) {
       this.formError = true;
+      alert("يرجى ملء جميع الحقول");
       return;
     }
+
+    if (!phoneRegex.test(this.donorPhone)) {
+      this.formError = true;
+      alert("رقم الهاتف غير صحيح! يجب أن يبدأ بـ 05 أو 06 أو 07 ويتكون من 10 أرقام");
+      return;
+    }
+
+    if (!emailRegex.test(this.donorEmail.toLowerCase())) {
+      this.formError = true;
+      alert("صيغة البريد الإلكتروني غير صحيحة!");
+      return;
+    }
+
+    // إذا كانت البيانات صحيحة
     this.formError = false;
     alert(`جزاكم الله خيراً! تم تسجيل طلب حفر البئر باسم: ${this.donorEmail}. سنتواصل معكم قريباً.`);
+    
+    // إعادة تعيين الحقول وإغلاق النافذة
     this.showStep2 = false;
     this.donorPhone = '';
     this.donorEmail = '';
