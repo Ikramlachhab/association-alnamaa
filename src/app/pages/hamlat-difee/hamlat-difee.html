@@ -1,1 +1,105 @@
-<p>hamlat-difee works!</p>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<div class="creative-page winter-theme" dir="rtl">
+  <div class="container-wrapper">
+    
+    <header class="hero-section reveal">
+      <div class="header-text">
+        <h1 class="main-title">حملة دِفء</h1>
+        <h2 class="sub-title">"كن أنت الدفء الذي ينتظرونه"</h2>
+        <p class="hero-desc">
+          حين تنخفض درجات الحرارة إلى ما تحت الصفر، وتُحاصر الثلوج القرى المعزولة في أعالي الجبال، يصبح "الدِفء" أقصى أمنياتهم. نحن لا نوزع أغطية فحسب، بل نرسل نبضات حياة لقلوبٍ كاد الصقيع أن يوقفها.
+        </p>
+      </div>
+      <div class="image-box winter-border">
+        <img src="assets/winter-relief.jpg" alt="حملة دفء" class="main-img">
+      </div>
+    </header>
+
+    <section class="axe-section reveal">
+      <h3 class="axe-header">❄️ عينٌ على الواقع</h3>
+      <div class="axe-list-container">
+        <div class="axe-list-item full-width">
+          <div class="axe-icon-box"><i class="fas fa-snowflake"></i></div>
+          <div class="axe-text-content">
+            <strong>المفارقة المؤلمة:</strong>
+            <span>بينما نستمتع بدفء منازلنا واجتماع عائلاتنا، هناك أطفال في أقاصي الجبال يرتجفون تحت أسقفٍ متهالكة. مساهمتك اليوم ليست مجرد صدقة، بل هي "جسر عبور" آمن لهم من قسوة الشتاء إلى طمأنينة الحياة.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="moukib-banner-new reveal">
+      <div class="moukib-icon"><i class="fas fa-truck-fast"></i></div>
+      <div class="moukib-content">
+        <h3>وعدُ الوصول والأمانة</h3>
+        <p>نحن لا نخشى الارتفاعات. فريقنا يشد الرحال إلى أبعد نقطة معزولة ليوصل أمانتكم يداً بيد، مع توثيق حي لكل قافلة تخترق الثلوج.</p>
+      </div>
+    </div>
+
+    <section class="cards-section">
+      <div class="cards-grid">
+        <div class="charity-card-smart reveal" (click)="activeCard = 1" [class.is-active]="activeCard === 1">
+          <div class="card-inner">
+            <i class="fas fa-box-tissue card-icon"></i>
+            <h4 class="card-title">باقة غطاء وأمان</h4>
+            <div class="card-expandable">
+              <p class="card-desc">بطانيات حرارية فاخرة تحمي الأطفال من لسعات البرد القارص في الليالي الطويلة.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="charity-card-smart reveal" (click)="activeCard = 2" [class.is-active]="activeCard === 2">
+          <div class="card-inner">
+            <i class="fas fa-mitten card-icon"></i>
+            <h4 class="card-title">باقة كسوة الدفء</h4>
+            <div class="card-expandable">
+              <p class="card-desc">طقم شتوي متكامل: معطف، قفازات، وجوارب صوفية تعيد الحرارة للأجساد المرتجفة.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="charity-card-smart reveal" (click)="activeCard = 3" [class.is-active]="activeCard === 3">
+          <div class="card-inner">
+            <i class="fas fa-fire-burner card-icon"></i>
+            <h4 class="card-title">باقة مدفأة العائلة</h4>
+            <div class="card-expandable">
+              <p class="card-desc">توفير وسائل التدفئة الآمنة ووقودها للمنازل التي حاصرتها الثلوج في أقاصي الجبال.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="reveal final-call">
+      <p>"الشتاء لا ينتظر أحداً، والصقيع لا يرحم الضعفاء. اجعل عطاءك دثاراً يسترهم، وصدقتك ناراً تضيء ليلهم. بادر الآن."</p>
+    </div>
+
+    <div class="modal-overlay" *ngIf="showModal" (click)="toggleModal()">
+      <div class="modal-window" (click)="$event.stopPropagation()">
+        <div class="modal-header-custom winter-bg">
+          <span class="close-x" (click)="toggleModal()">×</span>
+          <h2 class="form-title">هبة الدفء</h2>
+        </div>
+        <div class="modal-body-custom">
+          <div class="packages-grid-custom">
+            <button class="pkg-opt" (click)="setAmount('blanket', 200)">غطاء (200 د.م)</button>
+            <button class="pkg-opt" (click)="setAmount('clothes', 400)">كسوة (400 د.م)</button>
+            <button class="pkg-opt" (click)="setAmount('food', 500)">سلة (500 د.م)</button>
+            <button class="pkg-opt" (click)="setAmount('heater', 1000)">مدفأة (1000 د.م)</button>
+          </div>
+          <div class="amount-container-custom">
+            <input type="number" [(ngModel)]="donationAmount" class="amount-display-input">
+            <span class="amount-label">مبلغ التبرع</span>
+          </div>
+          <button class="donate-now-warm-btn" (click)="confirmDonation()">أرسل دفئك الآن 🔥</button>
+        </div>
+      </div>
+    </div>
+
+    <button class="custom-pill-btn warm-glow" (click)="toggleModal()">
+      <span class="btn-text">ساهم في حملة دفء</span>
+      <div class="icon-circle winter-blue"><i class="fas fa-fire"></i></div>
+    </button>
+  </div>
+</div>

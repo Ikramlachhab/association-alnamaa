@@ -6,13 +6,13 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-binaa-masajid',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './binaa-masajid.html', // تأكد من الاسم هنا
-  styleUrl: './binaa-masajid.css'      // تأكد من الاسم هنا
+  templateUrl: './binaa-masajid.html', 
+  styleUrl: './binaa-masajid.css'      
 })
 export class BinaaMasajidComponent implements AfterViewInit {
   showModal = false;
   showStep2 = false;
-  showToast = false; // هذا هو المتغير الذي كان ينقصك
+  showToast = false; 
   donationAmount = 1000;
   selectedOption = 'foundation';
   activeCard = 0;
@@ -83,8 +83,4 @@ export class BinaaMasajidComponent implements AfterViewInit {
       alert('تمت إضافة المساهمة إلى سلة التبرعات 🛒');
     }
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 61ff2872947f908cce71121aeb04fb4fc7854508
