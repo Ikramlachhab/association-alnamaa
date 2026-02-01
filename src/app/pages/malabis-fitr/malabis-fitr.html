@@ -1,1 +1,147 @@
-<p>malabis-fitr works!</p>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<div class="creative-page" dir="rtl">
+  <div class="container-wrapper">
+    
+    <header class="hero-section reveal">
+      <div class="header-text">
+        <h1 class="main-title">كسوة عيد الفطر</h1>
+        <h2 class="sub-title">"ألبسهم فرحاً.. واكسب أجراً"</h2>
+        <p class="hero-desc">حملة موكب الكرماء لإدخال السرور على قلوب الأيتام بملابس جديدة تليق ببهجة العيد.</p>
+      </div>
+      <div class="image-box">
+        <img src="eid-clothes.jpeg" alt="كسوة العيد" class="main-img">
+      </div>
+    </header>
+
+    <section class="axe-section reveal">
+      <h3 class="axe-header">✨ جودك يصنع العيد</h3>
+      <div class="axe-list-container">
+        <div class="axe-list-item">
+          <div class="axe-icon-box"><i class="fas fa-tshirt"></i></div>
+          <div class="axe-text-content">
+            <strong>بثمن قميص:</strong>
+            <span>تمنح يتيماً ثوباً جديداً يفتخر به أمام أقرانه.</span>
+          </div>
+        </div>
+        <div class="axe-list-item">
+          <div class="axe-icon-box"><i class="fas fa-shoe-prints"></i></div>
+          <div class="axe-text-content">
+            <strong>بثمن حذاء:</strong>
+            <span>تؤمّن له خطوة واثقة ومبهجة في صباح العيد.</span>
+          </div>
+        </div>
+        <div class="axe-list-item">
+          <div class="axe-icon-box"><i class="fas fa-star"></i></div>
+          <div class="axe-text-content">
+            <strong>بثمن أناقتك:</strong>
+            <span>تصنع طقوساً من السعادة كانت منسية في بيوتهم.</span>
+          </div>
+        </div>
+        <div class="axe-list-item">
+          <div class="axe-icon-box"><i class="fas fa-child"></i></div>
+          <div class="axe-text-content">
+            <strong>بثمن هديتك:</strong>
+            <span>تشتري بسمة يتيم، وهي عند الله عظيمة.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="moukib-banner-new reveal">
+      <div class="moukib-icon"><i class="fas fa-hands-holding-child"></i></div>
+      <div class="moukib-content">
+        <h3>موكبُ الكرماء</h3>
+        <p>"كن أنت اليد التي تمسح الحزن وتلبس اليتيم تيجان الكرامة في يوم العيد."</p>
+      </div>
+    </div>
+
+    <section class="cards-section">
+      <div class="cards-grid">
+        <div class="charity-card-smart reveal" (click)="activeCard = 1" [class.is-active]="activeCard === 1">
+          <div class="card-inner">
+            <i class="fas fa-heart-circle-check card-icon"></i>
+            <h4 class="card-title">سترٌ وسعادة</h4>
+            <div class="card-expandable">
+              <p class="card-desc">كسوة اليتيم ليست مجرد قماش، بل هي ستر لقلبه الصغير وجبر لخواطره المنكسرة.</p>
+            </div>
+          </div>
+        </div>
+        <div class="charity-card-smart reveal" (click)="activeCard = 2" [class.is-active]="activeCard === 2">
+          <div class="card-inner">
+            <i class="fas fa-moon card-icon"></i>
+            <h4 class="card-title">زكاةٌ مقبولة</h4>
+            <div class="card-expandable">
+              <p class="card-desc">طهر مالك في أواخر رمضان بإطعام المحتاج وكسوة اليتيم، لتكتمل فرحتك وفرحتهم.</p>
+            </div>
+          </div>
+        </div>
+        <div class="charity-card-smart reveal" (click)="activeCard = 3" [class.is-active]="activeCard === 3">
+          <div class="card-inner">
+            <i class="fas fa-award card-icon"></i>
+            <h4 class="card-title">جودة وتميز</h4>
+            <div class="card-expandable">
+              <p class="card-desc">نختار أفضل الملابس والخامات، لأننا نؤمن أن اليتيم يستحق الأجمل دائماً.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="modal-overlay" *ngIf="showModal" (click)="toggleModal()">
+      <div class="modal-window" (click)="$event.stopPropagation()">
+        <div class="modal-header-custom">
+          <span class="close-x" (click)="toggleModal()">×</span>
+          <h2 class="form-title">إهداء كسوة</h2>
+        </div>
+        <div class="modal-body-custom">
+          <div class="packages-grid-custom">
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'full'" (click)="setAmount('full', 450)">كسوة كاملة</button>
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'half'" (click)="setAmount('half', 250)">نصف كسوة</button>
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'family'" (click)="setAmount('family', 1300)">كسوة لـ 3 أيتام</button>
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'custom'" (click)="setAmount('custom', 100)">مساهمة حرة</button>
+          </div>
+          <div class="amount-container-custom">
+            <span class="currency-label">درهم</span>
+            <input type="number" [(ngModel)]="donationAmount" class="amount-display-input">
+            <span class="amount-label">المبلغ</span>
+          </div>
+          <div class="actions-container-custom">
+             <button class="donate-now-gold-btn" (click)="confirmDonation()">تأكيد الكسوة 🎁</button>
+             <button class="cart-icon-btn" (click)="addToCart()"><i class="fas fa-shopping-cart"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" *ngIf="showStep2" (click)="showStep2 = false">
+      <div class="modal-window" (click)="$event.stopPropagation()">
+        <div class="modal-header-custom" style="background: #c5a059;">
+          <span class="close-x" (click)="showStep2 = false">×</span>
+          <h2 class="form-title">بيانات المحسن</h2>
+        </div>
+        <div class="modal-body-custom">
+          <div class="rib-container-new">
+            <label>رقم الحساب البنكي (RIB):</label>
+            <div class="rib-box-new">007 810 0000123456789012 34</div>
+          </div>
+          <div class="step-input-group">
+            <label>رقم الهاتف</label>
+            <input type="text" [(ngModel)]="donorPhone" placeholder="06XXXXXXXX" class="step-field">
+          </div>
+          <div class="step-input-group">
+            <label>البريد الإلكتروني</label>
+            <input type="email" [(ngModel)]="donorEmail" placeholder="example@mail.com" class="step-field">
+          </div>
+          <p class="error-msg-new" *ngIf="formError">المرجو إدخال جميع البيانات</p>
+          <button class="donate-now-gold-btn" style="width: 100%;" (click)="finalSubmit()">إتمام العملية ✅</button>
+        </div>
+      </div>
+    </div>
+
+    <button class="custom-pill-btn" (click)="toggleModal()">
+      <span class="btn-text">كسوة يتيم</span>
+      <div class="icon-circle"><i class="fas fa-gift"></i></div>
+    </button>
+  </div>
+</div>
