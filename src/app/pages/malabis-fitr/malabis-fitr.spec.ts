@@ -1,20 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MalabisFitrComponent } from './malabis-fitr';
 
-import { MalabisFitr } from './malabis-fitr';
-
-describe('MalabisFitr', () => {
-  let component: MalabisFitr;
-  let fixture: ComponentFixture<MalabisFitr>;
+describe('MalabisFitrComponent', () => {
+  let component: MalabisFitrComponent;
+  let fixture: ComponentFixture<MalabisFitrComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MalabisFitr]
+      imports: [MalabisFitrComponent]
     })
     .compileComponents();
-
-    fixture = TestBed.createComponent(MalabisFitr);
+    
+    fixture = TestBed.createComponent(MalabisFitrComponent);
     component = fixture.componentInstance;
-    await fixture.whenStable();
+    fixture.detectChanges();
   });
 
   it('should create', () => {
