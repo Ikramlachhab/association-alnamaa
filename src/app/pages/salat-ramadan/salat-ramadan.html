@@ -1,98 +1,147 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-<div class="ramadan-page" dir="rtl">
+<div class="creative-page" dir="rtl">
   <div class="container-wrapper">
     
-    <div class="countdown-banner">
-      <span>متبقي على شهر الخير:</span>
-      <div id="countdown">28 يوم : 12 ساعة : 45 دقيقة</div>
-    </div>
-
     <header class="hero-section reveal">
       <div class="header-text">
-        <h1 class="main-title">سَبقُ الخيرات.. لرمضانٍ بلا حاجة</h1>
-        <p class="hero-desc">
-          "في شعبان تُرفع الأعمال، وفي رمضان تُضاعف الأجور. بادر بحجز سهمك في إطعام الصائمين قبل حلول الشهر الفضيل. كن أنت اليد التي تمتد لتملأ بيوت التعفف بالخير."
-        </p>
+        <h1 class="main-title">سلة رمضان 1447</h1>
+        <h2 class="sub-title">"خيرُكم من أطعمَ الطعام"</h2>
+        <p class="hero-desc">نحن في شهر شعبان، شهر ترفع فيه الأعمال.. بادر بتأمين قفة رمضان للأسر المتعففة لنرسم البسمة قبل أول ليلة من الشهر الفضيل.</p>
       </div>
       <div class="image-box">
         <img src="ramadan-basket.jpg" alt="سلة رمضان" class="main-img">
-        <div class="lantern-icon"><i class="fas fa-fan"></i></div>
       </div>
     </header>
 
     <section class="axe-section reveal">
-      <h3 class="axe-header">✨ مكونات الجود (ماذا يوجد داخل السلة؟)</h3>
+      <h3 class="axe-header">✨ محتويات سهم الخير</h3>
       <div class="axe-list-container">
         <div class="axe-list-item">
-          <div class="axe-icon-box"><i class="fa-solid fa-wheat-awn"></i></div>
+          <div class="axe-icon-box"><i class="fas fa-box-open"></i></div>
           <div class="axe-text-content">
-            <strong>قوتٌ أساسي:</strong>
-            <span>دقيق، زيت، سكر، وأرز لضمان كفاية العائلة طيلة الشهر.</span>
+            <strong>سلة أساسية:</strong>
+            <span>دقيق، زيت، سكر، شاي، تمر، وعدس.. كل ما تحتاجه مائدة الإفطار.</span>
           </div>
         </div>
         <div class="axe-list-item">
-          <div class="axe-icon-box"><i class="fa-solid fa-mortar-pestle"></i></div>
+          <div class="axe-icon-box"><i class="fas fa-truck-ramp-box"></i></div>
           <div class="axe-text-content">
-            <strong>بركةُ الإفطار:</strong>
-            <span>تمور فاخرة وعصائر طبيعية لإحياء سنة النبي ﷺ.</span>
+            <strong>توصيل للأرياف:</strong>
+            <span>نصل بالقفة إلى المناطق الجبلية والقرى البعيدة الأشد احتياجاً.</span>
           </div>
         </div>
         <div class="axe-list-item">
-          <div class="axe-icon-box"><i class="fa-solid fa-cheese"></i></div>
+          <div class="axe-icon-box"><i class="fas fa-shield-heart"></i></div>
           <div class="axe-text-content">
-            <strong>مؤونةُ السحور:</strong>
-            <span>بقوليات وأجبان تعينهم على مشقة الصيام.</span>
+            <strong>ستر وعفاف:</strong>
+            <span>يتم التوزيع بكل سرية واحترام لكرامة الأسر المستفيدة.</span>
           </div>
         </div>
         <div class="axe-list-item">
-          <div class="axe-icon-box"><i class="fa-solid fa-candy-cane"></i></div>
+          <div class="axe-icon-box"><i class="fas fa-file-invoice-dollar"></i></div>
           <div class="axe-text-content">
-            <strong>لمسةُ فرح:</strong>
-            <span>حلويات للأطفال لتكتمل بهجة رمضان في قلوبهم.</span>
+            <strong>تقرير شفاف:</strong>
+            <span>نتواصل معكم بصور وفيديوهات توثق وصول الأمانة لأهلها.</span>
           </div>
         </div>
       </div>
     </section>
 
-    <div class="trust-banner reveal">
-      <div class="moukib-icon"><i class="fas fa-shield-heart"></i></div>
+    <div class="moukib-banner-new reveal">
+      <div class="moukib-icon"><i class="fas fa-moon"></i></div>
       <div class="moukib-content">
-        <h3>التبكير والشفافية</h3>
-        <p>"نحن نسابق الزمن لضمان وصول أمانتكم قبل ليلة القدر الأولى مع توثيق ميداني كامل."</p>
+        <h3>قوافل الإطعام</h3>
+        <p>"كن شريكاً في إفطار آلاف الصائمين هذا العام، وبارك في رزقك بصدقة خفية."</p>
       </div>
     </div>
 
     <section class="cards-section">
       <div class="cards-grid">
-        <div class="charity-card-smart reveal" (click)="setAmount('blessing', 350)">
-          <i class="fas fa-box-open card-icon"></i>
-          <h4 class="card-title">سلة البركة</h4>
-          <p class="card-desc">سلة متكاملة تكفي أسرة لمدة شهر كامل.</p>
-          <span class="price-tag">350 درهم</span>
+        <div class="charity-card-smart reveal" (click)="activeCard = 1" [class.is-active]="activeCard === 1">
+          <div class="card-inner">
+            <i class="fas fa-bowl-food card-icon"></i>
+            <h4 class="card-title">إفطار صائم</h4>
+            <div class="card-expandable">
+              <p class="card-desc">بمساهمتك، توفر وجبات إفطار ساخنة يومية للأرامل والأيتام طيلة الشهر الكريم.</p>
+            </div>
+          </div>
         </div>
-        <div class="charity-card-smart reveal active-gold" (click)="setAmount('fasting', 50)">
-          <i class="fas fa-bowl-food card-icon"></i>
-          <h4 class="card-title">إفطار صائم</h4>
-          <p class="card-desc">توفير وجبات إفطار يومية للمحتاجين.</p>
-          <span class="price-tag">50 درهم</span>
+        <div class="charity-card-smart reveal" (click)="activeCard = 2" [class.is-active]="activeCard === 2">
+          <div class="card-inner">
+            <i class="fas fa-house-chimney-heart card-icon"></i>
+            <h4 class="card-title">سلة العائلة</h4>
+            <div class="card-expandable">
+              <p class="card-desc">قفة غنية تكفي عائلة من 5 أفراد طيلة شهر رمضان المبارك بكرامة تامة.</p>
+            </div>
+          </div>
         </div>
-        <div class="charity-card-smart reveal" (click)="setAmount('jood', 700)">
-          <i class="fas fa-hand-holding-hand card-icon"></i>
-          <h4 class="card-title">جود الأخيار</h4>
-          <p class="card-desc">سلتين أو أكثر لتغطية القرى النائية.</p>
-          <span class="price-tag">700+ درهم</span>
+        <div class="charity-card-smart reveal" (click)="activeCard = 3" [class.is-active]="activeCard === 3">
+          <div class="card-inner">
+            <i class="fas fa-star-and-crescent card-icon"></i>
+            <h4 class="card-title">بركة شعبان</h4>
+            <div class="card-expandable">
+              <p class="card-desc">استثمر فضائل شهر شعبان لتجهيز المؤونة مسبقاً قبل غلاء الأسعار وزحام الأسواق.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <footer class="closing-quote reveal">
-      <p>"تخيل أجر كل تسبيحة وكل دعاءٍ يرفعه صائمٌ أفطر بفضل جودك.. اجعل سلتك خبيئةً لك عند الله."</p>
-    </footer>
+    <div class="modal-overlay" *ngIf="showModal" (click)="toggleModal()">
+      <div class="modal-window" (click)="$event.stopPropagation()">
+        <div class="modal-header-custom">
+          <span class="close-x" (click)="toggleModal()">×</span>
+          <h2 class="form-title">اختيار السهم</h2>
+        </div>
+        <div class="modal-body-custom">
+          <div class="packages-grid-custom">
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'full'" (click)="setAmount('full', 450)">سلة متكاملة (450د)</button>
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'half'" (click)="setAmount('half', 250)">نصف سلة (250د)</button>
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'iftar'" (click)="setAmount('iftar', 30)">إفطار يوم (30د)</button>
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'month_iftar'" (click)="setAmount('month_iftar', 900)">إفطار شهر (900د)</button>
+          </div>
+          <div class="amount-container-custom">
+            <span class="currency-label">درهم</span>
+            <input type="number" [(ngModel)]="donationAmount" class="amount-display-input">
+            <span class="amount-label">مبلغ المساهمة</span>
+          </div>
+          <div class="actions-container-custom">
+             <button class="donate-now-gold-btn" (click)="confirmDonation()">تأكيد المساهمة 🌙</button>
+             <button class="cart-icon-btn" (click)="addToCart()"><i class="fas fa-shopping-basket"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" *ngIf="showStep2" (click)="showStep2 = false">
+      <div class="modal-window" (click)="$event.stopPropagation()">
+        <div class="modal-header-custom" style="background: #c5a059;">
+          <span class="close-x" (click)="showStep2 = false">×</span>
+          <h2 class="form-title">معلومات المحسن</h2>
+        </div>
+        <div class="modal-body-custom">
+          <div class="rib-container-new">
+            <label>رقم الحساب البنكي (للتحويل):</label>
+            <div class="rib-box-new">007 810 0000 1111 2222 3333 44</div>
+          </div>
+          <div class="step-input-group">
+            <label>رقم الهاتف</label>
+            <input type="text" [(ngModel)]="donorPhone" placeholder="06XXXXXXXX" class="step-field">
+          </div>
+          <div class="step-input-group">
+            <label>البريد الإلكتروني</label>
+            <input type="email" [(ngModel)]="donorEmail" placeholder="name@email.com" class="step-field">
+          </div>
+          <p class="error-msg-new" *ngIf="formError">المرجو تعبئة كافة البيانات</p>
+          <button class="donate-now-gold-btn" style="width: 100%;" (click)="finalSubmit()">إرسال المساهمة ✅</button>
+        </div>
+      </div>
+    </div>
 
     <button class="custom-pill-btn" (click)="toggleModal()">
-      <span class="btn-text">سارع بالخير الآن</span>
-      <div class="icon-circle"><i class="fas fa-moon"></i></div>
+      <span class="btn-text">ساهم الآن</span>
+      <div class="icon-circle"><i class="fas fa-hand-holding-heart"></i></div>
     </button>
   </div>
 </div>
