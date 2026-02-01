@@ -36,9 +36,15 @@ export class IftarRamadanComponent implements AfterViewInit {
     revealElements.forEach((el: HTMLElement) => observer.observe(el));
   }
 
-  toggleModal() { this.showModal = !this.showModal; this.showStep2 = false; }
+  toggleModal() { 
+    this.showModal = !this.showModal; 
+    this.showStep2 = false; 
+  }
 
-  setAmount(opt: string, amt: number) { this.selectedOption = opt; this.donationAmount = amt; }
+  setAmount(opt: string, amt: number) { 
+    this.selectedOption = opt; 
+    this.donationAmount = amt; 
+  }
 
   private validate(): boolean {
     if (this.donationAmount < 20) {
@@ -63,7 +69,8 @@ export class IftarRamadanComponent implements AfterViewInit {
     }
     alert('تقبل الله منك! سيتم التواصل معك لتأكيد وصول مساهمتك لموائد الإفطار.');
     this.showStep2 = false;
-    this.donorPhone = ''; this.donorEmail = '';
+    this.donorPhone = ''; 
+    this.donorEmail = '';
   }
 
   addToCart() {

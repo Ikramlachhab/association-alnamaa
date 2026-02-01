@@ -201,4 +201,9 @@
 .rib-box-new { font-family: monospace; font-size: 1.1rem; color: #333; text-align: center; }
 .step-field { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 10px; font-family: 'Tajawal'; outline: none; margin-top: 5px; }
 
-@media (max-width: 992px) { .hero-section { flex-direction: column-reverse; text-align: center; } .image-box { flex: 0 0 auto; width: 100%; height: auto; } .axe-list-container, .cards-grid { grid-template-columns: 1fr; } }
+/* Responsive Settings */
+@media (max-width: 992px) { 
+  .hero-section { flex-direction: column-reverse; text-align: center; } 
+  .image-box { flex: 0 0 auto; width: 100%; height: auto; } 
+  .axe-list-container, .cards-grid { grid-template-columns: 1fr; } 
+}
