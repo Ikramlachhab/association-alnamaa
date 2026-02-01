@@ -1,20 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { OdhiyaComponent } from './odhiya.component';
+import { FormsModule } from '@angular/forms';
 
-import { Adhiya } from './adhiya';
-
-describe('Adhiya', () => {
-  let component: Adhiya;
-  let fixture: ComponentFixture<Adhiya>;
+describe('OdhiyaComponent', () => {
+  let component: OdhiyaComponent;
+  let fixture: ComponentFixture<OdhiyaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Adhiya]
-    })
-    .compileComponents();
+      imports: [OdhiyaComponent, FormsModule]
+    }).compileComponents();
 
-    fixture = TestBed.createComponent(Adhiya);
+    fixture = TestBed.createComponent(OdhiyaComponent);
     component = fixture.componentInstance;
-    await fixture.whenStable();
+    fixture.detectChanges();
   });
 
   it('should create', () => {
