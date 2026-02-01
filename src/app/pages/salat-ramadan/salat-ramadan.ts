@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, Renderer2 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -9,20 +9,63 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './salat-ramadan.html',
   styleUrl: './salat-ramadan.css'
 })
-export class SalatRamadanComponent {
+export class SalatRamadanComponent implements AfterViewInit {
   showModal = false;
-  donationAmount = 0;
-  selectedOption = '';
+  showStep2 = false;
+  donationAmount = 450;
+  selectedOption = 'full';
+  activeCard = 0;
+  showToast = false;
 
-  // Function bach t-7elli w t-seddi l-modal
-  toggleModal() {
-    this.showModal = !this.showModal;
+  donorPhone = '';
+  donorEmail = '';
+  formError = false;
+
+  constructor(private el: ElementRef, private renderer: Renderer2) {}
+
+  ngAfterViewInit() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          this.renderer.addClass(entry.target, 'active');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    const revealElements = this.el.nativeElement.querySelectorAll('.reveal');
+    revealElements.forEach((el: HTMLElement) => observer.observe(el));
   }
 
-  // Function bach t-7etti l-mablagh melli katzetti 3la chi s'hem
-  setAmount(option: string, amount: number) {
-    this.selectedOption = option;
-    this.donationAmount = amount;
-    this.showModal = true; // Ghadi t-7el l-modal automatically melli t-cliki 3la card
+  toggleModal() { 
+    this.showModal = !this.showModal; 
+    this.showStep2 = false;
+  }
+
+  setAmount(opt: string, amt: number) { 
+    this.selectedOption = opt; 
+    this.donationAmount = amt; 
+  }
+
+  confirmDonation() { 
+    if (this.donationAmount >= 10) {
+      this.showModal = false;
+      this.showStep2 = true;
+    }
+  }
+
+  finalSubmit() {
+    if (!this.donorPhone || !this.donorEmail) {
+      this.formError = true;
+      return;
+    }
+    this.formError = false;
+    alert(`بارك الله فيكم! سيتم التواصل معكم لتأكيد التبرع وإرسال تفاصيل التوصيل للأسر.`);
+    this.showStep2 = false;
+    this.donorPhone = '';
+    this.donorEmail = '';
+  }
+
+  addToCart() { 
+    alert('تمت إضافة سهم الإطعام إلى سلتك 🛒');
   }
 }
