@@ -18,10 +18,7 @@ describe('App', () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-<<<<<<< HEAD
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, charity-app');
-=======
+    // تم اختيار الاسم الجديد للجمعية ليتوافق مع التحديثات الأخيرة
     expect(compiled.querySelector('h1')?.textContent).toContain('Hello, association-alnamaa');
->>>>>>> 097e52967e07d046b078d3c2a7980b6268b02df9
   });
 });

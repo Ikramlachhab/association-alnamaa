@@ -9,7 +9,6 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './adhiya.html',
   styleUrl: './adhiya.css'
 })
-// قمت بتغيير a إلى A هنا لتفادي أخطاء الـ Export
 export class AdhiyaComponent implements AfterViewInit {
   
   showModal: boolean = false;
@@ -69,7 +68,6 @@ export class AdhiyaComponent implements AfterViewInit {
   resetForm() {
     this.donorPhone = '';
     this.donorEmail = '';
-    // نرجع لبطاقة افتراضية أو نتركها 0
     this.activeCard = 2; 
   }
 }
