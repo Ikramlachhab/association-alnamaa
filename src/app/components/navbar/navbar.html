@@ -1,11 +1,20 @@
-<nav class="navbar">
-  <div class="nav-links">
-    <a routerLink="/adhiya" routerLinkActive="active">أضحية العيد</a>
-    <a routerLink="/kafalat-yatim" routerLinkActive="active">كفالة يتيم</a>
-    <a routerLink="/hafr-abar" routerLinkActive="active">حفر آبار</a>
-    <a routerLink="/binaa-masajid" routerLinkActive="active">بناء المساجد</a>
-    <a routerLink="/hamlat-difee" routerLinkActive="active">حملة دفء</a>
-    <a routerLink="/salat-ramadan" routerLinkActive="active">قفة رمضان</a>
-    <a routerLink="/hakiba-madrasiya" routerLinkActive="active">حقيبة مدرسية</a>
+<nav class="main-navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <img src="assets/logo.png" alt="النماآ">
+      <span>جمعية النماء</span>
+    </div>
+
+    <ul class="nav-links">
+      <li><a routerLink="/kafalat-yatim" routerLinkActive="active-link">كفالة اليتيم</a></li>
+      <li><a routerLink="/hakiba-madrasiya" routerLinkActive="active-link">الحقيبة المدرسية</a></li>
+      <li><a routerLink="/adhiya" routerLinkActive="active-link">أضحية العيد</a></li>
+      <li><a routerLink="/iftar-ramadan" routerLinkActive="active-link">إفطار رمضان</a></li>
+      <li><a routerLink="/hafr-abar" routerLinkActive="active-link">حفر الآبار</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="donate-now-btn">تبرع الآن</button>
+    </div>
   </div>
 </nav>
