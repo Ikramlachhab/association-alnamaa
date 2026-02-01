@@ -1,0 +1,98 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<div class="ramadan-page" dir="rtl">
+  <div class="container-wrapper">
+    
+    <div class="countdown-banner">
+      <span>متبقي على شهر الخير:</span>
+      <div id="countdown">28 يوم : 12 ساعة : 45 دقيقة</div>
+    </div>
+
+    <header class="hero-section reveal">
+      <div class="header-text">
+        <h1 class="main-title">سَبقُ الخيرات.. لرمضانٍ بلا حاجة</h1>
+        <p class="hero-desc">
+          "في شعبان تُرفع الأعمال، وفي رمضان تُضاعف الأجور. بادر بحجز سهمك في إطعام الصائمين قبل حلول الشهر الفضيل. كن أنت اليد التي تمتد لتملأ بيوت التعفف بالخير."
+        </p>
+      </div>
+      <div class="image-box">
+        <img src="ramadan-basket.jpg" alt="سلة رمضان" class="main-img">
+        <div class="lantern-icon"><i class="fas fa-fan"></i></div>
+      </div>
+    </header>
+
+    <section class="axe-section reveal">
+      <h3 class="axe-header">✨ مكونات الجود (ماذا يوجد داخل السلة؟)</h3>
+      <div class="axe-list-container">
+        <div class="axe-list-item">
+          <div class="axe-icon-box"><i class="fa-solid fa-wheat-awn"></i></div>
+          <div class="axe-text-content">
+            <strong>قوتٌ أساسي:</strong>
+            <span>دقيق، زيت، سكر، وأرز لضمان كفاية العائلة طيلة الشهر.</span>
+          </div>
+        </div>
+        <div class="axe-list-item">
+          <div class="axe-icon-box"><i class="fa-solid fa-mortar-pestle"></i></div>
+          <div class="axe-text-content">
+            <strong>بركةُ الإفطار:</strong>
+            <span>تمور فاخرة وعصائر طبيعية لإحياء سنة النبي ﷺ.</span>
+          </div>
+        </div>
+        <div class="axe-list-item">
+          <div class="axe-icon-box"><i class="fa-solid fa-cheese"></i></div>
+          <div class="axe-text-content">
+            <strong>مؤونةُ السحور:</strong>
+            <span>بقوليات وأجبان تعينهم على مشقة الصيام.</span>
+          </div>
+        </div>
+        <div class="axe-list-item">
+          <div class="axe-icon-box"><i class="fa-solid fa-candy-cane"></i></div>
+          <div class="axe-text-content">
+            <strong>لمسةُ فرح:</strong>
+            <span>حلويات للأطفال لتكتمل بهجة رمضان في قلوبهم.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="trust-banner reveal">
+      <div class="moukib-icon"><i class="fas fa-shield-heart"></i></div>
+      <div class="moukib-content">
+        <h3>التبكير والشفافية</h3>
+        <p>"نحن نسابق الزمن لضمان وصول أمانتكم قبل ليلة القدر الأولى مع توثيق ميداني كامل."</p>
+      </div>
+    </div>
+
+    <section class="cards-section">
+      <div class="cards-grid">
+        <div class="charity-card-smart reveal" (click)="setAmount('blessing', 350)">
+          <i class="fas fa-box-open card-icon"></i>
+          <h4 class="card-title">سلة البركة</h4>
+          <p class="card-desc">سلة متكاملة تكفي أسرة لمدة شهر كامل.</p>
+          <span class="price-tag">350 درهم</span>
+        </div>
+        <div class="charity-card-smart reveal active-gold" (click)="setAmount('fasting', 50)">
+          <i class="fas fa-bowl-food card-icon"></i>
+          <h4 class="card-title">إفطار صائم</h4>
+          <p class="card-desc">توفير وجبات إفطار يومية للمحتاجين.</p>
+          <span class="price-tag">50 درهم</span>
+        </div>
+        <div class="charity-card-smart reveal" (click)="setAmount('jood', 700)">
+          <i class="fas fa-hand-holding-hand card-icon"></i>
+          <h4 class="card-title">جود الأخيار</h4>
+          <p class="card-desc">سلتين أو أكثر لتغطية القرى النائية.</p>
+          <span class="price-tag">700+ درهم</span>
+        </div>
+      </div>
+    </section>
+
+    <footer class="closing-quote reveal">
+      <p>"تخيل أجر كل تسبيحة وكل دعاءٍ يرفعه صائمٌ أفطر بفضل جودك.. اجعل سلتك خبيئةً لك عند الله."</p>
+    </footer>
+
+    <button class="custom-pill-btn" (click)="toggleModal()">
+      <span class="btn-text">سارع بالخير الآن</span>
+      <div class="icon-circle"><i class="fas fa-moon"></i></div>
+    </button>
+  </div>
+</div>

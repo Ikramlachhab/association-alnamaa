@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;700&display=swap');
+
+:root {
+  --ramadan-purple: #4B1D3F;
+  --ramadan-gold: #C5A059;
+  --soft-cream: #FDFBF7;
+}
+
+.ramadan-page { font-family: 'Amiri', serif; background-color: var(--soft-cream); color: var(--ramadan-purple); }
+
+/* العداد التنازلي */
+.countdown-banner {
+  background: var(--ramadan-purple);
+  color: white;
+  text-align: center;
+  padding: 15px;
+  border-radius: 0 0 20px 20px;
+  font-family: 'Tajawal';
+  font-weight: bold;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.main-title { font-size: 3rem; color: var(--ramadan-purple); border-bottom: 3px solid var(--ramadan-gold); display: inline-block; padding-bottom: 10px; }
+
+.image-box { border: 8px solid var(--ramadan-gold); position: relative; }
+.lantern-icon { position: absolute; top: -20px; right: -20px; color: var(--ramadan-gold); font-size: 3rem; animation: swing 3s infinite ease-in-out; }
+
+@keyframes swing {
+  0%, 100% { transform: rotate(-10deg); }
+  50% { transform: rotate(10deg); }
+}
+
+.charity-card-smart {
+  background: white;
+  border: 1px solid #eee;
+  color: var(--ramadan-purple);
+  transition: 0.4s;
+}
+
+.charity-card-smart.active-gold {
+  background: var(--ramadan-purple);
+  color: white;
+  border: 2px solid var(--ramadan-gold);
+  transform: scale(1.05);
+}
+
+.price-tag { display: block; margin-top: 15px; font-weight: bold; color: var(--ramadan-gold); font-size: 1.3rem; }
+
+.custom-pill-btn { background: var(--ramadan-purple); color: white; border: 1px solid var(--ramadan-gold); }
+.icon-circle { background: var(--ramadan-gold); }
+
+.closing-quote { text-align: center; padding: 40px; font-style: italic; font-size: 1.4rem; color: #666; }
