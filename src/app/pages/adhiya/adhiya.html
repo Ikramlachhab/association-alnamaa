@@ -1,1 +1,122 @@
-<p>adhiya works!</p>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<div class="creative-page" dir="rtl">
+  <div class="container-wrapper">
+    
+    <header class="hero-section reveal">
+      <div class="header-text">
+        <div class="badge-gold">عشر ذي الحجة 1447هـ</div>
+        <h1 class="main-title">أضحيتُك.. <br><span class="highlight">طُهرةٌ وبركة</span></h1>
+        <p class="hero-desc">مع إشراقة ذي الحجة، تمتد الأيدي لتنال الأجر. اجعل أضحيتك هذا العام حياةً لأسرة متعففة، وأدخل سرور العيد على أطفالٍ ينتظرون هذه اللحظة طوال العام.</p>
+        <div class="countdown-timer">
+            <span>متبقي على يوم النحر: <strong>09 أيام</strong></span>
+        </div>
+      </div>
+      <div class="image-box-3d">
+        <img src="https://images.unsplash.com/photo-1511044568932-338cba0ad803?auto=format&fit=crop&w=800&q=80" alt="أضحية العيد" class="main-img">
+        <div class="floating-label">✨ ذبائح مختارة شرعاً</div>
+      </div>
+    </header>
+
+    <section class="spirit-section reveal">
+      <h3 class="section-heading">لماذا تضحي معنا؟</h3>
+      <div class="spirit-grid">
+        <div class="spirit-card">
+          <i class="fas fa-check-circle"></i>
+          <h4>شروط شرعية</h4>
+          <p>نختار الأضاحي بعناية فائقة (السن، السلامة، السمن).</p>
+        </div>
+        <div class="spirit-card">
+          <i class="fas fa-hand-holding-heart"></i>
+          <h4>توزيع كريم</h4>
+          <p>تصل الأمانة إلى مستحقيها في القرى والبوادي والأسر المتعففة.</p>
+        </div>
+        <div class="spirit-card">
+          <i class="fas fa-camera"></i>
+          <h4>توثيق وشفافية</h4>
+          <p>نرسل لك تقريراً مصوراً (فيديو/صور) لعملية الذبح والتوزيع.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="donation-section">
+      <div class="cards-grid">
+        <div class="charity-card-smart reveal" (click)="selectCard(1, 400)" [class.is-active]="activeCard === 1">
+          <div class="card-inner">
+            <i class="fas fa-pie-chart card-icon"></i>
+            <h4 class="card-title">سهم في أضحية</h4>
+            <span class="price">400 درهم</span>
+            <div class="card-expandable">
+                <p class="card-desc">مشاركة في سبع أضحية (بقرة) لإطعام عدة أسر.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="charity-card-smart reveal featured" (click)="selectCard(2, 2800)" [class.is-active]="activeCard === 2">
+          <div class="best-seller">الأكثر بركة</div>
+          <div class="card-inner">
+            <i class="fas fa-cloud card-icon"></i>
+            <h4 class="card-title">خروف العيد</h4>
+            <span class="price">2800 درهم</span>
+            <div class="card-expandable">
+                <p class="card-desc">أضحية كاملة (خروف سمين) يوزع باسمك على الفقراء.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="charity-card-smart reveal" (click)="selectCard(3, 15000)" [class.is-active]="activeCard === 3">
+          <div class="card-inner">
+            <i class="fas fa-award card-icon"></i>
+            <h4 class="card-title">عجل كامل</h4>
+            <span class="price">15,000 درهم</span>
+            <div class="card-expandable">
+                <p class="card-desc">أضحية عائلية كبرى تكفي لعشرات العائلات المحتاجة.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="modal-overlay" *ngIf="showModal" (click)="toggleModal()">
+      <div class="modal-window" (click)="$event.stopPropagation()">
+        <div class="modal-header-custom">
+            <span class="close-x" (click)="toggleModal()">×</span>
+            <h2 class="form-title">نِيّة الأضحية</h2>
+        </div>
+        <div class="modal-body-custom">
+            <div class="amount-container">
+                <label>مبلغ المساهمة</label>
+                <div class="input-wrapper">
+                    <input type="number" [(ngModel)]="donationAmount" class="amount-input">
+                    <span>درهم</span>
+                </div>
+            </div>
+            <button class="confirm-btn" (click)="confirmDonation()">تأكيد وذهاب للمرحلة التالية ➔</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" *ngIf="showStep2" (click)="showStep2 = false">
+      <div class="modal-window" (click)="$event.stopPropagation()">
+        <div class="modal-header-custom" style="background: #1b5e20;">
+            <span class="close-x" (click)="showStep2 = false">×</span>
+            <h2 class="form-title">بيانات المتصدق</h2>
+        </div>
+        <div class="modal-body-custom">
+            <div class="bank-details">
+                <p>رقم الحساب (RIB):</p>
+                <div class="rib-copy">007 810 0000 1234 5678 9012 34</div>
+            </div>
+            <input type="text" [(ngModel)]="donorPhone" placeholder="رقم الهاتف (واتساب للتوثيق)" class="input-field">
+            <input type="email" [(ngModel)]="donorEmail" placeholder="البريد الإلكتروني" class="input-field">
+            <button class="final-btn" (click)="finalSubmit()">إرسال الوصل وإتمام الأجر ✅</button>
+        </div>
+      </div>
+    </div>
+
+    <button class="fab-btn" (click)="toggleModal()">
+      <i class="fas fa-sheep"></i>
+      <span>ضَحِّ الآن</span>
+    </button>
+  </div>
+</div>
