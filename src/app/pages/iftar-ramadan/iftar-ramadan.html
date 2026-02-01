@@ -1,34 +1,149 @@
-<div class="iftar-container" dir="rtl">
-  <header class="hero">
-    <h1>🌙 تنظيم إفطار رمضان</h1>
-    <p>"من فطّر صائماً كان له مثل أجره"</p>
-  </header>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-  <div class="cards-grid">
-    <div class="card" [class.active]="selectedOption === 'meal'" (click)="setAmount('meal', 30)">
-      <i class="fas fa-utensils"></i>
-      <h3>وجبة صائم</h3>
-      <p>توفير وجبة إفطار متكاملة لفائدة صائم واحد.</p>
-      <span class="price">30 درهم</span>
+<div class="creative-page" dir="rtl">
+  <div class="container-wrapper">
+    
+    <header class="hero-section reveal">
+      <div class="header-text">
+        <h1 class="main-title">إفطار الصائم</h1>
+        <h2 class="sub-title">"فطّر صائماً.. ونل أجراً مضاعفاً"</h2>
+        <p class="hero-desc">مشروعنا يهدف لتوفير وجبات إفطار متكاملة للعائلات المتعففة وعابري السبيل طيلة أيام الشهر الفضيل.</p>
+      </div>
+      <div class="image-box">
+        <img src="iftar.jpeg" alt="إفطار رمضان" class="main-img">
+      </div>
+    </header>
+
+    <section class="axe-section reveal">
+      <h3 class="axe-header">✨ بركة إطعام الطعام</h3>
+      <div class="axe-list-container">
+        <div class="axe-list-item">
+          <div class="axe-icon-box"><i class="fas fa-dates"></i></div>
+          <div class="axe-text-content">
+            <strong>وجبة فردية:</strong>
+            <span>تمر، حليب، وحريرة مغربية ساخنة مع مقبلات.</span>
+          </div>
+        </div>
+        <div class="axe-list-item">
+          <div class="axe-icon-box"><i class="fas fa-home"></i></div>
+          <div class="axe-text-content">
+            <strong>قفة الإفطار:</strong>
+            <span>مواد غذائية أساسية تصل لباب بيوت الأسر المتعففة.</span>
+          </div>
+        </div>
+        <div class="axe-list-item">
+          <div class="axe-icon-box"><i class="fas fa-handshake"></i></div>
+          <div class="axe-text-content">
+            <strong>حفظ الكرامة:</strong>
+            <span>توصيل الوجبات بسرية تامة للعائلات المستورة.</span>
+          </div>
+        </div>
+        <div class="axe-list-item">
+          <div class="axe-icon-box"><i class="fas fa-cloud-moon"></i></div>
+          <div class="axe-text-content">
+            <strong>أجر مضاعف:</strong>
+            <span>قال ﷺ: مَنْ فَطَّرَ صَائِمًا كَانَ لَهُ مِثْلُ أَجْرِهِ.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="moukib-banner-new reveal">
+      <div class="moukib-icon"><i class="fas fa-moon"></i></div>
+      <div class="moukib-content">
+        <h3>موكبُ الصائمين</h3>
+        <p>"انضم إلى قوافل المتصدقين الذين اختاروا سد جوع محتاج في أطهر الشهور."</p>
+      </div>
     </div>
 
-    <div class="card" [class.active]="selectedOption === 'basket'" (click)="setAmount('basket', 400)">
-      <i class="fas fa-shopping-basket"></i>
-      <h3>قفة رمضان</h3>
-      <p>مواد غذائية أساسية تكفي أسرة لمدة شهر كامل.</p>
-      <span class="price">400 درهم</span>
+    <section class="cards-section">
+      <div class="cards-grid">
+        <div class="charity-card-smart reveal" (click)="activeCard = 1" [class.is-active]="activeCard === 1">
+            <i class="fas fa-utensils card-icon"></i>
+            <h4 class="card-title">وجبة الأمل</h4>
+            <div class="card-expandable">
+              <p class="card-desc">بمبلغ بسيط، ترسم البسمة على وجه صائم عابر سبيل بوجبة ساخنة متكاملة.</p>
+            </div>
+        </div>
+        <div class="charity-card-smart reveal" (click)="activeCard = 2" [class.is-active]="activeCard === 2">
+            <i class="fas fa-users card-icon"></i>
+            <h4 class="card-title">مائدة البركة</h4>
+            <div class="card-expandable">
+              <p class="card-desc">اكفل مائدة إفطار لأسرة كاملة، واكسب أجر صيامهم جميعاً في ميزان حسناتك.</p>
+            </div>
+        </div>
+        <div class="charity-card-smart reveal" (click)="activeCard = 3" [class.is-active]="activeCard === 3">
+            <i class="fas fa-star-and-crescent card-icon"></i>
+            <h4 class="card-title">صدقةٌ جارية</h4>
+            <div class="card-expandable">
+              <p class="card-desc">مساهمتك تفتح أبواباً للخير وتضمن استمرار موائد الرحمن طوال الشهر.</p>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="modal-overlay" *ngIf="showModal" (click)="toggleModal()">
+      <div class="modal-window" (click)="$event.stopPropagation()">
+        <div class="modal-header-custom">
+          <span class="close-x" (click)="toggleModal()">×</span>
+          <h2 class="form-title">إفطار صائم</h2>
+        </div>
+        <div class="modal-body-custom">
+          <div class="packages-grid-custom">
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'family'" (click)="setAmount('family', 150)">إفطار أسرة</button>
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'single'" (click)="setAmount('single', 25)">وجبة واحدة</button>
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === '10days'" (click)="setAmount('10days', 750)">10 أيام</button>
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'month'" (click)="setAmount('month', 2250)">الشهر كاملاً</button>
+          </div>
+          <div class="amount-container-custom">
+            <span class="currency-label">درهم</span>
+            <input type="number" [(ngModel)]="donationAmount" class="amount-display-input">
+            <span class="amount-label">مبلغ المساهمة</span>
+          </div>
+          <div class="actions-container-custom">
+             <button class="donate-now-gold-btn" (click)="confirmDonation()">تأكيد 🌙</button>
+             <button class="cart-icon-btn" (click)="addToCart()"><i class="fas fa-shopping-cart"></i></button>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="card" [class.active]="selectedOption === 'table'" (click)="setAmount('table', 1000)">
-      <i class="fas fa-users"></i>
-      <h3>مائدة إفطار</h3>
-      <p>رعاية مائدة إفطار جماعية لعابري السبيل والمحتاجين.</p>
-      <span class="price">1000 درهم</span>
+    <div class="modal-overlay" *ngIf="showStep2" (click)="showStep2 = false">
+      <div class="modal-window" (click)="$event.stopPropagation()">
+        <div class="modal-header-custom" style="background: #ffc107; color: #4a148c;">
+          <span class="close-x" (click)="showStep2 = false">×</span>
+          <h2 class="form-title">بيانات المحسن</h2>
+        </div>
+        <div class="modal-body-custom">
+          <div class="rib-container-new">
+            <label style="font-weight: bold; color: #4a148c;">رقم حساب المساهمات (RIB):</label>
+            <div class="rib-box-new">007 810 0000 9999 8888 7777 66</div>
+          </div>
+          <div class="step-input-group">
+            <label style="font-weight: bold; font-family: 'Tajawal';">رقم الهاتف</label>
+            <input type="text" [(ngModel)]="donorPhone" placeholder="06XXXXXXXX" class="step-field">
+          </div>
+          <div class="step-input-group">
+            <label style="font-weight: bold; font-family: 'Tajawal';">البريد الإلكتروني</label>
+            <input type="email" [(ngModel)]="donorEmail" placeholder="example@mail.com" class="step-field">
+          </div>
+          <p style="color:red; text-align:center" *ngIf="formError">يرجى ملء كافة البيانات</p>
+          <button class="donate-now-gold-btn" style="width: 100%; margin-top: 15px;" (click)="finalSubmit()">إرسال المساهمة ✅</button>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div class="donation-form" *ngIf="donationAmount > 0">
-    <h3>المبلغ المحدد: {{donationAmount}} درهم</h3>
-    <button class="btn-donate" (click)="confirmDonation()">تأكيد التبرع الآن</button>
+    <div class="toast-error" [class.show]="showToast">
+        <div class="toast-header">
+          <span class="close-toast" (click)="showToast = false">×</span>
+          <span style="color:#d9534f; font-weight:bold">خطأ في المبلغ</span>
+        </div>
+        <div class="toast-body" style="text-align:right">أقل مبلغ لإفطار صائم هو 20 درهم.</div>
+    </div>
+
+    <button class="custom-pill-btn" (click)="toggleModal()">
+      <span class="btn-text">مساهمة سريعة</span>
+      <div class="icon-circle"><i class="fas fa-hand-holding-heart"></i></div>
+    </button>
   </div>
 </div>
