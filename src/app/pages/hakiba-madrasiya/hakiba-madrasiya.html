@@ -1,0 +1,142 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<div class="creative-page" dir="rtl">
+  <div class="container-wrapper">
+    
+    <header class="hero-section reveal">
+      <div class="header-text">
+        <div class="badge">العودة للمدارس 2026</div>
+        <h1 class="main-title">حقيبةُ المستقبل</h1>
+        <h2 class="sub-title">"امسح غبار الحاجة عن أحلامهم"</h2>
+        <p class="hero-desc">مع كل رنة جرس، يشعر الطفل المحتاج بغصة لعدم امتلاكه أدوات زملائه. بادر اليوم بجعل عودتهم فخراً، وكن أنت من يكتب السطر الأول في قصة نجاحهم.</p>
+      </div>
+      <div class="image-box">
+        <img src="school-bag-hero.jpg" alt="حقيبة مدرسية" class="main-img">
+        <div class="overlay-card">
+          <span>🎯 هدفنا: 1000 حقيبة</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="axe-section reveal">
+      <h3 class="axe-header">🎒 ماذا نضع في حقيبتهم؟</h3>
+      <div class="axe-list-container">
+        <div class="axe-list-item">
+          <div class="axe-icon-box"><i class="fas fa-pencil-ruler"></i></div>
+          <div class="axe-text-content">
+            <strong>أدوات الإبداع:</strong>
+            <span>أقلام، دفاتر، ومقالم متكاملة تفتح شهية التعلم.</span>
+          </div>
+        </div>
+        <div class="axe-list-item">
+          <div class="axe-icon-box"><i class="fas fa-book"></i></div>
+          <div class="axe-text-content">
+            <strong>المقررات الدراسية:</strong>
+            <span>توفير الكتب والقصص التي تنير عقولهم الصغيرة.</span>
+          </div>
+        </div>
+        <div class="axe-list-item">
+          <div class="axe-icon-box"><i class="fas fa-tshirt"></i></div>
+          <div class="axe-text-content">
+            <strong>الزي المدرسي:</strong>
+            <span>لباس موحد جديد يمنحهم الثقة والمساواة مع أقرانهم.</span>
+          </div>
+        </div>
+        <div class="axe-list-item">
+          <div class="axe-icon-box"><i class="fas fa-bus"></i></div>
+          <div class="axe-text-content">
+            <strong>النقل والتمدرس:</strong>
+            <span>المساهمة في رسوم التسجيل والنقل للمناطق البعيدة.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cards-section">
+      <div class="cards-grid">
+        <div class="charity-card-smart reveal" (click)="activeCard = 1" [class.is-active]="activeCard === 1">
+          <div class="card-inner">
+            <i class="fas fa-graduation-cap card-icon"></i>
+            <h4 class="card-title">سهم طالب العلم</h4>
+            <div class="card-expandable">
+              <p class="card-desc">مساهمة جزئية بـ 100 درهم لتوفير المستلزمات الأساسية لليتيم.</p>
+            </div>
+          </div>
+        </div>
+        <div class="charity-card-smart reveal" (click)="activeCard = 2" [class.is-active]="activeCard === 2">
+          <div class="card-inner">
+            <i class="fas fa-backpack card-icon"></i>
+            <h4 class="card-title">حقيبة كاملة</h4>
+            <div class="card-expandable">
+              <p class="card-desc">حقيبة فاخرة بجميع أدواتها بـ 350 درهم، تكفي الطالب عاماً كاملاً.</p>
+            </div>
+          </div>
+        </div>
+        <div class="charity-card-smart reveal" (click)="activeCard = 3" [class.is-active]="activeCard === 3">
+          <div class="card-inner">
+            <i class="fas fa-star card-icon"></i>
+            <h4 class="card-title">كفالة دراسية</h4>
+            <div class="card-expandable">
+              <p class="card-desc">تجهيز كامل (حقيبة + زي + أدوات) بـ 600 درهم لبداية مثالية.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="modal-overlay" *ngIf="showModal" (click)="toggleModal()">
+      <div class="modal-window" (click)="$event.stopPropagation()">
+        <div class="modal-header-custom">
+          <span class="close-x" (click)="toggleModal()">×</span>
+          <h2 class="form-title">تجهيز بطل</h2>
+        </div>
+        <div class="modal-body-custom">
+          <div class="packages-grid-custom">
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'full'" (click)="setAmount('full', 350)">حقيبة كاملة</button>
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'half'" (click)="setAmount('half', 150)">مستلزمات</button>
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'hero'" (click)="setAmount('hero', 600)">تجهيز بطل</button>
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'custom'" (click)="setAmount('custom', 100)">سهم حر</button>
+          </div>
+          <div class="amount-container-custom">
+            <span class="currency-label">درهم</span>
+            <input type="number" [(ngModel)]="donationAmount" class="amount-display-input">
+            <span class="amount-label">المبلغ</span>
+          </div>
+          <div class="actions-container-custom">
+             <button class="donate-now-gold-btn" (click)="confirmDonation()">أعطِ الآن ✏️</button>
+             <button class="cart-icon-btn" (click)="addToCart()"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" *ngIf="showStep2" (click)="showStep2 = false">
+      <div class="modal-window" (click)="$event.stopPropagation()">
+        <div class="modal-header-custom" style="background: #f1c40f; color: #2c3e50;">
+          <span class="close-x" (click)="showStep2 = false">×</span>
+          <h2 class="form-title">إتمام الإهداء</h2>
+        </div>
+        <div class="modal-body-custom">
+          <div class="rib-container-new">
+            <label>رقم الحساب البنكي (للجمعية):</label>
+            <div class="rib-box-new">007 810 0000 9999 8888 7777 66</div>
+          </div>
+          <div class="step-input-group">
+            <label>رقم هاتف المتبرع</label>
+            <input type="text" [(ngModel)]="donorPhone" placeholder="06XXXXXXXX" class="step-field">
+          </div>
+          <div class="step-input-group">
+            <label>البريد الإلكتروني</label>
+            <input type="email" [(ngModel)]="donorEmail" placeholder="your@email.com" class="step-field">
+          </div>
+          <button class="donate-now-gold-btn" style="width: 100%; background: #2980b9;" (click)="finalSubmit()">تأكيد التبرع ✅</button>
+        </div>
+      </div>
+    </div>
+
+    <button class="custom-pill-btn" (click)="toggleModal()">
+      <span class="btn-text">جهّز طفلاً</span>
+      <div class="icon-circle"><i class="fas fa-pencil-alt"></i></div>
+    </button>
+  </div>
+</div>
