@@ -14,25 +14,24 @@
 .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
 .reveal.active { opacity: 1; transform: translateY(0); }
 
-/* --- الهيرو (Hero Section) المعدل --- */
+/* --- الهيرو (Hero Section) - الصورة يمين والنص يسار --- */
 .hero-section { 
     display: flex; 
     align-items: center; 
     justify-content: space-between; 
-    gap: 60px; /* المسافة المحسنة لجمالية التصميم */
+    flex-direction: row; /* الصورة ستأتي أولاً في الترتيب البرمجي (اليمين في RTL) */
+    gap: 60px; 
     margin-bottom: 60px; 
 }
 
-/* محاذاة النص لليمين داخل الكتلة حتى وهو بجهة اليسار */
+/* النص بجهة اليسار */
 .header-text { 
     flex: 1; 
-    text-align: right; 
+    text-align: right; /* محاذاة النص داخلياً لليمين كونه عربي */
+    order: 2; /* يضع النص في الترتيب الثاني (يسار الصورة في RTL) */
 }
 
-.main-title { font-family: 'Aref Ruqaa'; font-size: 3.5rem; color: #5D4037; margin: 0; line-height: 1.2; }
-.sub-title { font-size: 1.6rem; color: #c5a059; margin-top: 15px; font-family: 'Amiri'; }
-.hero-desc { font-size: 1.2rem; color: #7d6b65; margin-top: 20px; max-width: 600px; }
-
+/* الصورة بجهة اليمين */
 .image-box { 
     flex: 0 0 435px; 
     height: 460px; 
@@ -41,11 +40,17 @@
     overflow: hidden; 
     box-shadow: 0 20px 40px rgba(0,0,0,0.15); 
     transition: 0.5s; 
+    order: 1; /* يضع الصورة في الترتيب الأول (يمين النص في RTL) */
 }
+
+.main-title { font-family: 'Aref Ruqaa'; font-size: 3.5rem; color: #5D4037; margin: 0; line-height: 1.2; }
+.sub-title { font-size: 1.6rem; color: #c5a059; margin-top: 15px; font-family: 'Amiri'; }
+.hero-desc { font-size: 1.2rem; color: #7d6b65; margin-top: 20px; max-width: 600px; }
+
 .image-box:hover { transform: translateY(-15px); border-color: #5D4037; }
 .main-img { width: 100%; height: 100%; object-fit: cover; }
 
-/* --- ميثاق الجودة (محاكاة تصميم الكفالة) --- */
+/* --- ميثاق الجودة (2x2 متقابل) --- */
 .axe-section { padding: 40px 0; background-color: transparent; }
 
 .axe-container-boxed {
@@ -74,7 +79,11 @@
     margin-right: auto;
 }
 
-.axe-list-vertical { display: flex; flex-direction: column; gap: 20px; }
+.axe-list-vertical { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 25px; 
+}
 
 .axe-item-card {
     display: flex;
@@ -86,10 +95,11 @@
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border: 1px solid transparent;
     cursor: default;
+    height: 100%;
 }
 
 .axe-item-card:hover {
-    transform: translateX(-10px);
+    transform: translateY(-8px); 
     background: #fff;
     border-color: #c5a059;
     box-shadow: 0 10px 30px rgba(197, 160, 89, 0.15);
@@ -125,7 +135,7 @@
 
 .axe-content p { font-size: 1rem; color: #7d6b65; margin: 0; line-height: 1.5; }
 
-/* --- أنميشن قسم الاقتباس المطور --- */
+/* --- أنميشن قسم الاقتباس --- */
 .animated-quote {
     text-align: center; margin-top: 60px; padding: 60px 40px; background: #fff;
     border-radius: 40px; box-shadow: 0 15px 40px rgba(93, 64, 55, 0.08);
@@ -205,18 +215,14 @@
 /* --- التجاوب مع الجوال (Mobile) --- */
 @media (max-width: 768px) {
     .hero-section { 
-        flex-direction: column-reverse; /* الصورة فوق والنص تحتها لجمالية الترتيب */
+        flex-direction: column-reverse; 
         text-align: center; 
         gap: 30px;
     }
-    .header-text {
-        text-align: center;
-    }
-    .image-box { width: 100%; height: 300px; flex: none; }
+    .header-text { order: unset; text-align: center; }
+    .image-box { order: unset; width: 100%; height: 300px; flex: none; }
     .main-title { font-size: 2.5rem; }
+    .axe-list-vertical { grid-template-columns: 1fr; }
     .cards-grid { grid-template-columns: 1fr; }
     .modal-window { width: 95%; }
-    .animated-text { font-size: 1.4rem; }
-    .axe-item-card { flex-direction: column; text-align: center; }
-    .axe-item-card:hover { transform: translateY(-5px); }
 }
