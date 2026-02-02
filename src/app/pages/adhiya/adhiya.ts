@@ -12,12 +12,13 @@ import { FormsModule } from '@angular/forms';
 export class AdhiyaComponent implements AfterViewInit {
   showModal = false;
   showStep2 = false; 
-  donationAmount = 2800;
-  selectedOption = 'amal';
+  donationAmount = 2500; // القيمة الافتراضية الجديدة (خروف)
+  selectedOption = 'khrouf'; // الخيار الافتراضي الجديد
   activeCard = 0;
   showToast = false;
+  addedToCartMsg = false; // رسالة السلة الجديدة
 
-  // بيانات المتبرع (نفس منطق كفالة يتيم)
+  // بيانات المتبرع
   donorName = ''; 
   donorPhone = '';
   donorEmail = '';
@@ -32,7 +33,7 @@ export class AdhiyaComponent implements AfterViewInit {
     return re.test(email);
   }
 
-  // دالة التحقق من رقم الهاتف (أرقام فقط وطول منطقي)
+  // دالة التحقق من رقم الهاتف
   private isValidPhone(phone: string): boolean {
     const re = /^[0-9]{8,15}$/; 
     return re.test(phone);
@@ -61,7 +62,8 @@ export class AdhiyaComponent implements AfterViewInit {
   toggleModal() { 
     this.showModal = !this.showModal; 
     this.showToast = false; 
-    this.showStep2 = false; 
+    this.showStep2 = false;
+    this.addedToCartMsg = false;
   }
 
   setAmount(opt: string, amt: number) { 
@@ -86,6 +88,17 @@ export class AdhiyaComponent implements AfterViewInit {
     }
   }
 
+  addToCart() { 
+    if (this.validateDonation()) {
+      this.addedToCartMsg = true;
+      setTimeout(() => {
+        this.addedToCartMsg = false;
+        this.showModal = false;
+        this.showStep2 = true; // متابعة العطاء آلياً بعد الإضافة للسلة
+      }, 1500);
+    }
+  }
+
   finalSubmit() {
     // التحقق من الشروط المطلوبة
     if (!this.donorName || !this.donorPhone || !this.donorEmail) {
@@ -102,18 +115,14 @@ export class AdhiyaComponent implements AfterViewInit {
     }
 
     this.formError = false;
-    // الرسالة الذهبية المطابقة لمشروعك
-    alert(`جزاك الله خيراً! سيتم التأكيد أن التبرع قد تم في حسابك الشخصي: ${this.donorEmail}`);
+    // الرسالة النهائية
+    alert(`جزاك الله خيراً! تم تأكيد تبرعك بمبلغ ${this.donationAmount} درهم. سيتم إرسال فيديو التوثيق لهاتفك.`);
     
+    // تصفير البيانات بعد النجاح
     this.showStep2 = false;
     this.donorName = '';
     this.donorPhone = '';
     this.donorEmail = '';
-  }
-
-  addToCart() { 
-    if (this.validateDonation()) {
-      alert('تمت إضافة الأضحية إلى سلة التبرعات 🛒');
-    }
+    this.donationAmount = 2500;
   }
 }
