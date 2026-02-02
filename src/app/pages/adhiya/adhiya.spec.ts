@@ -29,17 +29,33 @@ describe('AdhiyaComponent', () => {
   });
 
   it('يجب أن يغير مبلغ التبرع عند اختيار باقة أضحية مختلفة', () => {
-    // اختيار باقة الإحسان مثلاً بقيمة 2800
+    // اختبار باقة الإحسان الأصلية
     component.setAmount('amal', 2800);
     expect(component.selectedOption).toBe('amal');
     expect(component.donationAmount).toBe(2800);
   });
 
+  // --- الاختبارات الجديدة المضافة ---
   it('يجب ألا ينتقل للخطوة الثانية إذا كان مبلغ الأضحية أقل من 20 درهم', () => {
     component.donationAmount = 15;
     component.confirmDonation();
     expect(component.showStep2).toBeFalse();
   });
+
+  it('يجب أن يغير المبلغ عند اختيار خروف أو ماعز أو بقر', () => {
+    // اختبار الخروف
+    component.setAmount('khrouf', 2500);
+    expect(component.donationAmount).toBe(2500);
+    
+    // اختبار الماعز
+    component.setAmount('maez', 1800);
+    expect(component.donationAmount).toBe(1800);
+
+    // اختبار البقر
+    component.setAmount('baqar', 15000);
+    expect(component.donationAmount).toBe(15000);
+  });
+  // ---------------------------------
 
   it('يجب أن ينتقل لخطوة بيانات المتبرع عند تأكيد مبلغ صالح', () => {
     component.donationAmount = 2800;
@@ -96,4 +112,17 @@ describe('AdhiyaComponent', () => {
     expect(navigator.clipboard.writeText).toHaveBeenCalledWith(component.bankAccount);
     expect(window.alert).toHaveBeenCalledWith('تم نسخ رقم الحساب (RIB) بنجاح');
   });
+
+  it('يجب تحديث رسالة السلة والمتابعة تلقائياً عند إضافة الأضحية', fakeAsync(() => {
+    component.donationAmount = 2500;
+    component.addToCart();
+    
+    expect(component.addedToCartMsg).toBeTrue();
+    
+    tick(1500); // محاكاة وقت رسالة النجاح
+    
+    expect(component.addedToCartMsg).toBeFalse();
+    expect(component.showModal).toBeFalse();
+    expect(component.showStep2).toBeTrue();
+  }));
 });
