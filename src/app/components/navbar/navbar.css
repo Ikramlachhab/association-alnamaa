@@ -1,9 +1,9 @@
-/* --- استيراد الخطوط (ضروري تبقى هنا لضمان عملها في كل الصفحات) --- */
-@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Reem+Kufi:wght@600;700&family=Cairo:wght@400;700&display=swap');
+/* --- استيراد الخطوط --- */
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Reem+Kufi:wght@600;700&family=Cairo:wght@400;700&family=Aref+Ruqaa:wght@400;700&display=swap');
 
 /* --- تنسيق الحاوية الرئيسية للـ Navbar --- */
 .luxury-nav {
-  position: fixed; /* تغيير لـ fixed لضمان بقائها في كل الصفحات */
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -21,6 +21,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 40px;
+  direction: rtl; /* ضمان الاتجاه العربي */
 }
 
 /* --- اللوغو والبراند (اليمين) --- */
@@ -29,7 +30,6 @@
   align-items: center;
   gap: 15px;
   flex: 1;
-  justify-content: flex-end; /* لجهة اليمين */
 }
 
 .huge-logo {
@@ -38,11 +38,10 @@
 }
 
 .brand-title-main {
-font-family: 'Aref Ruqaa', serif;
+  font-family: 'Aref Ruqaa', serif;
   font-size: 1.8rem;
   color: #004d26;
   margin: 0;
-  text-align: right;
 }
 
 .brand-subtitle {
@@ -50,13 +49,11 @@ font-family: 'Aref Ruqaa', serif;
   color: #b38138;
   font-size: 0.8rem;
   margin: 0;
-  text-align: right;
 }
 
 /* --- المنيو والروابط (الوسط) --- */
 .nav-menu {
   display: flex;
-  flex-direction: row-reverse; /* ترتيب عربي من اليمين لليسار */
   gap: 35px;
   justify-content: center;
   flex: 2;
@@ -76,23 +73,13 @@ font-family: 'Aref Ruqaa', serif;
   color: #b38138;
 }
 
-.arrow-down {
-  border: solid #004d26;
-  border-width: 0 2px 2px 0;
-  display: inline-block;
-  padding: 3px;
-  transform: rotate(45deg);
-  margin-left: 8px;
-  margin-bottom: 3px;
-}
-
 /* --- أزرار التسجيل (اليسار) --- */
 .nav-actions {
   display: flex;
   gap: 15px;
   align-items: center;
   flex: 1;
-  justify-content: flex-start;
+  justify-content: flex-end;
 }
 
 .action-btn {
@@ -106,6 +93,7 @@ font-family: 'Aref Ruqaa', serif;
   display: inline-block;
   text-align: center;
   min-width: 110px;
+  cursor: pointer;
 }
 
 .btn-register {
@@ -153,4 +141,10 @@ font-family: 'Aref Ruqaa', serif;
 .dropdown-content a:hover {
   background-color: #f9f4ee;
   color: #b38138 !important;
+}
+
+/* التكيف مع الهاتف */
+@media (max-width: 992px) {
+  .nav-menu, .nav-actions { display: none; }
+  .nav-container { justify-content: center; }
 }

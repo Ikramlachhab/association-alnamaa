@@ -18,6 +18,7 @@ describe('App', () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
+    // تم اختيار الاسم الجديد للجمعية ليتوافق مع التحديثات الأخيرة
     expect(compiled.querySelector('h1')?.textContent).toContain('Hello, association-alnamaa');
   });
 });

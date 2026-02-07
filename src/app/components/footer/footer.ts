@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router'; // خلي غير Router إيلا كنتي غتستعملي navigate
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
   imports: [
     CommonModule
-    // حيدنا RouterLink من هنا باش يمشي الـ Warning
   ],
   templateUrl: './footer.html',
   styleUrl: './footer.css'
@@ -15,7 +14,6 @@ import { Router } from '@angular/router'; // خلي غير Router إيلا كن�
 export class FooterComponent {
   constructor(private router: Router) {}
   
-  // دالة السكرول إيلا كنتي باقة محتاجاها لشي زر
   scrollToSection(event: Event, sectionId: string) {
     event.preventDefault();
     const element = document.getElementById(sectionId);

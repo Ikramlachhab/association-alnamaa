@@ -1,0 +1,178 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<div class="card-inner">
+  <i class="fas fa-utensils fa-2xl"></i> 
+  <h4 class="card-title">وجبة البركة</h4>
+</div>
+
+<div class="card-inner">
+  <i class="fas fa-hand-holding-heart fa-2xl"></i>
+  <h4 class="card-title">إفطار عائلة</h4>
+</div>
+
+<div class="toast-container" [class.show]="toastActive">
+  <div class="toast-content" [ngClass]="toastType">
+    <i class="fas" [ngClass]="toastType === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'"></i>
+    <span>{{ toastMessage }}</span>
+  </div>
+</div>
+
+<div class="creative-page" dir="rtl">
+  <div class="container-wrapper">
+
+    <header class="hero-section reveal">
+      <div class="image-box">
+        <img src="iftar.jpeg" alt="إفطار رمضان" class="main-img">
+      </div>
+      <div class="header-text">
+        <h1 class="main-title">إفطار الصائم.. غنيمة الأبرار</h1>
+        <h2 class="sub-title">نصنع فرحة الإفطار لمن ينتظرون جودكم في شهر الخير.</h2>
+        <p class="hero-desc">
+          في أيام الخير المباركة، تمتد موائدنا لتصل إلى الأرامل والأيتام وعابري السبيل. مساهمتك اليوم ليست مجرد وجبة، بل هي جسر مودة وإحياء لروح التكافل بقدسية وإحسان.
+        </p>
+      </div>
+    </header>
+
+    <section class="axe-section reveal">
+      <div class="axe-container-boxed">
+        <h3 class="axe-header-gold"> ميثاق الجودة والإحسان</h3>
+        <p class="axe-subtitle">نلتزم بأعلى معايير الإتقان لضمان وصول وجباتكم بأبهى صورة تليق بكرامة الصائم.</p>
+        <div class="axe-list-vertical">
+          <div class="axe-item-card">
+            <div class="axe-icon-wrapper"><i class="fas fa-utensils"></i></div>
+            <div class="axe-content">
+              <h4>وجبات متكاملة</h4>
+              <p>نقدم وجبات غذائية متوازنة وصحية تليق بكرامة الصائم.</p>
+            </div>
+          </div>
+          <div class="axe-item-card">
+            <div class="axe-icon-wrapper"><i class="fas fa-check-circle"></i></div>
+            <div class="axe-content">
+              <h4>معايير السلامة</h4>
+              <p>رقابة صحية صارمة وانتقاء أفضل المكونات الطازجة يومياً.</p>
+            </div>
+          </div>
+          <div class="axe-item-card">
+            <div class="axe-icon-wrapper"><i class="fas fa-truck-fast"></i></div>
+            <div class="axe-content">
+              <h4>سرعة التوزيع</h4>
+              <p>نظام توصيل سريع لضمان وصول الوجبات ساخنة قبل الأذان.</p>
+            </div>
+          </div>
+          <div class="axe-item-card">
+            <div class="axe-icon-wrapper"><i class="fas fa-heart"></i></div>
+            <div class="axe-content">
+              <h4>حفظ كرامة المستفيد</h4>
+              <p>نصل للقرى النائية والبيوت المستورة بسترٍ وفرح.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="quote-section reveal animated-quote">
+      <div class="quote-container">
+        <i class="fas fa-moon quote-heart-top"></i>
+        <p class="animated-text">"من فطّر صائماً كان له مثل أجره. اجعل إفطارك هذا العام قصة خير تضيء دروب المحتاجين."</p>
+        <div class="quote-line"></div>
+      </div>
+    </div>
+
+    <section class="cards-section" style="padding-bottom: 120px;">
+      <div class="cards-grid">
+        <div class="charity-card-smart reveal" (click)="activeCard = 1" [class.is-active]="activeCard === 1">
+          <div class="card-inner">
+            <i class="fas fa-utensils"></i>
+            <h4 class="card-title">وجبة البركة</h4>
+            <div class="card-expandable"><p class="card-desc">سهم إفطار لشخص واحد بوجبة متكاملة.</p></div>
+          </div>
+        </div>
+        <div class="charity-card-smart reveal" (click)="activeCard = 2" [class.is-active]="activeCard === 2">
+          <div class="card-inner">
+            <i i class="fas fa-hand-holding-heart"></i>
+            <h4 class="card-title">إفطار عائلة</h4>
+            <div class="card-expandable"><p class="card-desc">وجبة عائلية كبيرة تكفي أسرة كاملة مع التمور.</p></div>
+          </div>
+        </div>
+        <div class="charity-card-smart reveal" (click)="activeCard = 3" [class.is-active]="activeCard === 3">
+          <div class="card-inner">
+            <i class="fas fa-star card-icon"></i>
+            <h4 class="card-title">كفالة الشهر</h4>
+            <div class="card-expandable"><p class="card-desc">تأمين إفطار يومي لأسرة طوال شهر رمضان.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="modal-overlay" *ngIf="showModal" (click)="toggleModal()">
+      <div class="modal-window wide-modal" (click)="$event.stopPropagation()">
+        <div class="modal-header-custom" style="background: #1b4d2e;">
+          <span class="close-x" (click)="toggleModal()">×</span>
+          <h2 class="form-title">اختر باباً للجود</h2>
+        </div>
+        <div class="modal-body-custom">
+          <div class="success-toast" *ngIf="addedToCartMsg" style="background: #f6ffed; color: #52c41a; padding: 10px; border-radius: 10px; text-align: center; margin-bottom: 15px; font-family: 'Tajawal'; border: 1px solid #b7eb8f;">
+            تم إضافة المساهمة إلى السلة ومتابعة العطاء ✅
+          </div>
+          
+          <div class="packages-grid-custom four-cols">
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'baraka'" (click)="setAmount('baraka', 30)">تقديم الفطور</button>
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'family'" (click)="setAmount('family', 150)">تقديم السحور</button>
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'month'" (click)="setAmount('month', 900)">قفة المؤونة</button>
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'open'" (click)="selectedOption = 'open'">ضمان التنقل</button>
+          </div>
+
+          <div class="amount-container-custom">
+            <span class="currency-label">درهم</span>
+            <input type="number" [(ngModel)]="donationAmount" class="amount-display-input">
+            <span class="amount-label">المبلغ</span>
+          </div>
+
+          <div class="actions-container-custom">
+             <button class="donate-now-gold-btn" style="background: #a48c6d;" (click)="confirmDonation()">متابعة العطاء 💰</button>
+             <button class="cart-icon-btn" style="background: #1b4d2e;" (click)="addToCart()"><i class="fas fa-shopping-cart"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" *ngIf="showStep2" (click)="showStep2 = false">
+      <div class="modal-window wide-modal" (click)="$event.stopPropagation()">
+        <div class="modal-header-custom" style="background: #a48c6d;">
+          <span class="close-x" (click)="showStep2 = false">×</span>
+          <h2 class="form-title">ميثاق التبرع</h2>
+        </div>
+        <div class="modal-body-custom">
+          <div class="rib-container-new">
+            <label style="display:block; font-weight:bold; color:#1b4d2e; margin-bottom:5px;">رقم الحساب البنكي (RIB):</label>
+            <div class="rib-box-new">{{bankAccount}}</div>
+            <button (click)="copyRIB()" class="copy-btn-mini">نسخ رقم الحساب</button>
+          </div>
+
+          <div class="donor-horizontal-grid">
+            <div class="step-input-group">
+              <label>الاسم الكامل</label>
+              <input type="text" [(ngModel)]="donorName" placeholder="الاسم الكريم" class="step-field">
+            </div>
+            <div class="step-input-group">
+              <label>رقم الهاتف</label>
+              <input type="tel" dir="ltr" [(ngModel)]="donorPhone" placeholder="+212 6..." class="step-field">
+            </div>
+            <div class="step-input-group full-width-field">
+              <label>البريد الإلكتروني</label>
+              <input type="email" [(ngModel)]="donorEmail" placeholder="example@mail.com" class="step-field">
+            </div>
+          </div>
+
+          <button class="donate-now-gold-btn" style="width: 100%; background: #1b4d2e; margin-top: 20px;" (click)="finalSubmit()">تأكيد المساهمة ✅</button>
+        </div>
+      </div>
+    </div>
+
+    <button class="custom-pill-btn" (click)="toggleModal()">
+      <span class="btn-text">شاركهم الإفطار</span>
+      <div class="icon-circle" style="background: #1b4d2e;"><i class="fas fa-moon"></i></div>
+    </button>
+
+  </div>
+</div>

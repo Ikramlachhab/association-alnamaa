@@ -1,5 +1,154 @@
+<<<<<<< HEAD
 /* هاد الكود كيطبق على كاع الصفحات اللي كيدوزو من router-outlet */
 main {
   display: block;
   padding-top: 90px; /* هادي هي المساحة اللي كتحمي المحتوى باش ما يتخباش ورا النافبار */
+=======
+/* الزر العائم الثابت */
+.floating-donate-btn {
+  position: fixed;
+  bottom: 25px;
+  left: 25px;
+  background: white;
+  padding: 6px 6px 6px 20px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  cursor: pointer;
+  z-index: 1000;
+  transition: 0.3s;
+  border: 1px solid #f0f0f0;
+}
+
+.floating-donate-btn .btn-text {
+  font-family: 'Cairo', sans-serif;
+  font-weight: bold;
+  margin-right: 12px;
+  color: #333;
+}
+
+.icon-circle {
+  background: #2d5a27; /* أخضر نماء */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* النافذة المنبثقة */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  direction: rtl;
+}
+
+.modal-card {
+  background: white;
+  width: 450px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-header {
+  background: #2d5a27;
+  color: white;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-btn { background: none; border: none; color: white; font-size: 24px; cursor: pointer; }
+
+.modal-body { padding: 25px; }
+
+/* شبكة الأزرار */
+.donation-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.donation-opt {
+  background: white;
+  border: 1px solid #e0e0e0;
+  padding: 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #666;
+}
+
+.donation-opt.active {
+  border-color: #2d5a27;
+  background: #f4f9f4;
+  color: #2d5a27;
+}
+
+/* حقل المبلغ */
+.amount-input-wrap {
+  position: relative;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.amount-input-wrap input {
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  width: 60px;
+  outline: none;
+}
+
+/* الأزرار السفلية */
+.modal-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-confirm {
+  flex: 1;
+  background: #c5a059; /* ذهبي نماء */
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.btn-cart {
+  background: #2d5a27;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  width: 55px;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+>>>>>>> fac1aebf509f40a12ceead912408894dcad794dd
 }

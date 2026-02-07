@@ -1,0 +1,169 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<div class="toast-container" [class.show]="toastActive">
+  <div class="toast-content" [ngClass]="toastType">
+    <i class="fas" [ngClass]="toastType === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'"></i>
+    <span>{{ toastMessage }}</span>
+  </div>
+</div>
+
+<div class="creative-page" dir="rtl">
+  <div class="container-wrapper">
+
+    <header class="hero-section reveal">
+      <div class="image-box"> 
+        <img src="hamlat-difee.png" alt="حملة دفء" class="main-img">
+      </div>
+      <div class="header-text">
+        <h1 class="main-title">حملة دفء.. أمانُهم في سخائك</h1> 
+        <h2 class="sub-title">تحت الصفر، يكتبُ عطاؤك قصة نجاة لعائلات تسكن الصقيع.</h2>
+        <p class="hero-desc">
+          في أعالي الجبال حيث يشتد البرد وتغيب شمس الدفء، هناك أطفال وأرامل ينتظرون لمسة حنانك. مساهمتك اليوم ليست مجرد غطاء، بل هي حصنٌ يحميهم من قسوة الشتاء ويحيي في نفوسهم الأمل.
+        </p>
+      </div>
+    </header>
+
+    <section class="axe-section">
+      <div class="axe-container-boxed reveal">
+        <h3 class="axe-header-gold"> ميثاق الدفء والشفافية</h3>
+        <p class="axe-subtitle">نلتزم بالوصول إلى أقصى نقطة في الجبل لننقل أمانتكم بكل إتقان.</p>
+        
+        <div class="axe-grid-layout">
+          <div class="axe-item-card ignite-effect reveal delay-1" [class.is-active]="activeAxe === 1" (click)="activeAxe = 1">
+            <div class="axe-content">
+              <h4>أغطية حرارية عالية الجودة</h4>
+              <p>نختار أفضل الخامات التي تحفظ حرارة الجسم في أقسى الظروف.</p>
+            </div>
+            <div class="axe-icon-wrapper"><i class="fas fa-box-open"></i></div>
+          </div>
+
+          <div class="axe-item-card ignite-effect reveal delay-2" [class.is-active]="activeAxe === 2" (click)="activeAxe = 2">
+            <div class="axe-icon-wrapper-left"><i class="fas fa-fire-alt"></i></div>
+            <div class="axe-content-left">
+              <h4>حطب وقود آمن</h4>
+              <p>توفير وقود التدفئة للأسر في القرى التي تعاني من انقطاع المسالك.</p>
+            </div>
+          </div>
+
+          <div class="axe-item-card ignite-effect reveal delay-3" [class.is-active]="activeAxe === 3" (click)="activeAxe = 3">
+            <div class="axe-content">
+              <h4>كسوة الشتاء الكاملة</h4>
+              <p>تجهيز أطقم ملابس متكاملة للأطفال لضمان استمرار دراستهم.</p>
+            </div>
+            <div class="axe-icon-wrapper"><i class="fas fa-tshirt"></i></div>
+          </div>
+
+          <div class="axe-item-card ignite-effect reveal delay-4" [class.is-active]="activeAxe === 4" (click)="activeAxe = 4">
+            <div class="axe-icon-wrapper-left"><i class="fas fa-hand-holding-heart"></i></div>
+            <div class="axe-content-left">
+              <h4>إيصال الأمانة للبيوت</h4>
+              <p>فريقنا الميداني يعبر الثلوج ليصل بصدقتكم ليد المحتاج مباشرة.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="quote-section reveal animated-quote">
+      <div class="quote-container">
+        <i class="fas fa-snowflake quote-heart-top"></i>
+        <p class="animated-text">"البرد قارس.. لكن دفء قلوب المحسنين أقوى من صقيع الجبال. كن شمسهم في شتائهم."</p>
+        <div class="quote-line"></div>
+      </div>
+    </div>
+
+    <section class="cards-section" style="margin-top: 40px; padding-bottom: 120px;">
+      <div class="cards-grid">
+        <div class="charity-card-smart reveal" (click)="activeCard = 1" [class.is-active]="activeCard === 1">
+          <div class="card-inner">
+            <i class="fas fa-tshirt card-icon"></i> 
+            <h4 class="card-title">باقة الطفل</h4>
+            <div class="card-expandable"><p class="card-desc">كسوة متكاملة (حذاء، معطف، وقبعة) لطفل واحد.</p></div>
+          </div>
+        </div>
+        
+        <div class="charity-card-smart reveal" (click)="activeCard = 2" [class.is-active]="activeCard === 2">
+          <div class="card-inner">
+            <i class="fas fa-users card-icon"></i> 
+            <h4 class="card-title">سند العائلة</h4>
+            <div class="card-expandable"><p class="card-desc">أغطية حرارية ومؤونة غذائية لبيت كامل.</p></div>
+          </div>
+        </div>
+
+        <div class="charity-card-smart reveal" (click)="activeCard = 3" [class.is-active]="activeCard === 3">
+          <div class="card-inner">
+            <i class="fas fa-fire-alt card-icon"></i> 
+            <h4 class="card-title">دفء القرية</h4>
+            <div class="card-expandable"><p class="card-desc">مساهمة في شاحنة وقود تدفئة وحطب جماعي.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="modal-overlay" *ngIf="showModal" (click)="toggleModal()">
+      <div class="modal-window wide-modal" (click)="$event.stopPropagation()">
+        <div class="modal-header-custom" style="background: #006060;"> 
+          <span class="close-x" (click)="toggleModal()">×</span>
+          <h2 class="form-title">اختر مساهمتك للدفء</h2>
+        </div>
+        <div class="modal-body-custom">
+          <div class="success-toast" *ngIf="addedToCartMsg" style="background: #f0fafa; color: #006060; border: 1px solid #006060; padding: 10px; border-radius: 10px; text-align: center; margin-bottom: 15px;">تم إضافة المساهمة إلى السلة بنجاح ✅</div>
+          <div class="packages-grid-custom">
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'clothes'" (click)="setAmount('clothes', 250)">كسوة</button>
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'blanket'" (click)="setAmount('blanket', 350)">أغطية</button>
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'wood'" (click)="setAmount('wood', 500)">حطب</button>
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'open'" (click)="setAmount('open', 100)">مؤونة</button>
+          </div>
+          <div class="amount-container-custom">
+            <span class="currency-label" style="color:#c59d5f; font-weight: bold;">درهم</span>
+            <input type="number" [(ngModel)]="donationAmount" class="amount-display-input">
+            <span class="amount-label">المبلغ</span>
+          </div>
+          <div class="actions-container-custom">
+             <button class="donate-now-gold-btn" style="background: #c59d5f;" (click)="confirmDonation()">متابعة العطاء 💰</button> 
+             <button class="cart-icon-btn" style="background: #006060;" (click)="addToCart()"><i class="fas fa-shopping-cart"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" *ngIf="showStep2" (click)="showStep2 = false">
+      <div class="modal-window wide-modal" style="max-width: 650px;" (click)="$event.stopPropagation()">
+        <div class="modal-header-custom" style="background: #c59d5f;">
+          <span class="close-x" (click)="showStep2 = false">×</span>
+          <h2 class="form-title">ميثاق التبرع للحملة</h2>
+        </div>
+        <div class="modal-body-custom">
+          <div class="rib-container-new" style="background: #f0fafa; border: 1px dashed #006060; padding: 15px; border-radius: 15px; text-align: center; margin-bottom: 20px;">
+            <label style="display:block; font-weight:bold; color:#006060; margin-bottom:5px;">رقم حساب الجمعية (RIB):</label>
+            <div class="rib-box-new" style="font-family: monospace; font-size: 1.1rem; font-weight: bold; margin-bottom: 10px;">{{bankAccount}}</div>
+            <button (click)="copyRIB()" class="copy-btn-mini" style="background:#006060; color:white; border:none; padding:5px 15px; border-radius:20px; cursor:pointer;">نسخ رقم الحساب</button>
+          </div>
+
+          <div class="donor-horizontal-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <div class="step-input-group">
+              <label style="display:block; text-align:right; font-weight:bold; color:#006060;">الاسم الكامل</label>
+              <input type="text" [(ngModel)]="donorName" placeholder="الاسم الكريم" class="step-field" style="width:100%; padding:10px; border-radius:10px; border:1px solid #ddd; text-align:right;">
+            </div>
+            <div class="step-input-group">
+              <label style="display:block; text-align:right; font-weight:bold; color:#006060;">رقم الهاتف الدولي</label>
+              <input type="tel" dir="ltr" [(ngModel)]="donorPhone" placeholder="+212 600..." class="step-field" style="width:100%; padding:10px; border-radius:10px; border:1px solid #ddd; text-align:left;">
+            </div>
+            <div class="step-input-group" style="grid-column: span 2;">
+              <label style="display:block; text-align:right; font-weight:bold; color:#006060;">البريد الإلكتروني</label>
+              <input type="email" [(ngModel)]="donorEmail" placeholder="example@mail.com" class="step-field" style="width:100%; padding:10px; border-radius:10px; border:1px solid #ddd; text-align:right;">
+            </div>
+          </div>
+
+          <button class="donate-now-gold-btn" style="width: 100%; background: #006060; margin-top: 20px; color:white; border:none; padding:15px; border-radius:12px; font-weight:bold; cursor:pointer;" (click)="finalSubmit()">تأكيد المساهمة ✅</button>
+        </div>
+      </div>
+    </div>
+
+    <button class="custom-pill-btn" (click)="toggleModal()">
+      <span class="btn-text">دفئهم الآن</span>
+      <div class="icon-circle"><i class="fas fa-fire"></i></div>
+    </button>
+
+  </div>
+</div>
