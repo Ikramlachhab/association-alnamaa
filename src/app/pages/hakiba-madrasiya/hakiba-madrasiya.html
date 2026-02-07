@@ -1,83 +1,101 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
+<div class="toast-container" [class.show]="toastActive">
+  <div class="toast-content" [ngClass]="toastType">
+    <i class="fas" [ngClass]="toastType === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'"></i>
+    <span>{{ toastMessage }}</span>
+  </div>
+</div>
+
 <div class="creative-page" dir="rtl">
   <div class="container-wrapper">
     
     <header class="hero-section reveal">
       <div class="header-text">
-        <div class="badge">العودة للمدارس 2026</div>
-        <h1 class="main-title">حقيبةُ المستقبل</h1>
-        <h2 class="sub-title">"امسح غبار الحاجة عن أحلامهم"</h2>
-        <p class="hero-desc">مع كل رنة جرس، يشعر الطفل المحتاج بغصة لعدم امتلاكه أدوات زملائه. بادر اليوم بجعل عودتهم فخراً، وكن أنت من يكتب السطر الأول في قصة نجاحهم.</p>
+        <h1 class="main-title">محفظة النجاح</h1>
+        <h2 class="sub-title">"حقيبةٌ واحدة.. تمحو شبح الأمية"</h2>
+        <p class="hero-desc">خلف كل حقيبة مدرسية نوفرها، قصة نجاح تبدأ. نحن لا نوزع الأدوات فحسب، بل نمنح الأطفال في القرى البعيدة تذكرة عبور نحو المستقبل وحقاً مشروعاً في التعليم والكرامة.</p>
       </div>
       <div class="image-box">
-        <img src="school-bag-hero.jpg" alt="حقيبة مدرسية" class="main-img">
-        <div class="overlay-card">
-          <span>🎯 هدفنا: 1000 حقيبة</span>
-        </div>
+        <img src="hakiba-madrasiya.jpeg" alt="حقيبة مدرسية" class="main-img">
       </div>
     </header>
 
     <section class="axe-section reveal">
-      <h3 class="axe-header">🎒 ماذا نضع في حقيبتهم؟</h3>
+      <h3 class="axe-header"> أثر تبرعك التعليمي</h3>
       <div class="axe-list-container">
         <div class="axe-list-item">
-          <div class="axe-icon-box"><i class="fas fa-pencil-ruler"></i></div>
+          <div class="axe-icon-box"><i class="fas fa-graduation-cap"></i></div>
           <div class="axe-text-content">
-            <strong>أدوات الإبداع:</strong>
-            <span>أقلام، دفاتر، ومقالم متكاملة تفتح شهية التعلم.</span>
+            <strong>كسر العزلة:</strong>
+            <span>الحقيبة هي السبب الأول لبقاء أطفال القرى النائية داخل فصول الدراسة.</span>
           </div>
         </div>
         <div class="axe-list-item">
-          <div class="axe-icon-box"><i class="fas fa-book"></i></div>
+          <div class="axe-icon-box"><i class="fas fa-book-open"></i></div>
           <div class="axe-text-content">
-            <strong>المقررات الدراسية:</strong>
-            <span>توفير الكتب والقصص التي تنير عقولهم الصغيرة.</span>
+            <strong>تكافؤ الفرص:</strong>
+            <span>نمنح الطفل اليتيم أدوات عالية الجودة ليشعر بالفخر والمساواة مع زملائه.</span>
           </div>
         </div>
         <div class="axe-list-item">
-          <div class="axe-icon-box"><i class="fas fa-tshirt"></i></div>
+          <div class="axe-icon-box"><i class="fas fa-user-check"></i></div>
           <div class="axe-text-content">
-            <strong>الزي المدرسي:</strong>
-            <span>لباس موحد جديد يمنحهم الثقة والمساواة مع أقرانهم.</span>
+            <strong>صناعة جيل:</strong>
+            <span>كل حرف يكتبه الطفل بهذا القلم هو صدقة جارية في ميزان حسناتك.</span>
           </div>
         </div>
         <div class="axe-list-item">
-          <div class="axe-icon-box"><i class="fas fa-bus"></i></div>
+          <div class="axe-icon-box"><i class="fas fa-medal"></i></div>
           <div class="axe-text-content">
-            <strong>النقل والتمدرس:</strong>
-            <span>المساهمة في رسوم التسجيل والنقل للمناطق البعيدة.</span>
+            <strong>دعم نفسي:</strong>
+            <span>الحقيبة الجديدة تمنح الطفل الثقة وتزيل عنه خجل الاحتياج أمام المعلمين.</span>
           </div>
         </div>
       </div>
+    </section>
+
+    <div class="moukib-banner-new reveal">
+      <div class="moukib-icon"><i class="fas fa-pen-nib"></i></div>
+      <div class="moukib-content">
+        <h3>موكبُ العلم</h3>
+        <p>"من هنا تبدأ الرحلة، ومن عطائك يستمدون القوة. جهّز طالب علمٍ اليوم، لتصنع بطلاً للمستقبل"</p>
+      </div>
+    </div>
+
+    <section class="reveal" style="text-align: center; margin-bottom: 40px; padding: 40px; background: #fff; border-radius: 30px; border-top: 5px solid #c5a059; box-shadow: 0 10px 30px rgba(0,0,0,0.03);">
+        <h3 style="font-family: 'Aref Ruqaa', serif; color: #3A6D8C;">كن أنت من يكتب السطر الأول</h3>
+        <p style="font-family: 'Amiri'; font-size: 1.6rem; line-height: 2; color: #333; max-width: 900px; margin: 0 auto;">
+            "المدرسة هي الأمان الذي يحمي الأطفال من الشوارع وعمالة الصغار. حقيبتك اليوم هي استثمار في عقل سينفع الأمة غداً."
+        </p>
     </section>
 
     <section class="cards-section">
       <div class="cards-grid">
         <div class="charity-card-smart reveal" (click)="activeCard = 1" [class.is-active]="activeCard === 1">
           <div class="card-inner">
-            <i class="fas fa-graduation-cap card-icon"></i>
-            <h4 class="card-title">سهم طالب العلم</h4>
+            <i class="fas fa-briefcase card-icon"></i>
+            <h4 class="card-title">باقة الحقيبة الطبية</h4>
             <div class="card-expandable">
-              <p class="card-desc">مساهمة جزئية بـ 100 درهم لتوفير المستلزمات الأساسية لليتيم.</p>
+              <p class="card-desc">حقيبة بظهر طبي مريح، تحمي عمودهم الفقري في رحلة المشي الطويلة نحو المدرسة.</p>
             </div>
           </div>
         </div>
         <div class="charity-card-smart reveal" (click)="activeCard = 2" [class.is-active]="activeCard === 2">
           <div class="card-inner">
-            <i class="fas fa-backpack card-icon"></i>
-            <h4 class="card-title">حقيبة كاملة</h4>
+            <i class="fas fa-pencil-ruler card-icon"></i>
+            <h4 class="card-title">باقة التجهيز الكامل</h4>
             <div class="card-expandable">
-              <p class="card-desc">حقيبة فاخرة بجميع أدواتها بـ 350 درهم، تكفي الطالب عاماً كاملاً.</p>
+              <p class="card-desc">تشمل الدفاتر، الأدوات الهندسية، المقلمة، وكتب المراجعة لضمان سنة دراسية ناجحة.</p>
             </div>
           </div>
         </div>
         <div class="charity-card-smart reveal" (click)="activeCard = 3" [class.is-active]="activeCard === 3">
           <div class="card-inner">
-            <i class="fas fa-star card-icon"></i>
-            <h4 class="card-title">كفالة دراسية</h4>
+            <i class="fas fa-chalkboard-teacher card-icon"></i>
+            <h4 class="card-title">باقة كفالة طالب</h4>
             <div class="card-expandable">
-              <p class="card-desc">تجهيز كامل (حقيبة + زي + أدوات) بـ 600 درهم لبداية مثالية.</p>
+              <p class="card-desc">دعم سنوي شامل يغطي الحقيبة والزي المدرسي ودروس الدعم لليتامى المتفوقين.</p>
             </div>
           </div>
         </div>
@@ -88,23 +106,23 @@
       <div class="modal-window" (click)="$event.stopPropagation()">
         <div class="modal-header-custom">
           <span class="close-x" (click)="toggleModal()">×</span>
-          <h2 class="form-title">تجهيز بطل</h2>
+          <h2 class="form-title">سهم العلم</h2>
         </div>
         <div class="modal-body-custom">
           <div class="packages-grid-custom">
-            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'full'" (click)="setAmount('full', 350)">حقيبة كاملة</button>
-            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'half'" (click)="setAmount('half', 150)">مستلزمات</button>
-            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'hero'" (click)="setAmount('hero', 600)">تجهيز بطل</button>
-            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'custom'" (click)="setAmount('custom', 100)">سهم حر</button>
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'support'" (click)="setAmount('support', 150)">دروس الدعم</button>
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'bag'" (click)="setAmount('bag', 250)">الحقيبة</button>
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'uniform'" (click)="setAmount('uniform', 500)">الزي المدرسي</button>
+            <button class="pkg-opt" [class.active-pkg]="selectedOption === 'laptop'" (click)="setAmount('laptop', 3000)">حاسوب</button>
           </div>
           <div class="amount-container-custom">
             <span class="currency-label">درهم</span>
             <input type="number" [(ngModel)]="donationAmount" class="amount-display-input">
-            <span class="amount-label">المبلغ</span>
+            <span class="amount-label">مبلغ التبرع</span>
           </div>
           <div class="actions-container-custom">
-             <button class="donate-now-gold-btn" (click)="confirmDonation()">أعطِ الآن ✏️</button>
-             <button class="cart-icon-btn" (click)="addToCart()"><i class="fas fa-plus"></i></button>
+             <button class="donate-now-gold-btn" (click)="confirmDonation()">تبرع الآن 🎓</button>
+             <button class="cart-icon-btn" (click)="addToCart()"><i class="fas fa-shopping-cart"></i></button>
           </div>
         </div>
       </div>
@@ -112,31 +130,45 @@
 
     <div class="modal-overlay" *ngIf="showStep2" (click)="showStep2 = false">
       <div class="modal-window" (click)="$event.stopPropagation()">
-        <div class="modal-header-custom" style="background: #f1c40f; color: #2c3e50;">
+        <div class="modal-header-custom" style="background:#3A6D8C;">
           <span class="close-x" (click)="showStep2 = false">×</span>
-          <h2 class="form-title">إتمام الإهداء</h2>
+          <h2 class="form-title">معلومات المحسن</h2>
         </div>
         <div class="modal-body-custom">
+          
           <div class="rib-container-new">
-            <label>رقم الحساب البنكي (للجمعية):</label>
-            <div class="rib-box-new">007 810 0000 9999 8888 7777 66</div>
+            <label>رقم الحساب البنكي (RIB):</label>
+            <div class="rib-box-new">{{ bankAccount }}</div>
+            <button (click)="copyRIB()" style="width:100%; margin-top:10px; cursor:pointer; background: #c5a059; color:white; border:none; border-radius:8px; padding:8px; font-family:'Tajawal';">
+              <i class="fas fa-copy"></i> نسخ رقم الحساب
+            </button>
           </div>
-          <div class="step-input-group">
-            <label>رقم هاتف المتبرع</label>
-            <input type="text" [(ngModel)]="donorPhone" placeholder="06XXXXXXXX" class="step-field">
+          
+          <div class="step-fields-container">
+            <div class="step-input-group">
+              <label>الاسم الكامل</label>
+              <input type="text" [(ngModel)]="donorName" placeholder="فاعل خير" class="step-field">
+            </div>
+            <div class="step-input-group">
+                <label>رقم الهاتف</label>
+                <input type="text" [(ngModel)]="donorPhone" placeholder="+212 6XX XXX XXX" class="step-field">
+            </div>
+            <div class="step-input-group">
+              <label>البريد الإلكتروني</label>
+              <input type="email" [(ngModel)]="donorEmail" placeholder="example@mail.com" class="step-field">
+            </div>
           </div>
-          <div class="step-input-group">
-            <label>البريد الإلكتروني</label>
-            <input type="email" [(ngModel)]="donorEmail" placeholder="your@email.com" class="step-field">
-          </div>
-          <button class="donate-now-gold-btn" style="width: 100%; background: #2980b9;" (click)="finalSubmit()">تأكيد التبرع ✅</button>
+
+          <button class="donate-now-gold-btn" style="width: 100%; margin-top: 15px;" (click)="finalSubmit()">تأكيد التبرع ✅</button>
+          <p class="trust-notice">نضمن لكم وصول الأمانة لأصحابها. جزاكم الله خيراً.</p>
         </div>
       </div>
     </div>
 
     <button class="custom-pill-btn" (click)="toggleModal()">
-      <span class="btn-text">جهّز طفلاً</span>
-      <div class="icon-circle"><i class="fas fa-pencil-alt"></i></div>
+      <span class="btn-text">جهز بطل الغد</span>
+      <div class="icon-circle"><i class="fas fa-graduation-cap"></i></div>
     </button>
+
   </div>
 </div>
