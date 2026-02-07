@@ -1,88 +1,65 @@
-import { Component, AfterViewInit, ElementRef, Renderer2 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { KafalatYatimComponent } from './kafalat-yatim.component';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
-@Component({
-  selector: 'app-kafalat-yatim',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
-  templateUrl: './kafalat-yatim.html',
-  styleUrl: './kafalat-yatim.css'
-})
-export class KafalatYatimComponent implements AfterViewInit {
-  showModal = false;
-  showStep2 = false; // التحكم في الصفحة الثانية
-  donationAmount = 250;
-  selectedOption = 'month';
-  activeCard = 0;
-  showToast = false;
+describe('KafalatYatimComponent', () => {
+  let component: KafalatYatimComponent;
+  let fixture: ComponentFixture<KafalatYatimComponent>;
 
-  // بيانات المتبرع
-  donorPhone = '';
-  donorEmail = '';
-  formError = false;
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [KafalatYatimComponent, CommonModule, FormsModule]
+    }).compileComponents();
 
-  constructor(private el: ElementRef, private renderer: Renderer2) {}
+    fixture = TestBed.createComponent(KafalatYatimComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-  ngAfterViewInit() {
-    const observerOptions = { threshold: 0.15 };
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          this.renderer.addClass(entry.target, 'active');
-        }
-      });
-    }, observerOptions);
+  it('يجب إنشاء مكون كفالة اليتيم بنجاح', () => {
+    expect(component).toBeTruthy();
+  });
 
-    const revealElements = this.el.nativeElement.querySelectorAll('.reveal');
-    revealElements.forEach((el: HTMLElement) => observer.observe(el));
-  }
+  it('يجب فتح المودال عند التبديل', () => {
+    component.toggleModal();
+    expect(component.showModal).toBeTrue();
+  });
 
-  toggleModal() { 
-    this.showModal = !this.showModal; 
-    this.showToast = false; 
-    this.showStep2 = false; // إغلاق الصفحة الثانية إذا أغلق المستخدم النافذة
-  }
+  it('يجب تحديث المبلغ عند اختيار باقة (مثلاً سنة)', () => {
+    component.setAmount('year', 3600);
+    expect(component.donationAmount).toBe(3600);
+  });
 
-  setAmount(opt: string, amt: number) { 
-    this.selectedOption = opt; 
-    this.donationAmount = amt; 
-  }
+  it('يجب إظهار خطأ إذا كان المبلغ أقل من 20 درهم عند التأكيد', () => {
+    component.donationAmount = 10;
+    component.confirmDonation();
+    expect(component.showStep2).toBeFalse();
+  });
 
-  private validateDonation(): boolean {
-    if (this.donationAmount < 20) {
-      this.showToast = true;
-      setTimeout(() => this.showToast = false, 5000);
-      return false;
-    }
-    this.showToast = false;
-    return true;
-  }
+  it('يجب الانتقال للمرحلة الثانية عند إدخال بيانات صحيحة', () => {
+    component.donationAmount = 300;
+    component.confirmDonation();
+    expect(component.showStep2).toBeTrue();
+  });
 
-  confirmDonation() { 
-    if (this.validateDonation()) {
-      // بدلاً من الـ alert، نفتح الصفحة الثانية
-      this.showModal = false;
-      this.showStep2 = true;
-    }
-  }
+  it('يجب إظهار تنبيه نجاح عند الإرسال النهائي وتصفير الحقول', fakeAsync(() => {
+    component.donorName = 'فاعل خير';
+    component.donorPhone = '0612345678';
+    component.donorEmail = 'test@mail.com';
+    component.donationAmount = 300;
+    
+    component.finalSubmit();
+    expect(component.formError).toBeFalse();
+    
+    tick(2500);
+    expect(component.showStep2).toBeFalse();
+    expect(component.donorName).toBe('');
+  }));
 
-  finalSubmit() {
-    if (!this.donorPhone || !this.donorEmail) {
-      this.formError = true;
-      return;
-    }
-    this.formError = false;
-    alert(`نضمن لكم المصداقية التامة. جزاكم الله خيراً! سيتم التواصل معكم عبر الهاتف لإتمام الإجراءات.`);
-    this.showStep2 = false;
-    // إعادة تصفير البيانات
-    this.donorPhone = '';
-    this.donorEmail = '';
-  }
-
-  addToCart() { 
-    if (this.validateDonation()) {
-      alert('تمت إضافة الكفالة إلى سلة التبرعات 🛒');
-    }
-  }
-}
+  it('يجب نسخ الـ RIB بنجاح', () => {
+    spyOn(navigator.clipboard, 'writeText').and.returnValue(Promise.resolve());
+    component.copyRIB();
+    expect(navigator.clipboard.writeText).toHaveBeenCalledWith(component.bankAccount);
+  });
+});

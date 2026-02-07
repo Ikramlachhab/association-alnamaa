@@ -1,23 +1,34 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { MalabisFitrComponent } from './malabis-fitr';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
-import { MalabisFitr } from './malabis-fitr';
-
-describe('MalabisFitr', () => {
-  let component: MalabisFitr;
-  let fixture: ComponentFixture<MalabisFitr>;
+describe('MalabisFitrComponent', () => {
+  let component: MalabisFitrComponent;
+  let fixture: ComponentFixture<MalabisFitrComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MalabisFitr]
-    })
-    .compileComponents();
+      imports: [MalabisFitrComponent, CommonModule, FormsModule]
+    }).compileComponents();
 
-    fixture = TestBed.createComponent(MalabisFitr);
+    fixture = TestBed.createComponent(MalabisFitrComponent);
     component = fixture.componentInstance;
-    await fixture.whenStable();
+    fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('يجب إنشاء المكون بنجاح', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('يجب فتح النافذة عند الضغط على الزر', () => {
+    component.toggleModal();
+    expect(component.showModal).toBeTrue();
+  });
+
+  it('يجب أن ينتقل للخطوة الثانية عند مبلغ صالح', () => {
+    component.donationAmount = 450;
+    component.confirmDonation();
+    expect(component.showStep2).toBeTrue();
   });
 });
