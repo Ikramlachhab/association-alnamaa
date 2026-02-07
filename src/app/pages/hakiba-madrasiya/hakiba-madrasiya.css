@@ -1,65 +1,168 @@
-@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@400;700&display=swap');
 
-.creative-page { font-family: 'Tajawal', sans-serif; background-color: #f4f7f6; color: #2c3e50; margin: 0; }
+/* اللون الرئيسي: التركوازي الغامق #3A6D8C | اللون الثانوي: الذهبي #C5A059 */
+
+/* --- نظام التنبيهات الخارجية (Toast System) --- */
+.toast-container {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100px);
+    z-index: 9999;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    opacity: 0;
+}
+.toast-container.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+.toast-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    font-family: 'Tajawal', sans-serif;
+    min-width: 320px;
+}
+.toast-content.success {
+    background-color: #f6ffed;
+    border: 1px solid #b7eb8f;
+    color: #52c41a;
+}
+.toast-content.error {
+    background-color: #fff2f0;
+    border: 1px solid #ffccc7;
+    color: #ff4d4f;
+}
+
+.creative-page { font-family: 'Amiri', serif; background-color: #f4f7f9; color: #3A6D8C; direction: rtl; }
 .container-wrapper { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
-
-/* Animation Reveal */
-.reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
 .reveal.active { opacity: 1; transform: translateY(0); }
 
-/* Hero */
-.hero-section { display: flex; align-items: center; justify-content: space-between; gap: 40px; margin-bottom: 80px; margin-top: 40px; }
-.badge { background: #f1c40f; color: #2c3e50; padding: 5px 15px; border-radius: 50px; display: inline-block; font-weight: bold; margin-bottom: 15px; }
-.main-title { font-size: 3.5rem; color: #2980b9; margin: 0; line-height: 1.2; }
-.sub-title { font-size: 1.6rem; color: #7f8c8d; margin-top: 10px; font-family: 'Amiri'; }
+/* --- الأنميشن الأساسية --- */
+@keyframes pulse-soft {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
 
-.image-box { position: relative; flex: 0 0 450px; height: 480px; border-radius: 40px; overflow: hidden; box-shadow: 20px 20px 0px #2980b9; }
+@keyframes bounce-icon {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes writing-pen {
+  0% { transform: rotate(0deg) translateY(0); }
+  25% { transform: rotate(-12deg) translateY(-2px); }
+  50% { transform: rotate(0deg) translateY(0); }
+  75% { transform: rotate(-12deg) translateY(-2px); }
+  100% { transform: rotate(0deg) translateY(0); }
+}
+
+/* --- تعديل زر نسخ رقم الحساب (من البيج إلى الأزرق) --- */
+.rib-container-new button {
+    width: 100%; 
+    margin-top: 10px; 
+    cursor: pointer; 
+    background-color: #c5a059; /* البداية باللون البيجي */
+    color: white; 
+    border: none; 
+    border-radius: 8px; 
+    padding: 10px; 
+    font-family: 'Tajawal';
+    transition: all 0.3s ease;
+}
+
+.rib-container-new button:hover {
+    background-color: #b08d4a; 
+}
+
+.rib-container-new button:active, 
+.rib-container-new button:focus {
+    background-color: #3A6D8C !important; 
+    transform: scale(0.98);
+    outline: none;
+}
+
+/* --- بقية التنسيقات --- */
+.hero-section { display: flex; align-items: center; justify-content: space-between; gap: 40px; margin-bottom: 60px; }
+.header-text { flex: 1; order: 2; }
+.image-box { flex: 0 0 435px; height: 460px; order: 1; border-radius: 30px; border: 10px solid #c5a059; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.15); transition: 0.5s ease; }
+.image-box:hover { transform: translateY(-15px); border-color: #3A6D8C; }
 .main-img { width: 100%; height: 100%; object-fit: cover; }
-.overlay-card { position: absolute; bottom: 20px; left: 20px; background: white; padding: 15px 25px; border-radius: 20px; color: #2980b9; font-weight: bold; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+.main-title { font-family: 'Aref Ruqaa'; font-size: 3.5rem; color: #3A6D8C; margin: 0; }
+.sub-title { font-size: 1.6rem; color: #c5a059; margin-top: 10px; }
 
-/* Axe Section */
-.axe-section { background: white; border-radius: 30px; padding: 40px; margin-bottom: 60px; border-bottom: 8px solid #f1c40f; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-.axe-header { text-align: center; font-size: 2.2rem; color: #2980b9; margin-bottom: 40px; }
+.axe-section { background: white; border-radius: 30px; padding: 50px 40px; margin-bottom: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
+.axe-header { font-family: 'Aref Ruqaa'; font-size: 2.5rem; text-align: center; margin-bottom: 40px; }
 .axe-list-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.axe-list-item { background: #fdfdfd; padding: 20px; border-radius: 20px; display: flex; align-items: center; border: 1px solid #eee; }
-.axe-icon-box { background: #ebf5fb; color: #2980b9; min-width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; margin-left: 20px; }
+.axe-list-item { background: #ffffff; border-radius: 15px; display: flex; padding: 15px; border-right: 5px solid #c5a059; box-shadow: 0 4px 15px rgba(0,0,0,0.05); align-items: center; transition: 0.4s ease; }
+.axe-list-item:hover { transform: translateX(-10px); background: #f0f5f7; }
+.axe-icon-box { background: #eef6f8; width: 60px; height: 60px; border-radius: 12px; display: flex; justify-content: center; align-items: center; margin-left: 20px; color: #3A6D8C; font-size: 1.5rem; }
+.axe-list-item:hover i { animation: bounce-icon 0.6s ease; }
 
-/* Cards Grid */
-.cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 100px; }
-.charity-card-smart { background: #fff; border: 2px solid #2980b9; border-radius: 25px; padding: 30px 15px; text-align: center; cursor: pointer; transition: 0.4s; }
-.charity-card-smart.is-active { background: #2980b9; color: white; transform: scale(1.05); }
-.card-icon { font-size: 2.5rem; margin-bottom: 15px; color: #2980b9; }
-.charity-card-smart.is-active .card-icon { color: #f1c40f; }
-.card-expandable { max-height: 0; opacity: 0; overflow: hidden; transition: 0.4s; }
+.moukib-banner-new { background: white; border: 2.5px solid #c5a059; padding: 30px 45px; border-radius: 25px; display: flex; align-items: center; justify-content: flex-start; gap: 30px; margin-bottom: 40px; transition: 0.3s; }
+.moukib-icon { color: #c5a059; font-size: 3rem; display: flex; align-items: center; justify-content: center; }
+.moukib-banner-new:hover .moukib-icon i { animation: writing-pen 1.2s infinite; }
+.moukib-content h3 { font-family: 'Aref Ruqaa'; font-size: 2.2rem; color: #3A6D8C; margin: 0; }
+.moukib-content p { margin: 5px 0 0; color: #555; font-size: 1.1rem; font-family: 'Amiri'; }
 
-/* Modals */
-.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: flex; justify-content: center; align-items: center; z-index: 3000; padding: 20px; }
-.modal-window { background: white; width: 100%; max-width: 450px; border-radius: 30px; overflow: hidden; animation: zoomIn 0.3s ease; }
-@keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-.modal-header-custom { background: #2980b9; padding: 20px; color: white; position: relative; text-align: center; }
-.close-x { position: absolute; left: 20px; top: 20px; cursor: pointer; font-size: 25px; }
+.cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-top: 20px; }
+.charity-card-smart { background: #c5a059; border-radius: 20px; padding: 40px 25px; color: white; cursor: pointer; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; align-items: center; text-align: center; }
+.charity-card-smart.is-active { background: #3A6D8C; transform: scale(1.05); box-shadow: 0 15px 35px rgba(58, 109, 140, 0.3); }
+.charity-card-smart:hover .card-icon { animation: bounce-icon 0.6s ease; }
+.charity-card-smart.is-active .card-icon { animation: pulse-soft 2s infinite ease-in-out; }
+
+.card-icon { font-size: 2.8rem; margin-bottom: 20px; display: block; transition: 0.3s; }
+.card-title { font-family: 'Tajawal'; font-size: 1.5rem; margin: 0; font-weight: bold; }
+.card-expandable { max-height: 0; opacity: 0; overflow: hidden; transition: all 0.5s ease; }
+.charity-card-smart.is-active .card-expandable { max-height: 120px; opacity: 1; margin-top: 20px; }
+.card-desc { font-family: 'Amiri'; font-size: 1rem; line-height: 1.6; }
+
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.65); display: flex; justify-content: center; align-items: center; z-index: 3000; }
+.modal-window { background: white; width: 750px; max-width: 95%; border-radius: 20px; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.2); }
+.modal-header-custom { background: #3A6D8C; padding: 20px; color: white; text-align: right; position: relative; }
+.form-title { font-family: 'Amiri'; font-size: 2.2rem; margin: 0; padding-right: 15px; }
+.close-x { position: absolute; left: 20px; top: 15px; cursor: pointer; font-size: 22px; opacity: 0.8; }
 .modal-body-custom { padding: 30px; }
 
-.packages-grid-custom { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 25px; }
-.pkg-opt { padding: 12px; border: 2px solid #eee; border-radius: 12px; background: none; cursor: pointer; font-family: 'Tajawal'; }
-.pkg-opt.active-pkg { border-color: #2980b9; background: #ebf5fb; font-weight: bold; }
+.packages-grid-custom { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 25px; }
+.pkg-opt { padding: 15px; border: 1px solid #e0e0e0; border-radius: 12px; background: white; font-family: 'Tajawal'; font-size: 1.05rem; cursor: pointer; transition: 0.3s; }
+.pkg-opt.active-pkg { background: #f0f5f7; border: 2.5px solid #3A6D8C; font-weight: bold; }
+.amount-container-custom { border: 1px solid #f0f0f0; padding: 15px 20px; border-radius: 15px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+.amount-label { font-family: 'Tajawal'; color: #3A6D8C; font-size: 1.1rem; }
+.currency-label { font-family: 'Tajawal'; color: #888; font-size: 0.95rem; }
+.amount-display-input { border: none; outline: none; font-size: 1.8rem; font-weight: bold; color: #3A6D8C; width: 100px; text-align: left; background: transparent; }
+.actions-container-custom { display: flex; gap: 12px; }
+.donate-now-gold-btn { flex: 1; background: #c5a059; color: white; border: none; border-radius: 12px; padding: 15px; font-size: 1.3rem; font-family: 'Amiri'; font-weight: bold; cursor: pointer; transition: 0.3s; }
+.donate-now-gold-btn:hover { background: #b08d4a; transform: translateY(-2px); }
+.cart-icon-btn { width: 65px; background: #3A6D8C; color: white; border: none; border-radius: 12px; cursor: pointer; font-size: 1.3rem; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
+.cart-icon-btn:hover { background: #2a536b; }
 
-.amount-container-custom { background: #f8f9fa; padding: 15px; border-radius: 15px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
-.amount-display-input { border: none; background: none; font-size: 1.8rem; font-weight: bold; color: #2980b9; width: 100px; text-align: left; }
+.rib-container-new { background: #f0f5f7; padding: 15px; border-radius: 12px; margin-bottom: 20px; border: 1px dashed #3A6D8C; }
+.rib-container-new label { font-weight: bold; color: #3A6D8C; display: block; margin-bottom: 5px; font-family: 'Tajawal'; }
+.rib-box-new { font-family: monospace; font-size: 1.1rem; color: #333; text-align: center; word-break: break-all; }
 
-.donate-now-gold-btn { background: #f1c40f; color: #2c3e50; border: none; padding: 15px; border-radius: 15px; font-weight: bold; cursor: pointer; width: 100%; }
-.cart-icon-btn { width: 60px; background: #2c3e50; color: white; border: none; border-radius: 15px; cursor: pointer; }
+.step-fields-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 20px; }
+.step-input-group { text-align: right; }
+.step-input-group label { display: block; margin-bottom: 5px; font-family: 'Tajawal'; font-size: 0.9rem; font-weight: bold; }
+.step-field { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 10px; font-family: 'Tajawal'; outline: none; transition: 0.3s; box-sizing: border-box; }
+.step-field:focus { border-color: #3A6D8C; box-shadow: 0 0 5px rgba(58, 109, 140, 0.1); }
 
-/* Floating Button */
-.custom-pill-btn { position: fixed; bottom: 30px; left: 30px; background: white; border: 3px solid #2980b9; border-radius: 50px; padding: 10px 10px 10px 25px; display: flex; align-items: center; cursor: pointer; box-shadow: 0 10px 20px rgba(0,0,0,0.1); z-index: 2000; }
-.icon-circle { background: #2980b9; width: 45px; height: 45px; border-radius: 50%; color: white; display: flex; justify-content: center; align-items: center; margin-left: 15px; }
+.custom-pill-btn { position: fixed; bottom: 30px; left: 30px; display: flex; align-items: center; background: white; border-radius: 50px; padding: 6px 6px 6px 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 1px solid #eee; cursor: pointer; z-index: 2000; transition: 0.3s; }
+.custom-pill-btn:hover { transform: scale(1.05); }
+.icon-circle { background: #3A6D8C; width: 48px; height: 48px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 1.4rem; }
+.btn-text { font-family: 'Tajawal'; font-weight: bold; margin-left: 15px; color: #333; font-size: 1.1rem; }
+.trust-notice { text-align: center; margin-top: 15px; font-family: 'Amiri'; color: #c5a059; font-weight: bold; }
 
-.step-field { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; margin-bottom: 10px; }
-.rib-container-new { background: #ebf5fb; padding: 15px; border-radius: 15px; margin-bottom: 20px; border: 2px dashed #2980b9; text-align: center; }
-
-@media (max-width: 768px) { 
-    .hero-section { flex-direction: column-reverse; text-align: center; }
-    .image-box { flex: 0 0 auto; width: 100%; height: 350px; box-shadow: none; border-radius: 20px; }
-    .axe-list-container, .cards-grid { grid-template-columns: 1fr; }
-    .main-title { font-size: 2.5rem; }
+@media (max-width: 992px) { 
+    .hero-section { flex-direction: column-reverse; text-align: center; } 
+    .image-box { flex: 0 0 auto; width: 100%; height: auto; } 
+    .axe-list-container, .cards-grid { grid-template-columns: 1fr; } 
+    .moukib-banner-new { flex-direction: column; text-align: center; } 
+    .modal-window { width: 95%; }
+    .step-fields-container { grid-template-columns: 1fr; }
 }
