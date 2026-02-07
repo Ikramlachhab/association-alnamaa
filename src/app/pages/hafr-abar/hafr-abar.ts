@@ -12,91 +12,109 @@ import { FormsModule } from '@angular/forms';
 export class HafrAbarComponent implements AfterViewInit {
   showModal = false;
   showStep2 = false;
-  donationAmount = 5000;
-  selectedOption = 'surface';
+  donationAmount = 500;
+  selectedOption = 'share';
   activeCard = 0;
-  showToast = false;
 
+  // Donor Data
+  donorName = ''; 
   donorPhone = '';
-  donorEmail = ''; // نستخدمه للبريد الإلكتروني
-  formError = false;
+  donorEmail = '';
+  bankAccount = '190780211160436921000183'; 
+  
+  // Toast System Logic
+  toastActive = false;
+  toastType: 'success' | 'error' = 'success';
+  toastMessage = '';
+  copyButtonText = 'نسخ الحساب الآن';
 
   constructor(private el: ElementRef, private renderer: Renderer2) {}
+
+  public isValidEmail(email: string): boolean {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  public isValidPhone(phone: string): boolean {
+    if(!phone) return false;
+    const cleanPhone = phone.replace(/\s/g, ''); 
+    const phoneRegex = /^(\+?\d{1,4})?[\s.-]?\d{7,15}$/;
+    return phoneRegex.test(cleanPhone);
+  }
 
   ngAfterViewInit() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          this.renderer.addClass(entry.target, 'active');
-        }
+        if (entry.isIntersecting) this.renderer.addClass(entry.target, 'active');
       });
     }, { threshold: 0.15 });
 
-    const revealElements = this.el.nativeElement.querySelectorAll('.reveal');
-    revealElements.forEach((el: HTMLElement) => observer.observe(el));
+    this.el.nativeElement.querySelectorAll('.reveal').forEach((el: HTMLElement) => observer.observe(el));
+  }
+
+  private triggerToast(msg: string, type: 'success' | 'error') {
+    this.toastMessage = msg;
+    this.toastType = type;
+    this.toastActive = true;
+    setTimeout(() => this.toastActive = false, 4000);
   }
 
   toggleModal() { 
     this.showModal = !this.showModal; 
-    this.showStep2 = false;
-    this.showToast = false;
+    this.showStep2 = false; 
   }
 
   setAmount(opt: string, amt: number) { 
     this.selectedOption = opt; 
-    this.donationAmount = amt; 
+    this.donationAmount = amt;
   }
 
   confirmDonation() { 
     if (this.donationAmount < 50) {
-      this.showToast = true;
-      setTimeout(() => this.showToast = false, 5000);
-      return;
+      this.triggerToast('المبلغ الأدنى للمساهمة هو 50 درهم', 'error');
+    } else {
+      this.showModal = false;
+      this.showStep2 = true;
     }
-    this.showModal = false;
-    this.showStep2 = true;
+  }
+
+  copyRIB() {
+    navigator.clipboard.writeText(this.bankAccount);
+    this.copyButtonText = 'تم النسخ بنجاح ✅';
+    this.triggerToast('تم نسخ رقم الحساب البنكي بنجاح', 'success');
+    setTimeout(() => { this.copyButtonText = 'نسخ الحساب الآن'; }, 2000);
   }
 
   finalSubmit() {
-    // التحقق من صيغة الهاتف المغربي
-    const phoneRegex = /^(05|06|07)[0-9]{8}$/;
+    if (!this.donorName || !this.donorPhone || !this.donorEmail) {
+      this.triggerToast('يرجى ملء جميع الخانات لنرسل لكم تقارير الحفر', 'error');
+      return;
+    }
+
+    if (!this.isValidEmail(this.donorEmail)) {
+      this.triggerToast('البريد الإلكتروني غير صحيح', 'error');
+      return;
+    }
+
+    if (!this.isValidPhone(this.donorPhone)) {
+      this.triggerToast('رقم الهاتف غير صحيح، يرجى التأكد من الرمز الدولي', 'error');
+      return;
+    }
+
+    this.triggerToast(`جزاك الله خيرا يا${this.donorName}!للتاكيد قم بارسال تبرعك في الريب`, 'success');
     
-    // التحقق من صيغة البريد الإلكتروني
-    const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
-
-    if (!this.donorPhone || !this.donorEmail) {
-      this.formError = true;
-      alert("يرجى ملء جميع الحقول");
-      return;
-    }
-
-    if (!phoneRegex.test(this.donorPhone)) {
-      this.formError = true;
-      alert("رقم الهاتف غير صحيح! يجب أن يبدأ بـ 05 أو 06 أو 07 ويتكون من 10 أرقام");
-      return;
-    }
-
-    if (!emailRegex.test(this.donorEmail.toLowerCase())) {
-      this.formError = true;
-      alert("صيغة البريد الإلكتروني غير صحيحة!");
-      return;
-    }
-
-    // إذا كانت البيانات صحيحة
-    this.formError = false;
-    alert(`جزاكم الله خيراً! تم تسجيل طلب حفر البئر باسم: ${this.donorEmail}. سنتواصل معكم قريباً.`);
-    
-    // إعادة تعيين الحقول وإغلاق النافذة
-    this.showStep2 = false;
-    this.donorPhone = '';
-    this.donorEmail = '';
+    setTimeout(() => {
+      this.showStep2 = false;
+      this.donorName = ''; 
+      this.donorPhone = ''; 
+      this.donorEmail = '';
+    }, 2000);
   }
 
   addToCart() { 
     if (this.donationAmount >= 50) {
-      alert('تمت الإضافة للسلة 🛒');
+      this.triggerToast('تمت إضافة المساهمة للسلة 🛒', 'success');
     } else {
-      this.showToast = true;
+      this.triggerToast('المبلغ الأدنى للمساهمة هو 50 درهم', 'error');
     }
   }
 }
