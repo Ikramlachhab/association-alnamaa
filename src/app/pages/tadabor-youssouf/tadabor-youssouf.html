@@ -17,11 +17,12 @@
             نسعى في هذا البرنامج إلى تقديم رؤية متكاملة لسورة يوسف، تجمع بين فهم التفسير وبين التطبيق السلوكي.
           </p>
         <div class="registration-container">
-           <a href="https://wa.me/212661467772" target="_blank" class="btn-register-unique">
-             <span>رابط التسجيل في الدورة</span>
-             <div class="shimmer"></div>
-           </a>
-        </div>
+   <a [routerLink]="['/registration']" 
+   [queryParams]="{ course: 'youssouf' }" 
+   class="btn-register-unique">
+   التسجيل في الدورة
+</a>
+</div>
       </div>
     </div>
 
@@ -67,22 +68,6 @@
       </div>
     </div>
 
-    <div class="social-bar glass-effect">
-      <span class="social-text">تابعونا على منصاتنا الرسمية:</span>
-      <div class="social-icons-container">
-        <a href="https://www.facebook.com/AssociationALNAMAA" target="_blank" class="icon-circle fb" title="Facebook">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="https://www.instagram.com/association_alnamaa23" target="_blank" class="icon-circle ig" title="Instagram">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://wa.me/212661467772" target="_blank" class="icon-circle wa" title="WhatsApp">
-          <i class="fab fa-whatsapp"></i>
-        </a>
-        <a href="#" class="icon-circle yt" title="YouTube">
-          <i class="fab fa-youtube"></i>
-        </a>
-      </div>
-    </div>
+   
   </div>
 </div>

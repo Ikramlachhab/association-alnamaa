@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router'; // ضروري تزيد هادي
 
 @Component({
   selector: 'app-koni-sahabia',
-  imports: [],
+  standalone: true, // تأكدي أنها true
+  imports: [RouterLink], // زيديها هنا باش الـ HTML يفهم شنو هي routerLink
   templateUrl: './koni-sahabia.html',
-  styleUrl: './koni-sahabia.css',
+  styleUrls: ['./koni-sahabia.css']
 })
-export class KoniSahabiaComponent {
-  
-}
+export class KoniSahabiaComponent { }

@@ -1,0 +1,156 @@
+/* --- استيراد الخطوط (ضروري تبقى هنا لضمان عملها في كل الصفحات) --- */
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Reem+Kufi:wght@600;700&family=Cairo:wght@400;700&display=swap');
+
+/* --- تنسيق الحاوية الرئيسية للـ Navbar --- */
+.luxury-nav {
+  position: fixed; /* تغيير لـ fixed لضمان بقائها في كل الصفحات */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2000;
+  width: 100%;
+  background-color: white; 
+  box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+  padding: 8px 0;
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+}
+
+/* --- اللوغو والبراند (اليمين) --- */
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex: 1;
+  justify-content: flex-end; /* لجهة اليمين */
+}
+
+.huge-logo {
+  height: 65px;
+  width: auto;
+}
+
+.brand-title-main {
+font-family: 'Aref Ruqaa', serif;
+  font-size: 1.8rem;
+  color: #004d26;
+  margin: 0;
+  text-align: right;
+}
+
+.brand-subtitle {
+  font-family: 'Reem Kufi', sans-serif;
+  color: #b38138;
+  font-size: 0.8rem;
+  margin: 0;
+  text-align: right;
+}
+
+/* --- المنيو والروابط (الوسط) --- */
+.nav-menu {
+  display: flex;
+  flex-direction: row-reverse; /* ترتيب عربي من اليمين لليسار */
+  gap: 35px;
+  justify-content: center;
+  flex: 2;
+}
+
+.menu-item {
+  font-family: 'Reem Kufi', sans-serif;
+  color: #004d26;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.menu-item:hover {
+  color: #b38138;
+}
+
+.arrow-down {
+  border: solid #004d26;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  margin-left: 8px;
+  margin-bottom: 3px;
+}
+
+/* --- أزرار التسجيل (اليسار) --- */
+.nav-actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex: 1;
+  justify-content: flex-start;
+}
+
+.action-btn {
+  font-family: 'Reem Kufi', sans-serif;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 8px 20px;
+  border-radius: 8px;
+  transition: 0.3s all ease;
+  display: inline-block;
+  text-align: center;
+  min-width: 110px;
+}
+
+.btn-register {
+  background-color: #b38138 !important;
+  color: #ffffff !important;
+}
+
+.btn-login {
+  background-color: #004d26 !important;
+  color: #ffffff !important;
+}
+
+/* --- القائمة المنسدلة Dropdown --- */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  min-width: 200px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  border-radius: 5px;
+  border-top: 3px solid #b38138;
+  z-index: 3000;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  color: #004d26 !important;
+  padding: 12px 20px;
+  text-decoration: none;
+  display: block;
+  text-align: right;
+  font-family: 'Cairo', sans-serif;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.dropdown-content a:hover {
+  background-color: #f9f4ee;
+  color: #b38138 !important;
+}

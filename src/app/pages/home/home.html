@@ -1,1 +1,167 @@
-<p>home works!</p>
+<div id="home-section"></div>
+ 
+
+<section class="hero-header">
+  <div class="hero-overlay"></div>
+  <div class="hero-container">
+    <div class="hero-video-box">
+  <div class="video-placeholder">
+    <video controls preload="metadata" class="custom-video" poster="assets/video-thumbnail.jpg">
+      <source src="/video.mp4" type="video/mp4">
+      عذراً، متصفحك لا يدعم تشغيل الفيديو.
+    </video>
+  </div>
+</div>
+
+    <div class="hero-content">
+      <h1 class="hero-title">جمعية النماء للتنمية والتضامن</h1>
+<div class="hero-description">
+  <p class="cultural-premium-text">
+    تأسست <strong>جمعية النماء</strong> عام 2013 كقوة تطوعية تسعى لخدمة المجتمع. نحن نجمع بين العمل الخيري لدعم الفئات المحتاجة، وبين الأنشطة الثقافية التي تنمي الفكر وتصون الهوية، هدفنا دائماً هو بناء مجتمع متضامن وواعٍ.
+  </p>
+</div>
+      <div class="hero-btns">
+        <a href="#detailed-about" class="hero-btn-primary" (click)="scrollToSection($event, 'detailed-about')">اكتشف المزيد</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="cultural-projects-section" class="projects-slider-container">
+  <h2 class="section-subtitle">مشاريعنا الثقافية</h2>
+  
+  <div class="slider-wrapper">
+    <button class="nav-btn prev" (click)="moveSlider(-1)">&#10094;</button>
+    
+    <div class="projects-track" #sliderTrack>
+      
+      <div class="project-card" [routerLink]="['/zahrawan']">
+        <img src="azahrawan.jpeg" alt="دورة الزهروان">
+        <div class="project-info"><h3>دورة الزهروان</h3></div>
+      </div>
+
+      <div class="project-card" [routerLink]="['/atrija']">
+        <img src="nadi atrija.jpeg" alt="نادي أترجة">
+        <div class="project-info"><h3>نادي أترجة</h3></div>
+      </div>
+
+      <div class="project-card" [routerLink]="['/makassid']">
+        <img src="makassid assowar.jpeg" alt="مقاصد السور">
+        <div class="project-info"><h3>دورة مقاصد السور</h3></div>
+      </div>
+
+      <div class="project-card" [routerLink]="['/youssouf']">
+        <img src="tadabour sorat youssouf.jpeg" alt="تدبر سورة يوسف">
+        <div class="project-info"><h3>دورة تدبر سورة يوسف</h3></div>
+      </div>
+
+      <div class="project-card" [routerLink]="['/koni-sahabia']">
+        <img src="koni sahabia.jpeg" alt="كوني صحابية">
+        <div class="project-info"><h3>دورة كوني صحابية</h3></div>
+      </div>
+
+      <div class="project-card" [routerLink]="['/matan-aljazria']">
+        <img src="matan aljazria.jpeg" alt="متن الجزرية">
+        <div class="project-info"><h3>دورة متن مقدمة الجزرية</h3></div>
+      </div>
+
+      <div class="project-card" [routerLink]="['/sohbat-namaa-homme']">
+        <img src="sohbat alnamaa homme.jpeg" alt="صحبة النماء">
+        <div class="project-info"><h3>دورة صحبة النماء للذكور</h3></div>
+      </div>
+
+      <div class="project-card" [routerLink]="['/quran-course']">
+        <img src="bikitabi llh nartaki.jpeg" alt="بكتاب ربي نرتقي">
+        <div class="project-info"><h3>دورة بكتاب ربي نرتقي</h3></div>
+      </div>
+
+    </div>
+
+    <button class="nav-btn next" (click)="moveSlider(1)">&#10095;</button>
+  </div>
+</div>
+<div id="social-projects-section" class="projects-slider-container">
+  <h2 class="section-subtitle">مشاريعنا الاجتماعية</h2>
+  
+  <div class="slider-wrapper">
+    <button class="nav-btn prev" (click)="moveSocialSlider(-1)">&#10094;</button>
+    
+    <div class="projects-track" #socialSliderTrack>
+      
+      <div class="project-card" [routerLink]="['/orphan-care']">
+        <img src="yatim.jpeg" alt="كفالة اليتيم">
+        <div class="project-info"><h3>كفالة اليتيم</h3></div>
+      </div>
+
+      <div class="project-card" [routerLink]="['/ramadan-basket']">
+        <img src="ramadan.jpeg" alt="قفة رمضان">
+        <div class="project-info"><h3>قفة رمضان الخير</h3></div>
+      </div>
+
+      <div class="project-card" [routerLink]="['/iftar-fasting']">
+        <img src="iftar.jpeg" alt="إفطار الصائم">
+        <div class="project-info"><h3>مشروع إفطار الصائم</h3></div>
+      </div>
+
+      <div class="project-card" [routerLink]="['/water-wells']">
+        <img src="biar.jpeg" alt="حفر الآبار">
+        <div class="project-info"><h3>حفر آبار مياه الشرب</h3></div>
+      </div>
+
+      <div class="project-card" [routerLink]="['/eid-clothes']">
+        <img src="kisswat.jpeg" alt="كسوة العيد">
+        <div class="project-info"><h3>فرحة كسوة العيد</h3></div>
+      </div>
+
+      <div class="project-card" [routerLink]="['/school-bag']">
+        <img src="hakiba.jpeg" alt="الحقيبة المدرسية">
+        <div class="project-info"><h3>دعم المحفظة المدرسية</h3></div>
+      </div>
+
+      <div class="project-card" [routerLink]="['/mosque-building']">
+        <img src="massajid .jpeg" alt="بناء المساجد">
+        <div class="project-info"><h3>عمارة المساجد</h3></div>
+      </div>
+
+      <div class="project-card" [routerLink]="['/eid-adha']">
+        <img src="aid.jpeg" alt="أضحية العيد">
+        <div class="project-info"><h3>أضحية العيد</h3></div>
+      </div>
+
+      <div class="project-card" [routerLink]="['/cold-relief']">
+        <img src="difaa.jpeg" alt="دعم المناطق الباردة">
+        <div class="project-info"><h3>مواجهة موجة البرد</h3></div>
+      </div>
+
+    </div>
+    
+    <button class="nav-btn next" (click)="moveSocialSlider(1)">&#10095;</button>
+  </div>
+</div>
+
+<section id="detailed-about" class="detailed-info-section">
+  <div class="container">
+    <div class="info-grid">
+      <div class="info-card">
+  <h3 class="card-title">تعريف شامل</h3>
+  <div class="gold-line"></div>
+  <p class="card-description">
+    تعتبر <strong>جمعية النماء</strong> فاعلاً مدنياً يطمح إلى إحداث تغيير حقيقي في المجتمع. نحن لا نكتفي بتقديم الدعم المادي، بل نركز على 
+    <span class="text-highlight">التنمية البشرية المستدامة</span> عبر ثلاثة ركائز أساسية: 
+    التمكين الاجتماعي للأسر، دعم التمدرس والتعليم، والنهوض بالمشهد الثقافي والتربوي للشباب، لضمان مستقبل تسوده كرامة الإنسان.
+  </p>
+</div>
+      <div class="info-card highlight-card">
+        <h3 class="card-title">قيمنا</h3>
+        <div class="gold-line"></div>
+        <ul class="values-list">
+          <li><strong>التضامن:</strong> روح العمل الجماعي ومساندة الآخر.</li>
+          <li><strong>الشفافية:</strong> الوضوح والنزاهة في كل مبادراتنا.</li>
+          <li><strong>العطاء:</strong> التطوع بحب من أجل تنمية الوطن.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+

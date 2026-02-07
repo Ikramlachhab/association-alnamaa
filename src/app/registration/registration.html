@@ -1,0 +1,90 @@
+<div class="registration-wrapper" dir="rtl">
+  <div class="form-container anim-fade-in">
+    <div class="form-header">
+      <img src="./namaa.svg" alt="Logo" class="form-logo">
+      <h2 class="form-title">استمارة التسجيل في الدورة</h2>
+      <div class="gold-divider"></div>
+    </div>
+
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="actual-form">
+      <div class="form-grid">
+        
+        <div class="input-group">
+          <label>الاسم الشخصي</label>
+          <input type="text" formControlName="firstName" placeholder="أدخل اسمك الشخصي">
+        </div>
+
+        <div class="input-group">
+          <label>النسب (الاسم العائلي)</label>
+          <input type="text" formControlName="lastName" placeholder="أدخل اسمك العائلي">
+        </div>
+
+        <div class="input-group">
+          <label>تاريخ الازدياد</label>
+          <input type="date" formControlName="birthDate">
+        </div>
+
+        <div class="input-group">
+          <label>الجنسية</label>
+          <input type="text" formControlName="nationality" placeholder="مثلاً: مغربية">
+        </div>
+
+        <div class="input-group">
+          <label>مكان الإقامة</label>
+          <input type="text" formControlName="address" placeholder="المدينة والعنوان">
+        </div>
+
+        <div class="input-group">
+          <label>رقم الهاتف</label>
+          <input type="tel" formControlName="phone" placeholder="06XXXXXXXX">
+        </div>
+
+        <div class="input-group">
+          <label>البريد الإلكتروني</label>
+          <input type="email" formControlName="email" placeholder="example@mail.com">
+        </div>
+        <div class="input-group">
+  <label>كلمة المرور</label>
+  <input type="password" formControlName="password" class="form-control" 
+         [class.is-invalid]="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched">
+  
+  <div *ngIf="registrationForm.get('password')?.errors?.['minlength'] && registrationForm.get('password')?.touched" 
+       class="error-message">
+    يجب أن تتكون من 8 خانات على الأقل.
+  </div>
+</div>
+
+<div class="input-group">
+  <label>تأكيد كلمة المرور</label>
+  <input type="password" formControlName="confirmPassword" placeholder="أعد كتابة كلمة المرور">
+</div>
+
+        <div class="input-group">
+          <label>الجنس</label>
+          <select formControlName="gender">
+  <option value="">اختر الجنس</option>
+  <option value="ذكر">ذكر</option> <option value="أنثى">أنثى</option> </select>
+        </div>
+
+        <div class="input-group full-width">
+  <label>اسم الدورة المتاحة لك بناءً على سنك وجنسك</label>
+  <select class="course-select" formControlName="courseName">
+    <option value="">اختر الدورة...</option>
+    <option *ngFor="let c of filteredCourses" [value]="c.id">
+      {{ c.name }}
+    </option>
+  </select>
+</div>
+      </div>
+
+      <div class="form-footer">
+<button type="submit" 
+        [disabled]="registrationForm.invalid" 
+        [class.btn-disabled]="registrationForm.invalid" 
+        class="submit-btn">
+    تأكيد التسجيل 
+</button>
+      </div>
+    </form>
+  </div>
+</div>

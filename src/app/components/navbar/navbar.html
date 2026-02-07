@@ -1,0 +1,32 @@
+<nav class="luxury-nav">
+  <div class="nav-container">
+    
+    <div class="nav-actions">
+      <a [routerLink]="['/login']" class="action-btn btn-login">تسجيل الدخول</a>
+      <a [routerLink]="['/registration']" class="action-btn btn-register">إنشاء الحساب</a>
+    </div>
+
+    <div class="nav-menu">
+      <a href="javascript:void(0)" class="menu-item" (click)="scrollToSection($event, 'home-section')">الرئيسية</a>
+      
+      <a href="javascript:void(0)" class="menu-item" (click)="scrollToAbout($event)">عن الجمعية</a>
+
+      <div class="dropdown">
+        <a class="menu-item">المشاريع <i class="arrow-down"></i></a>
+        <div class="dropdown-content">
+       <a class="dropdown-item" href="#" (click)="scrollToCultural($event)">المشاريع الثقافية</a>          
+<a class="dropdown-item" href="#" (click)="scrollToSection($event, 'social-projects-section')">المشاريع الاجتماعية</a>        </div>
+      </div>
+
+<a href="javascript:void(0)" class="menu-item" (click)="scrollToSection($event, 'contact-section')">تواصل معنا</a>   
+ </div>
+
+    <div class="brand-wrapper">
+      <div class="brand-text">
+        <h1 class="brand-title-main">جمعية النماء</h1>
+      </div>
+      <img src="namaa2.svg" alt="اللوغو" class="huge-logo">
+    </div>
+
+  </div>
+</nav>

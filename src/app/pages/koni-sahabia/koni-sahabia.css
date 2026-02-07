@@ -141,21 +141,59 @@
   color: #ad1457;
 }
 
+/* حاوية الزر لضمان التموضع الصحيح */
+.registration-container {
+  margin-top: 30px;
+  position: relative;
+  z-index: 10; /* تأكيد أنه فوق كل العناصر */
+}
+
 .btn-register-unique {
   display: inline-block;
-  background: #ad1457;
-  color: white;
-  padding: 18px 40px;
+  background: #ad1457; /* الوردي الداكن اللي استعملتي */
+  color: white !important;
+  padding: 18px 45px;
   border-radius: 50px;
   text-decoration: none;
   font-size: 1.4rem;
   font-weight: bold;
-  box-shadow: 0 10px 20px rgba(173, 20, 87, 0.3);
+  box-shadow: 0 10px 25px rgba(173, 20, 87, 0.3);
+  
+  /* أهم الإضافات لإصلاح الكليك */
+  cursor: pointer;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: none;
+  outline: none;
 }
 
+/* تأثير عند تمرير الفأرة (Hover) */
 .btn-register-unique:hover {
-  background: #4a1a1c;
-  transform: translateY(-3px);
+  background: #4a1a1c; /* البني المحمر الداكن */
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(74, 26, 28, 0.4);
+  color: #fff;
+}
+
+/* تأثير Shimmer (اللمعة) إيلا بغيتي تفعليها */
+.shimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transition: all 0.5s;
+  animation: shimmer-effect 3s infinite;
+}
+
+@keyframes shimmer-effect {
+  100% { left: 150%; }
 }
 
 .icon-pink { color: #ec407a; margin-left: 10px; }

@@ -1,0 +1,227 @@
+/* استيراد الخطوط */
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;700&display=swap');
+
+.creative-page {
+  font-family: 'Amiri', serif;
+  background-color: #f4f7f9; /* خلفية باردة خفيفة تناسب الأزرق */
+  min-height: 100vh;
+  position: relative;
+  color: #1a3c5e; /* أزرق بترولي داكن */
+}
+
+/* خلفية بزخارف إسلامية */
+.pattern-bg {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: url('https://www.transparenttextures.com/patterns/arabesque.png'); 
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.container-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-section {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+/* --- تعديل الصورة مع التحريك --- */
+.main-img {
+  width: 350px;
+  border-radius: 20px;
+  border: 5px solid #a67c52; /* بني نحاسي (لون البوصلة) */
+  box-shadow: 0 15px 30px rgba(166, 124, 82, 0.2);
+  animation: floatImage 4s ease-in-out infinite; 
+  transition: transform 0.5s ease;
+}
+
+.main-img:hover {
+  transform: scale(1.05);
+  border-color: #1a3c5e; /* كيولي أزرق عند التمرير */
+}
+
+@keyframes floatImage {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.main-title {
+  font-size: 3.5rem;
+  color: #1a3c5e; /* أزرق داكن */
+  margin: 0;
+  font-family: 'Reem Kufi', sans-serif;
+}
+
+.sub-title {
+  color: #a67c52; /* بني نحاسي بدل العنابي */
+  font-size: 2rem;
+  margin-top: 0;
+}
+
+.content-card {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  border-right: 8px solid #a67c52; /* بني نحاسي */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  line-height: 1.8;
+  font-size: 1.3rem;
+}
+
+.section-title {
+  font-family: 'Reem Kufi', sans-serif;
+  font-size: 2.8rem;
+  color: #1a3c5e;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 35px;
+  padding-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+}
+
+/* الخط اللي تحت العنوان */
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 60%;
+  height: 4px;
+  background-color: #a67c52; /* بني نحاسي */
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+.section-title:hover {
+  color: #a67c52; /* كيتبدل اللون للنحاسي */
+  transform: scale(1.05) skewX(-5deg);
+  letter-spacing: 2px;
+}
+
+.section-title:hover::after {
+  width: 100%;
+  background-color: #1a3c5e;
+}
+
+.details-section, .detailed-curriculum {
+  margin-top: 60px;
+  padding: 20px;
+}
+
+.footer-info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.info-card {
+  background: rgba(26, 60, 94, 0.05); /* خلفية زرقاء خفيفة */
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.info-card:hover {
+  background: #1a3c5e; /* أزرق داكن عند التمرير */
+  color: white;
+  transform: translateY(-10px);
+}
+
+.registration-container {
+  margin-top: 30px;
+  position: relative;
+  z-index: 10;
+}
+
+.btn-register-unique {
+  display: inline-block;
+  background: #1a3c5e; /* أزرق داكن */
+  color: white !important;
+  padding: 15px 45px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 1.4rem;
+  font-weight: bold;
+  box-shadow: 0 10px 20px rgba(26, 60, 94, 0.2);
+  cursor: pointer;
+  position: relative;
+  z-index: 11;
+  pointer-events: auto;
+  transition: all 0.3s ease;
+}
+
+.btn-register-unique:hover {
+  background: #a67c52; /* بني نحاسي عند التمرير */
+  transform: scale(1.05) translateY(-3px);
+  box-shadow: 0 15px 25px rgba(166, 124, 82, 0.3);
+}
+
+.curriculum-intro {
+  font-size: 1.4rem;
+  line-height: 2;
+  color: #2c445a;
+  text-align: justify;
+  margin-bottom: 25px;
+}
+
+.detailed-list li {
+  background: rgba(166, 124, 82, 0.08); /* لمسة نحاسية خفيفة */
+  margin-bottom: 15px;
+  padding: 15px;
+  border-right: 5px solid #a67c52;
+  border-radius: 0 10px 10px 0;
+  font-size: 1.2rem;
+}
+
+.detailed-list li strong {
+  color: #1a3c5e;
+}
+
+.icon-gold {
+  color: #a67c52; /* لون الأيقونات ذهبي نحاسي */
+  margin-left: 10px;
+}
+
+/* باقي السوشيال ميديا كيبقاو نفسهم حيت ألوانهم عالمية */
+.social-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 50px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+}
+.internal-inline-link {
+  color: #a67c52;
+  text-decoration: none;
+  font-weight: bold;
+  border-bottom: 1px solid #a67c52;
+  transition: 0.3s;
+}
+
+.internal-inline-link:hover {
+  color: #1a3c5e;
+  background: rgba(166, 124, 82, 0.1);
+}
+
+.highlight-card small {
+  display: block;
+  margin-top: 5px;
+  color: #a67c52;
+  font-weight: bold;
+}

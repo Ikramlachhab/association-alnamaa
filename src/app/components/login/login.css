@@ -1,0 +1,152 @@
+/* استيراد خط أميري */
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@700&display=swap');
+
+.login-wrapper {
+  background: #fdfbf7;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.login-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 450px;
+  border-radius: 25px;
+  border: 1.5px solid #a68945; /* الإطار الذهبي */
+  box-shadow: 0 15px 35px rgba(166, 137, 69, 0.1);
+  overflow: hidden;
+  padding: 30px;
+}
+
+/* تنسيق الهيدر: اللوغو في الجنب */
+.creative-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+}
+
+.side-logo {
+  width: 150px;
+  height: auto;
+}
+
+/* العنوان بخط أميري وبالأخضر مع سطر */
+.amiri-title {
+  font-family: 'Amiri', serif;
+  color: #006837;
+  font-size: 1.8rem;
+  margin: 0;
+  text-decoration: underline; /* السطر تحت العنوان */
+  text-decoration-color: #a68945; /* لون السطر ذهبي باش يتواتى مع الإطار */
+  text-underline-offset: 8px;
+}
+
+.welcome-msg {
+  color: #666;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+/* نسيت كلمة المرور في الوسط وبالأخضر */
+.forgot-pass-center {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.green-link {
+  color: #006837 !important;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.green-link:hover {
+  color: #a68945 !important;
+}
+
+/* تنسيق المدخلات */
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  text-align: right;
+}
+
+.input-group input:focus {
+  border-color: #006837;
+  outline: none;
+}
+
+/* زر الدخول */
+.login-btn {
+  width: 100%;
+  padding: 14px;
+  background: #006837;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.login-btn:disabled {
+  background: #ccc;
+}
+
+.footer-links {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.register-link {
+  color: #a68945 !important;
+  font-weight: bold;
+  text-decoration: none;
+  margin-right: 5px;
+}
+/* تنسيق حقل التأكيد والـ Modal */
+.forgot-modal {
+  background: white;
+  padding: 40px;
+  border-radius: 25px;
+  border: 1.5px solid #a68945;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.back-link {
+  background: none;
+  border: none;
+  color: #666;
+  margin-top: 15px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.back-link:hover {
+  color: #006837;
+}
+
+/* تأكدي من إضافة هاد الستايل للـ Modal */
+.forgot-modal p {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 20px;
+}

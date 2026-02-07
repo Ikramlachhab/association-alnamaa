@@ -14,16 +14,17 @@
         <h2 class="sub-title">برنامج "بتدبّر: سورة الكافرون"</h2>
         <p class="curriculum-intro">رحلة إيمانية للناشئة تهدف إلى ترسيخ قيم التوحيد والبراءة من الكفر من خلال مدارسة منهجية لسورة الكافرون.</p>
         <div class="registration-container">
-           <a href="https://wa.me/212661467772" target="_blank" class="btn-register-unique">
-             <span>رابط التسجيل في الدورة</span>
-             <div class="shimmer"></div>
-           </a>
-        </div>
+   <a [routerLink]="['/registration']" 
+   [queryParams]="{ course: 'atrija' }" 
+   class="btn-register-unique">
+   التسجيل في الدورة
+</a>
+</div>
       </div>
     </header>
 
     <section class="details-section">
-      <h3 class="section-title">بطاقة التعريف بالبرنامج</h3>
+      <h3 class="section-title">بطاقة التعريف بالدورة</h3>
       <div class="content-card">
         <p><i class="fas fa-scroll icon-gold"></i> <strong>اسم البرنامج:</strong> نادي أترجة (بتدبّر: سورة الكافرون)</p>
         <p><i class="fas fa-users icon-gold"></i> <strong>الفئة المستهدفة:</strong> البنات (من 7 إلى 12 سنة)  </p>

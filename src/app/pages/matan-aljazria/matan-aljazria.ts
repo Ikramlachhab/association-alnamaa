@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+// السطر اللي لتحت هو اللي ناقصك وكيخلي الخطأ يطلع
+import { RouterLink } from '@angular/router'; 
 
 @Component({
   selector: 'app-matan-aljazria',
-  imports: [],
+  standalone: true,
+  imports: [RouterLink], // دابا هادي غادي تولي خدامة ومزيانة
   templateUrl: './matan-aljazria.html',
-  styleUrl: './matan-aljazria.css',
+  styleUrls: ['./matan-aljazria.css']
 })
-export class MatanAljazriaComponent {
-
-}
+export class MatanAljazriaComponent { }

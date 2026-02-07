@@ -1,0 +1,74 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<div class="creative-page" dir="rtl">
+  <div class="pattern-bg"></div>
+
+  <div class="container-wrapper">
+    <header class="hero-section">
+      <div class="image-box">
+        <img src="sohbat alnamaa homme.jpeg" alt="صحبة النماء للذكور" class="main-img">
+      </div>
+      
+      <div class="header-text">
+        <h1 class="main-title">صحبة النماء للذكور</h1>
+        <h2 class="sub-title">دورة "البوصلة وبناء للمركزيات"</h2>
+        <p class="curriculum-intro">برنامج تربوي وقيمي متكامل يهدف إلى مرافقة الناشئة في رحلة الوعي بالذات وبناء المركزيات الإيمانية من خلال منهجية علمية وتفاعلية.</p>
+        <div class="registration-container">
+          <a [routerLink]="['/registration']" 
+             [queryParams]="{ course: 'sohbat-namaa-homme' }" 
+             class="btn-register-unique">
+              التسجيل في الدورة
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <section class="details-section">
+      <h3 class="section-title">بطاقة التعريف بالدورة</h3>
+      <div class="content-card">
+        <p><i class="fas fa-scroll icon-gold"></i> <strong>اسم البرنامج:</strong> صحبة النماء للذكور (دورة البوصلة)</p>
+        <p><i class="fas fa-users icon-gold"></i> <strong>الفئة المستهدفة:</strong> الذكور (من 10 إلى 14 سنة)</p>
+        <p><i class="fas fa-plus-circle icon-gold"></i> <strong>امتياز خاص:</strong> التسجيل يتضمن الاستفادة من دورة 
+          <a [routerLink]="['/akon-fata']" class="internal-inline-link">"لأكون فتى القرآن"</a>
+        </p>
+        <p><i class="fas fa-user-tie icon-gold"></i> <strong>الإشراف العام:</strong> تحت إشراف الأستاذ طارق الفشتاني</p>
+      </div>
+    </section>
+
+    <section class="detailed-curriculum">
+      <h3 class="section-title">المحاور واللقاءات الأسبوعية</h3>
+      <div class="info-content-box">
+        <ul class="detailed-list">
+          <li><strong>الشق العقدي والإيماني:</strong> ضبط المفاهيم الإيمانية الكبرى وتصحيح العقيدة.</li>
+          <li><strong>الشق التزكوي:</strong> لقاءات خاصة بالتربية الروحية والتزكية النفسية.</li>
+          <li><strong>دورة فتى القرآن:</strong> حصص قرآنية تربوية مضمنة (أيام الجمعة) 
+            <a [routerLink]="['/akon-fata']" style="color: #a67c52; font-size: 0.9rem;"> [تفاصيل الدورة]</a>
+          </li>
+          <li><strong>الشق المهاري والرياضي:</strong> حصص تشمل مهارات رياضية وجوانب عملية.</li>
+          <li><strong>نظام الدراسة:</strong> ثلاث لقاءات أسبوعياً على الأكثر لضمان التوازن.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="footer-info-grid">
+      <div class="info-card">
+        <div class="icon-wrap">👳‍♂️</div>
+        <h4>الفريق المؤطر</h4>
+        <p>فريق متخصص بإشراف أ. طارق الفشتاني</p>
+      </div>
+
+      <div class="info-card">
+        <div class="icon-wrap">📅</div>
+        <h4>الموعد</h4>
+        <p>الأربعاء - الجمعة - السبت</p>
+      </div>
+
+      <div class="info-card highlight-card">
+        <div class="icon-wrap">💰</div>
+        <h4>واجب الاشتراك</h4>
+        <p>700 درهم</p>
+        <small>(شامل لدورة فتى القرآن)</small>
+      </div>
+    </div>
+  </div>
+</div>

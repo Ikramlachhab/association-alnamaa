@@ -1,0 +1,40 @@
+<div class="payment-wrapper" dir="rtl">
+  <div class="payment-card anim-pop-in">
+    
+    <div class="card-header">
+      <div class="gold-line"></div>
+      <h2>تفاصيل واجب الانخراط</h2>
+      <p class="step-text">المرحلة الأخيرة لتأكيد تسجيلكم</p>
+    </div>
+
+    <div class="section-box">
+      <label class="section-label">ثمن الدورة</label>
+      <div class="course-options">
+        <button type="button" class="opt-btn" [class.active]="selectedCount === 1" (click)="setCourseCount(1)">
+          <span class="btn-title">دورة واحدة</span>
+          <span class="btn-sub">200 درهم</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="total-summary">
+      <div class="summary-item">
+        <span>المبلغ الإجمالي للمؤدى:</span>
+        <strong class="price-tag">{{ totalAmount }} درهم</strong>
+      </div>
+    </div>
+
+    <div class="bank-card">
+      <p class="bank-instruction">يرجى تحويل المبلغ إلى الحساب البنكي التالي:</p>
+      <div class="rib-container">
+        <code id="rib-text">190780211160436921000183 </code>
+<button class="copy-btn" (click)="copyRIB()">📋</button>      </div>
+      <p class="bank-name">مصرف المغرب - وكالة النماء</p>
+    </div>
+
+    <div class="card-footer">
+<button class="main-btn confirm" (click)="sendToWhatsApp()">
+  لقد قمت بالتحويل، أرسل الإيصال ✅
+</button><button class="main-btn back" routerLink="/registration">تعديل المعلومات الشخصية</button>    </div>
+  </div>
+</div>

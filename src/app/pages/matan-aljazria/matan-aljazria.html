@@ -14,11 +14,12 @@
         <h2 class="sub-title">"يجمع بين التراث الصوتي القديم والدرس الصوتي الحديث"</h2>
         <p class="curriculum-intro">دورة علمية متخصصة في تجويد القرآن الكريم من خلال مدارسة "المقدمة فيما على قارئ القرآن أن يعلمه" للإمام ابن الجزري رحمه الله.</p>
         <div class="registration-container">
-           <a href="https://wa.me/212661467772" target="_blank" class="btn-register-unique">
-             <span>حجز مقعد في الدورة</span>
-             <div class="shimmer"></div>
-           </a>
-        </div>
+   <a [routerLink]="['/registration']" 
+   [queryParams]="{ course: 'matan' }" 
+   class="btn-register-unique">
+   التسجيل في الدورة
+</a>
+</div>
       </div>
     </header>
 

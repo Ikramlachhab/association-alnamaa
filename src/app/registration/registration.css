@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
+
+.registration-wrapper {
+  background: #fdfbf7;
+  min-height: 100vh;
+  padding: 50px 20px;
+  font-family: 'Amiri', serif;
+}
+
+.form-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border-top: 6px solid #a68945; /* الخط الذهبي الفوقاني */
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-logo {
+  height: 300px;
+  margin-bottom: 20px;
+}
+
+.form-title {
+  color: #006837;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.gold-divider {
+  width: 100px;
+  height: 3px;
+  background: #a68945;
+  margin: 10px auto;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column; /* باش يكون العنوان فوق الخانة */
+  width: 100%; /* باش ياخد العرض كامل وما يتجمعش */
+  margin-bottom: 15px;
+}
+
+.form-control {
+  width: 100%; /* هادي غتخلي الخانة ترجع لشكلها الطبيعي الأفقي */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* كتحمي الخانة من التمدد خارج الإطار */
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 0.8rem;
+  margin-top: 5px;
+  text-align: right;
+}
+
+.full-width { grid-column: span 2; }
+
+label {
+  font-weight: bold;
+  color: #555;
+  font-size: 1.1rem;
+}
+
+input, select {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-family: 'Amiri', serif;
+  font-size: 1rem;
+  background: #fafafa;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #006837;
+  box-shadow: 0 0 5px rgba(0,104,55,0.1);
+}
+
+.submit-btn {
+  width: 100%;
+  margin-top: 30px;
+  background: #006837;
+  color: white;
+  border: none;
+  padding: 15px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-family: 'Amiri', serif;
+}
+
+.submit-btn:hover {
+  background: #a68945;
+  transform: translateY(-2px);
+}
+
+/* إيلا كان الزر مطفي (حيت الفورم ماعامرش) */
+.submit-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+/* الزر ملي كيكون مطفي */
+.btn-disabled {
+  background-color: #cccccc !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  opacity: 0.7;
+}
+
+.anim-fade-in {
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

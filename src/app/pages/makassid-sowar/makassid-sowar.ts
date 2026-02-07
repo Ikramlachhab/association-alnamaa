@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router'; // 1. ضروري تزيد هاد السطر
 
 @Component({
   selector: 'app-makassid-sowar',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './makassid-sowar.html',
-  styleUrl: './makassid-sowar.css'
+  styleUrls: ['./makassid-sowar.css']
 })
-// ضروري تكون هاد الكلمة: export
 export class MakassidSowarComponent { }

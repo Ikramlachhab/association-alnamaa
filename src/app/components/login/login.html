@@ -1,0 +1,55 @@
+<div class="login-wrapper" dir="rtl">
+  <div class="login-card anim-pop-in" *ngIf="!showForgotModal">
+    <div class="creative-header">
+      <div class="logo-container">
+        <img src="./namaa.svg" alt="جمعية النماء" class="side-logo">
+      </div>
+      <div class="text-container">
+        <h3 class="amiri-title">دخول المشاركين</h3>
+        <p class="welcome-msg">مرحباً بك مجدداً في فضائك الخاص</p>
+      </div>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="login-form">
+      <div class="input-group">
+        <label>البريد الإلكتروني</label>
+        <input type="email" formControlName="email" placeholder="example@mail.com">
+      </div>
+
+      <div class="input-group">
+  <label>كلمة المرور</label>
+  <input type="password" formControlName="password" class="form-control" 
+         [class.is-invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+  
+  <div *ngIf="loginForm.get('password')?.errors?.['minlength'] && loginForm.get('password')?.touched" 
+       class="error-message">
+    يجب أن تتكون كلمة المرور من 8 خانات على الأقل.
+  </div>
+</div>
+
+      <div class="forgot-pass-center">
+        <a (click)="toggleForgotModal()" class="green-link" style="cursor: pointer;">نسيت كلمة المرور؟</a>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" [disabled]="loginForm.invalid" class="login-btn">دخول</button>
+        <div class="footer-links">
+          <span>ليس لديك حساب؟</span>
+          <a routerLink="/registration" class="register-link">سجل الآن مجاناً</a>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="forgot-modal anim-pop-in" *ngIf="showForgotModal">
+    <h3 class="amiri-title">استرجاع الحساب</h3>
+    <p>أدخل بريدك الإلكتروني وسنرسل لك رابطاً لإعادة تعيين كلمة المرور</p>
+    
+    <div class="input-group">
+      <input type="email" #resetEmail placeholder="بريدك الإلكتروني">
+    </div>
+
+    <button class="login-btn" (click)="sendResetLink(resetEmail.value)">إرسال الرابط</button>
+    <button class="back-link" (click)="toggleForgotModal()">العودة للدخول</button>
+  </div>
+</div>
