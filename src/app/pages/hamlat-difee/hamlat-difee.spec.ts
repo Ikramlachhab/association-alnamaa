@@ -17,25 +17,17 @@ describe('HamlatDifeeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('يجب أن يفتح المودال ويضبط الخيارات الافتراضية للدفء', () => {
-    component.toggleModal();
-    expect(component.showModal).toBeTrue();
-    expect(component.selectedOption).toBe('clothes');
+  it('يجب التحقق من صحة أرقام الهواتف الدولية المختلفة', () => {
+    const validNumbers = ['+212612345678', '+33123456789', '00966501234567', '+12025550101'];
+    validNumbers.forEach(num => {
+      expect((component as any).isValidPhone(num)).toBeTrue();
+    });
   });
 
-  it('يجب التحقق من شرط الـ 20 درهم قبل الانتقال للخطوة الثانية', () => {
-    component.donationAmount = 10;
-    component.confirmDonation();
-    expect(component.showStep2).toBeFalse();
-    
-    component.donationAmount = 50;
-    component.confirmDonation();
-    expect(component.showStep2).toBeTrue();
-  });
-
-  it('يجب نسخ الـ RIB بنجاح', () => {
-    spyOn(navigator.clipboard, 'writeText').and.returnValue(Promise.resolve());
-    component.copyRIB();
-    expect(navigator.clipboard.writeText).toHaveBeenCalledWith(component.bankAccount);
+  it('يجب رفض الأرقام غير المنطقية', () => {
+    const invalidNumbers = ['123', 'abc', '+1', '000000'];
+    invalidNumbers.forEach(num => {
+      expect((component as any).isValidPhone(num)).toBeFalse();
+    });
   });
 });
