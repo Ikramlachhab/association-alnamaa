@@ -1,6 +1,15 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<div class="toast-container" [class.show]="toastActive">
+  <div class="toast-content" [ngClass]="toastType">
+    <i class="fas" [ngClass]="toastType === 'success' ? 'fa-check-circle' : 'fa-exclamation-triangle'"></i>
+    <span>{{ toastMessage }}</span>
+  </div>
+</div>
+
 <div class="creative-page abar-theme" dir="rtl">
   <div class="container-wrapper">
+    
     <header class="hero-section reveal">
       <div class="header-text">
         <h1 class="main-title">سُقيا الماء</h1>
@@ -8,30 +17,26 @@
         <p class="hero-desc">اجعل لك نبعاً لا ينضب في الدنيا، ورفيقاً يرويك يوم العطش الأكبر. سقي الماء هي الصدقة التي اختارها النبي ﷺ كأفضل الصدقات، فاجعل منها بصمتك الخالدة.</p>
       </div>
       <div class="image-box">
-        <img src="assets/well-image.jpg" alt="حفر الآبار" class="main-img">
+        <img src="hafar-abar.jpeg" alt="حفر الآبار" class="main-img">
       </div>
     </header>
 
     <section class="nabaa-section">
       <div class="section-title-wrapper reveal reveal-up">
-        <h2 class="dynamic-title">✨ نبع الأمل</h2>
+        <h2 class="dynamic-title"> نبع الأمل</h2>
       </div>
       <div class="dynamic-grid">
         <div class="axe-card reveal reveal-right delay-1">
           <div class="axe-content">
             <p>12 كيلومتراً: تقطعها الأمهات يومياً تحت شمس حارقة لملء أوعية بمياه ملوثة.</p>
           </div>
-          <div class="axe-icon-wrapper">
-            <i class="fas fa-walking"></i>
-          </div>
+          <div class="axe-icon-wrapper"><i class="fas fa-walking"></i></div>
         </div>
         <div class="axe-card reveal reveal-left delay-2">
           <div class="axe-content">
-            <p>بئر واحد منك: يختصر مسافات الألم، ويُعيد للأطفال حقهم في طفولة بعيدة عن شقاء البحث عن قطرة ماء.</p>
+            <p>بئر واحد منك: يختصر مسافات الألم، ويُعيد للأطفال حقهم في طفولة آمنة.</p>
           </div>
-          <div class="axe-icon-wrapper">
-            <i class="fas fa-tint"></i>
-          </div>
+          <div class="axe-icon-wrapper"><i class="fas fa-tint"></i></div>
         </div>
       </div>
     </section>
@@ -40,7 +45,7 @@
       <div class="moukib-icon"><i class="fas fa-video"></i></div>
       <div class="moukib-content">
         <h3>عينك على صدقتك 📸</h3>
-        <p>"نوثق لك رحلة الماء من باطن الأرض إلى يد المحتاج عبر تقارير حية، مع لوحة رخامية فاخرة باسمك وإحداثيات الموقع."</p>
+        <p>"نوثق لك رحلة الماء من باطن الأرض إلى يد المحتاج عبر تقارير حية، مع لوحة رخامية فاخرة باسمك."</p>
       </div>
     </div>
 
@@ -48,7 +53,7 @@
         <div class="story-card">
             <h3 class="story-title">حكايةُ غرسٍ لا يذبل</h3>
             <p class="story-text">
-                "ثمة عطاءٌ يمر كالسحاب، وثمة عطاءٌ يرسخ في الأرض كالجبال. كفالتك لبئر ماء ليست مجرد حفرٍ في التراب، بل هي استنباتٌ للحياة في عروقٍ جفّت، وإحياءٌ لآمالٍ كانت على وشك الانطفاء. تخيل أن تمر السنوات، وتتبدل الأجيال، وبئرك لا يزال يفيضُ بالخير، يروي ظمأ إنسان، ويُسقي زرعاً، ويُؤوي طيراً؛ وكل قطرةٍ تجري هي حكايةُ شكرٍ تُرفع للسماء باسمك. اجعل لك أثراً يسبقك، ونبعاً يرويك يوم لا ظل إلا ظله."
+                "ثمة عطاءٌ يمر كالسحاب، وثمة عطاءٌ يرسخ في الأرض كالجبال. كفالتك لبئر ماء هي استنباتٌ للحياة في عروقٍ جفّت. تخيل أن تمر السنوات وبئرك لا يزال يفيضُ بالخير؛ وكل قطرةٍ تجري هي حكايةُ شكرٍ تُرفع للسماء باسمك."
             </p>
         </div>
     </section>
@@ -71,7 +76,7 @@
             <i class="fas fa-faucet card-icon"></i>
             <h4 class="card-title">نبع الوفاء</h4>
             <div class="card-expandable">
-              <p class="card-desc">حفر بئرٍ سطحي متكامل في قرية نائية، يوفر المياه النقية ويُحيي الأرض بعد موتها.</p>
+              <p class="card-desc">حفر بئرٍ سطحي متكامل في قرية نائية، يوفر المياه النقية ويُحيي الأرض.</p>
             </div>
           </div>
         </div>
@@ -81,7 +86,7 @@
             <i class="fas fa-water card-icon"></i>
             <h4 class="card-title">سلسبيلاً</h4>
             <div class="card-expandable">
-              <p class="card-desc">المشروع المتكامل (بئر عميق، خزان، وصنابير)، صدقةٌ جارية لا ينقطع أثرها وتخدم أجيالاً.</p>
+              <p class="card-desc">المشروع المتكامل (بئر عميق، خزان، وصنابير)، صدقةٌ جارية تخدم أجيالاً.</p>
             </div>
           </div>
         </div>
@@ -92,7 +97,7 @@
       <div class="modal-window" (click)="$event.stopPropagation()">
         <div class="modal-header-custom">
           <span class="close-x" (click)="toggleModal()">×</span>
-          <h2 class="form-title">صدقة السُقيا</h2>
+          <h2 class="form-title">اختر نوع السُقيا</h2>
         </div>
         <div class="modal-body-custom">
           <div class="packages-grid-custom">
@@ -101,63 +106,57 @@
             <button class="pkg-opt" [class.active-pkg]="selectedOption === 'deep'" (click)="setAmount('deep', 15000)">بئر ارتوازي</button>
             <button class="pkg-opt" [class.active-pkg]="selectedOption === 'full'" (click)="setAmount('full', 25000)">مشروع سلسبيلاً</button>
           </div>
+          
           <div class="amount-container-custom">
-            <span class="currency-label">درهم</span>
+            <span class="amount-label" style="font-size: 1.2rem; font-weight: bold;">المبلغ المراد:</span>
             <input type="number" [(ngModel)]="donationAmount" class="amount-display-input">
-            <span class="amount-label">المبلغ</span>
+            <span class="currency-label" style="font-size: 1.5rem; color: #143d59;">درهم</span>
           </div>
+
           <div class="actions-container-custom">
-             <button class="donate-now-gold-btn" (click)="confirmDonation()">تأكيد التبرع 💧</button>
-             <button class="cart-icon-btn" (click)="addToCart()"><i class="fas fa-shopping-cart"></i></button>
+             <button class="donate-now-gold-btn" (click)="confirmDonation()">تأكيد واختيار وسيلة الدفع 💧</button>
+             <button class="cart-icon-btn" (click)="addToCart()" style="border-color: #c5a059; color: #c5a059;"><i class="fas fa-shopping-cart"></i></button>
           </div>
         </div>
       </div>
     </div>
 
     <div class="modal-overlay" *ngIf="showStep2" (click)="showStep2 = false">
-      <div class="modal-window" (click)="$event.stopPropagation()">
-        <div class="modal-header-custom" style="background: #c5a059;">
+      <div class="modal-window horizontal-modal" (click)="$event.stopPropagation()">
+        <div class="modal-header-custom">
           <span class="close-x" (click)="showStep2 = false">×</span>
-          <h2 class="form-title">معلومات المتبرع</h2>
+          <h2 class="form-title">إكمال بيانات السُقيا</h2>
         </div>
         <div class="modal-body-custom">
           <div class="rib-container-new">
-            <label>رقم الحساب البنكي (السُقيا):</label>
-            <div class="rib-box-new">007 810 0000123456789012 34</div>
+            <label style="font-family: 'Tajawal'; color: #143d59; font-weight: bold; font-size: 1.1rem;">رقم الحساب البنكي المخصص للآبار:</label>
+            <div class="rib-box-new" style="font-size: 1.2rem; letter-spacing: 2px;">{{ bankAccount }}</div>
+            <button (click)="copyRIB()" class="copy-btn-logic">{{copyButtonText}} <i class="fas fa-copy"></i></button>
           </div>
 
-          <div class="step-input-group">
-            <label>رقم الهاتف (صيغة مغربية)</label>
-            <input 
-              type="tel" 
-              [(ngModel)]="donorPhone" 
-              placeholder="06XXXXXXXX" 
-              class="step-field"
-              maxlength="10"
-              (input)="donorPhone = donorPhone.replace(/[^0-9]/g, '')"> 
+          <div class="step-fields-horizontal">
+            <div class="step-input-group full-width">
+              <label>الاسم الكامل (للوحة الرخامية)</label>
+              <input type="text" [(ngModel)]="donorName" placeholder="اكتب اسمك أو اسم من تحب" class="step-field">
+            </div>
+            <div class="step-input-group">
+              <label>رقم الهاتف الدولي</label>
+              <input type="tel" dir="ltr" [(ngModel)]="donorPhone" placeholder="+212 600..." class="step-field" style="text-align: left;">
+            </div>
+            <div class="step-input-group">
+              <label>البريد الإلكتروني</label>
+              <input type="email" [(ngModel)]="donorEmail" placeholder="example@mail.com" class="step-field">
+            </div>
           </div>
-
-          <div class="step-input-group">
-            <label>البريد الإلكتروني (للتواصل)</label>
-            <input 
-              type="email" 
-              [(ngModel)]="donorEmail" 
-              placeholder="example@mail.com" 
-              class="step-field">
-          </div>
-
-          <p class="error-msg-new" *ngIf="formError">يرجى ملء كافة الحقول بصيغة صحيحة</p>
-          <button class="donate-now-gold-btn" style="width: 100%;" (click)="finalSubmit()">إرسال ✅</button>
+          
+          <button class="donate-now-gold-btn" style="width: 100%; margin-top: 25px;" (click)="finalSubmit()">إرسال البيانات وتأكيد التبرع ✅</button>
+          <p class="trust-notice">سيصلك فيديو توثيقي فور بدء الحفر واكتماله بإذن الله</p>
         </div>
       </div>
     </div>
 
-    <div class="toast-error" [class.show]="showToast">
-      <div>أقل مبلغ للمساهمة هو 50 درهم</div>
-    </div>
-
     <button class="custom-pill-btn" (click)="toggleModal()">
-      <span class="btn-text">احفر بئراً</span>
+      <span class="btn-text">إحفر بئراً</span>
       <div class="icon-circle"><i class="fas fa-droplet"></i></div>
     </button>
   </div>
