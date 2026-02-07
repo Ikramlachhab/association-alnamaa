@@ -1,5 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@400;700&display=swap');
 
+/* --- نظام التنبيهات الاحترافي (Toasts) --- */
+.toast-container {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100px);
+    z-index: 9999;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    opacity: 0;
+}
+.toast-container.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+.toast-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    font-family: 'Tajawal', sans-serif;
+    min-width: 300px;
+}
+.toast-content.success {
+    background-color: #f6ffed;
+    border: 1px solid #b7eb8f;
+    color: #52c41a;
+}
+.toast-content.error {
+    background-color: #fff2f0;
+    border: 1px solid #ffccc7;
+    color: #ff4d4f;
+}
+.toast-content i { font-size: 1.2rem; }
+
 /* --- الأساسيات --- */
 .creative-page { 
     font-family: 'Amiri', serif; 
@@ -23,13 +59,11 @@
     gap: 60px; 
     margin-bottom: 60px; 
 }
-
 .header-text { 
     flex: 1; 
     text-align: right; 
     order: 2; 
 }
-
 .image-box { 
     flex: 0 0 435px; 
     height: 460px; 
@@ -40,11 +74,9 @@
     transition: 0.5s; 
     order: 1; 
 }
-
 .main-title { font-family: 'Aref Ruqaa'; font-size: 3.5rem; color: #5D4037; margin: 0; line-height: 1.2; }
 .sub-title { font-size: 1.6rem; color: #c5a059; margin-top: 15px; font-family: 'Amiri'; }
 .hero-desc { font-size: 1.2rem; color: #7d6b65; margin-top: 20px; max-width: 600px; }
-
 .image-box:hover { transform: translateY(-15px); border-color: #5D4037; }
 .main-img { width: 100%; height: 100%; object-fit: cover; }
 
@@ -101,7 +133,6 @@
 .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: flex; justify-content: center; align-items: center; z-index: 3000; padding: 20px; }
 .modal-window { background: white; width: 100%; max-width: 400px; border-radius: 25px; overflow: hidden; animation: modalPop 0.3s ease-out; }
 @keyframes modalPop { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-
 .modal-header-custom { padding: 20px; color: white; display: flex; justify-content: space-between; align-items: center; }
 .form-title { font-size: 1.3rem; margin: 0; font-family: 'Tajawal'; }
 .close-x { cursor: pointer; font-size: 24px; opacity: 0.8; transition: 0.3s; }
@@ -110,17 +141,14 @@
 
 /* --- التنسيقات الجديدة (المودال الواسع والأفقي) --- */
 .wide-modal { max-width: 600px !important; }
-
 .packages-grid-custom { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
-.packages-grid-custom.four-cols { grid-template-columns: repeat(4, 1fr); } /* 4 أعمدة للأضاحي */
-
+.packages-grid-custom.four-cols { grid-template-columns: repeat(4, 1fr); }
 .pkg-opt { padding: 12px; border: 1px solid #eee; border-radius: 12px; background: #fff; cursor: pointer; font-family: 'Tajawal'; font-size: 0.9rem; transition: 0.3s; }
 .pkg-opt.active-pkg { border: 2px solid #5D4037; background: #fdfaf8; font-weight: bold; color: #5D4037; }
 
 /* شبكة البيانات الأفقية */
 .donor-horizontal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; text-align: right; }
 .full-width-field { grid-column: span 2; }
-
 .amount-container-custom { border: 1px solid #eee; padding: 12px 15px; border-radius: 15px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; background: #f9f9f9; }
 .amount-display-input { border: none; font-size: 1.5rem; width: 90px; font-weight: bold; color: #5D4037; background: transparent; outline: none; }
 .currency-label { font-family: 'Tajawal'; font-weight: bold; color: #c5a059; }
@@ -128,17 +156,14 @@
 /* التنبيهات */
 .min-amount-error { color: #d9534f; font-size: 0.85rem; font-family: 'Tajawal'; margin-bottom: 15px; text-align: center; font-weight: bold; }
 .success-toast { background: #f6ffed; color: #52c41a; border: 1px solid #b7eb8f; padding: 10px; border-radius: 10px; margin-bottom: 15px; text-align: center; font-family: 'Tajawal'; }
-
 .rib-container-new { background: #FDF8F5; border: 1px dashed #5D4037; padding: 15px; border-radius: 15px; text-align: center; margin-bottom: 20px; }
 .rib-box-new { font-family: monospace; font-size: 1.1rem; font-weight: bold; margin: 8px 0; color: #333; letter-spacing: 1px; }
 .copy-btn-mini { background: #5D4037; color: white; border: none; padding: 6px 15px; border-radius: 20px; cursor: pointer; font-size: 0.8rem; font-family: 'Tajawal'; transition: 0.3s; }
 .copy-btn-mini:hover { background: #c5a059; }
-
 .step-input-group { margin-bottom: 15px; }
 .step-input-group label { display: block; font-size: 0.9rem; font-weight: bold; margin-bottom: 6px; font-family: 'Tajawal'; color: #5D4037; }
 .step-field { width: 100%; height: 42px; padding: 0 15px; border: 1px solid #ddd; border-radius: 12px; outline: none; transition: 0.3s; font-family: 'Tajawal'; box-sizing: border-box; }
 .step-field:focus { border-color: #c5a059; box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.1); }
-
 .actions-container-custom { display: flex; gap: 10px; }
 .donate-now-gold-btn { flex: 1; padding: 14px; border: none; border-radius: 12px; color: white; font-weight: bold; cursor: pointer; font-family: 'Tajawal'; font-size: 1.1rem; transition: 0.3s; }
 .cart-icon-btn { width: 55px; border: none; border-radius: 12px; color: white; cursor: pointer; font-size: 1.2rem; transition: 0.3s; }
