@@ -12,33 +12,50 @@ import { FormsModule } from '@angular/forms';
 export class HamlatDifeeComponent implements AfterViewInit {
   showModal = false;
   showStep2 = false; 
-  donationAmount = 250; // القيمة الافتراضية للكسوة
+  donationAmount = 250; 
   selectedOption = 'clothes'; 
+  
   activeCard = 0;
-  showToast = false;
+  activeAxe = 0;
+
+  toastActive = false;
+  toastMessage = '';
+  toastType: 'success' | 'error' = 'success';
   addedToCartMsg = false;
 
   donorName = ''; 
   donorPhone = '';
   donorEmail = '';
   bankAccount = '190780211160436921000183'; 
-  formError = false;
 
   constructor(private el: ElementRef, private renderer: Renderer2) {}
+
+  private triggerToast(msg: string, type: 'success' | 'error' = 'success') {
+    this.toastMessage = msg;
+    this.toastType = type;
+    this.toastActive = true;
+    setTimeout(() => this.toastActive = false, 4000);
+  }
 
   private isValidEmail(email: string): boolean {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
   }
 
+  /**
+   * دالة التحقق من الهاتف العالمي
+   * تقبل البدء بـ + أو 00 متبوعاً بكود الدولة
+   * وتتحقق من الطول المنطقي للأرقام (بين 7 و 15 رقم)
+   */
   private isValidPhone(phone: string): boolean {
-    const re = /^[0-9]{8,15}$/; 
-    return re.test(phone);
+    const cleanPhone = phone.replace(/\s/g, ''); // إزالة المسافات
+    const re = /^(\+?\d{1,4})?[\s.-]?\d{7,15}$/;
+    return re.test(cleanPhone);
   }
 
   copyRIB() {
     navigator.clipboard.writeText(this.bankAccount);
-    alert('تم نسخ رقم الحساب (RIB) بنجاح');
+    this.triggerToast('تم نسخ رقم الحساب (RIB) بنجاح');
   }
 
   ngAfterViewInit() {
@@ -68,7 +85,7 @@ export class HamlatDifeeComponent implements AfterViewInit {
 
   private validateDonation(): boolean {
     if (this.donationAmount < 20) {
-      alert('المبلغ الأدنى للمساهمة هو 20 درهم');
+      this.triggerToast('المبلغ الأدنى للمساهمة هو 20 درهم', 'error');
       return false;
     }
     return true;
@@ -94,18 +111,26 @@ export class HamlatDifeeComponent implements AfterViewInit {
 
   finalSubmit() {
     if (!this.donorName || !this.donorPhone || !this.donorEmail) {
-      alert('يرجى ملء كافة البيانات');
+      this.triggerToast('يرجى ملء كافة البيانات', 'error');
       return;
     }
-    if (!this.isValidEmail(this.donorEmail) || !this.isValidPhone(this.donorPhone)) {
-      alert('يرجى التأكد من صحة البيانات');
+    if (!this.isValidEmail(this.donorEmail)) {
+      this.triggerToast('البريد الإلكتروني غير صحيح', 'error');
+      return;
+    }
+    if (!this.isValidPhone(this.donorPhone)) {
+      this.triggerToast('يرجى إدخال رقم هاتف منطقي (مثال: +212600000000)', 'error');
       return;
     }
 
-    alert(`جزاك الله خيراً! تم تأكيد مساهمتك بمبلغ ${this.donationAmount} درهم لحملة دفء.`);
-    this.showStep2 = false;
-    this.donorName = '';
-    this.donorPhone = '';
-    this.donorEmail = '';
+    this.triggerToast(`جزاك الله خيرا! للتاكيد قم بارسال تبرعك بمبلغ${this.donationAmount} درهم في الريب وسيتم ارسال فيديو التوثيق لهاتفك`, 'success');
+    
+    setTimeout(() => {
+      this.showStep2 = false;
+      this.donorName = '';
+      this.donorPhone = '';
+      this.donorEmail = '';
+      this.activeAxe = 0;
+    }, 2000);
   }
 }
