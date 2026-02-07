@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
-import { AdhiyaComponent } from './adhiya.component';
+import { AdhiyaComponent } from './adhiya';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
