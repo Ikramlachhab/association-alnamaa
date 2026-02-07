@@ -12,11 +12,16 @@ import { FormsModule } from '@angular/forms';
 export class AdhiyaComponent implements AfterViewInit {
   showModal = false;
   showStep2 = false; 
-  donationAmount = 2500; // القيمة الافتراضية الجديدة (خروف)
-  selectedOption = 'khrouf'; // الخيار الافتراضي الجديد
+  donationAmount = 2500; 
+  selectedOption = 'khrouf'; 
   activeCard = 0;
   showToast = false;
-  addedToCartMsg = false; // رسالة السلة الجديدة
+  addedToCartMsg = false; 
+
+  // متغيرات التنبيه (Toast)
+  toastActive = false;
+  toastMessage = '';
+  toastType: 'success' | 'error' = 'success';
 
   // بيانات المتبرع
   donorName = ''; 
@@ -27,22 +32,29 @@ export class AdhiyaComponent implements AfterViewInit {
 
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
-  // دالة التحقق من البريد الإلكتروني
+  // دالة موحدة لإظهار التنبيهات
+  private triggerToast(msg: string, type: 'success' | 'error' = 'success') {
+    this.toastMessage = msg;
+    this.toastType = type;
+    this.toastActive = true;
+    setTimeout(() => this.toastActive = false, 4000);
+  }
+
   private isValidEmail(email: string): boolean {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
   }
 
-  // دالة التحقق من رقم الهاتف
+  // دالة التحقق من الهاتف (تدعم التنسيق الدولي لأي بلد)
   private isValidPhone(phone: string): boolean {
-    const re = /^[0-9]{8,15}$/; 
-    return re.test(phone);
+    // يسمح بـ + في البداية، أو أرقام فقط. الطول بين 7 و 15 رقم.
+    const re = /^(\+?\d{1,4})?[\s.-]?\d{7,15}$/; 
+    return re.test(phone.replace(/\s/g, '')); // نزيل المسافات قبل الفحص
   }
 
-  // دالة نسخ رقم الحساب
   copyRIB() {
     navigator.clipboard.writeText(this.bankAccount);
-    alert('تم نسخ رقم الحساب (RIB) بنجاح');
+    this.triggerToast('تم نسخ رقم الحساب (RIB) بنجاح', 'success');
   }
 
   ngAfterViewInit() {
@@ -73,11 +85,9 @@ export class AdhiyaComponent implements AfterViewInit {
 
   private validateDonation(): boolean {
     if (this.donationAmount < 20) {
-      this.showToast = true;
-      setTimeout(() => this.showToast = false, 5000);
+      this.triggerToast('المبلغ الأدنى للتبرع هو 20 درهم', 'error');
       return false;
     }
-    this.showToast = false;
     return true;
   }
 
@@ -94,35 +104,36 @@ export class AdhiyaComponent implements AfterViewInit {
       setTimeout(() => {
         this.addedToCartMsg = false;
         this.showModal = false;
-        this.showStep2 = true; // متابعة العطاء آلياً بعد الإضافة للسلة
+        this.showStep2 = true; 
       }, 1500);
     }
   }
 
   finalSubmit() {
-    // التحقق من الشروط المطلوبة
     if (!this.donorName || !this.donorPhone || !this.donorEmail) {
       this.formError = true;
+      this.triggerToast('يرجى ملء جميع البيانات المطلوبة', 'error');
       return;
     }
     if (!this.isValidEmail(this.donorEmail)) {
-      alert('يرجى إدخال بريد إلكتروني صحيح');
+      this.triggerToast('يرجى إدخال بريد إلكتروني صحيح', 'error');
       return;
     }
     if (!this.isValidPhone(this.donorPhone)) {
-      alert('يرجى إدخال رقم هاتف صحيح (أرقام فقط)');
+      this.triggerToast('يرجى إدخال رقم هاتف صحيح مع رمز الدولة (مثلاً +212...)', 'error');
       return;
     }
 
     this.formError = false;
-    // الرسالة النهائية
-    alert(`جزاك الله خيراً! تم تأكيد تبرعك بمبلغ ${this.donationAmount} درهم. سيتم إرسال فيديو التوثيق لهاتفك.`);
+    this.triggerToast(`جزاك الله خيرا! للتاكيد قم بارسال تبرعك بمبلغ${this.donationAmount} درهم في الريب. وسيتم ارسال فيديو التوثيق لهاتفك`, 'success');
     
     // تصفير البيانات بعد النجاح
-    this.showStep2 = false;
-    this.donorName = '';
-    this.donorPhone = '';
-    this.donorEmail = '';
-    this.donationAmount = 2500;
+    setTimeout(() => {
+        this.showStep2 = false;
+        this.donorName = '';
+        this.donorPhone = '';
+        this.donorEmail = '';
+        this.donationAmount = 2500;
+    }, 2000);
   }
 }
