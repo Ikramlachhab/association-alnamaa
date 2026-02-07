@@ -11,17 +11,31 @@ import { FormsModule } from '@angular/forms';
 })
 export class IftarRamadanComponent implements AfterViewInit {
   showModal = false;
-  showStep2 = false;
-  donationAmount = 25;
-  selectedOption = 'single';
+  showStep2 = false; 
+  donationAmount = 30; 
+  selectedOption = 'meal'; 
   activeCard = 0;
-  showToast = false;
+  addedToCartMsg = false; 
 
+  // نظام التنبيهات (Toast) المنسوخ من الأضحية
+  toastActive = false;
+  toastMessage = '';
+  toastType: 'success' | 'error' = 'success';
+
+  // بيانات المتبرع
+  donorName = ''; 
   donorPhone = '';
   donorEmail = '';
-  formError = false;
+  bankAccount = '190780211160436921000183'; 
 
   constructor(private el: ElementRef, private renderer: Renderer2) {}
+
+  private triggerToast(msg: string, type: 'success' | 'error' = 'success') {
+    this.toastMessage = msg;
+    this.toastType = type;
+    this.toastActive = true;
+    setTimeout(() => this.toastActive = false, 4000);
+  }
 
   ngAfterViewInit() {
     const observer = new IntersectionObserver((entries) => {
@@ -38,7 +52,8 @@ export class IftarRamadanComponent implements AfterViewInit {
 
   toggleModal() { 
     this.showModal = !this.showModal; 
-    this.showStep2 = false; 
+    this.showStep2 = false;
+    this.addedToCartMsg = false;
   }
 
   setAmount(opt: string, amt: number) { 
@@ -46,34 +61,44 @@ export class IftarRamadanComponent implements AfterViewInit {
     this.donationAmount = amt; 
   }
 
-  private validate(): boolean {
-    if (this.donationAmount < 20) {
-      this.showToast = true;
-      setTimeout(() => this.showToast = false, 5000);
-      return false;
-    }
-    return true;
+  copyRIB() {
+    navigator.clipboard.writeText(this.bankAccount);
+    this.triggerToast('تم نسخ رقم الحساب بنجاح', 'success');
   }
 
-  confirmDonation() {
-    if (this.validate()) {
-      this.showModal = false;
-      this.showStep2 = true;
+  confirmDonation() { 
+    if (this.donationAmount < 20) {
+      this.triggerToast('المبلغ الأدنى للمساهمة هو 20 درهم', 'error');
+      return;
     }
+    this.showModal = false;
+    this.showStep2 = true;
+  }
+
+  addToCart() { 
+    if (this.donationAmount < 20) {
+      this.triggerToast('المبلغ الأدنى هو 20 درهم', 'error');
+      return;
+    }
+    this.addedToCartMsg = true;
+    setTimeout(() => {
+      this.addedToCartMsg = false;
+      this.showModal = false;
+      this.showStep2 = true; 
+    }, 1500);
   }
 
   finalSubmit() {
-    if (!this.donorPhone || !this.donorEmail) {
-      this.formError = true;
+    if (!this.donorName || !this.donorPhone || !this.donorEmail) {
+      this.triggerToast('يرجى ملء جميع البيانات المطلوبة', 'error');
       return;
     }
-    alert('تقبل الله منك! سيتم التواصل معك لتأكيد وصول مساهمتك لموائد الإفطار.');
-    this.showStep2 = false;
-    this.donorPhone = ''; 
-    this.donorEmail = '';
-  }
-
-  addToCart() {
-    if (this.validate()) alert('تمت إضافة وجبات الإفطار إلى سلة الخير 🛒');
+    // محاكاة الإرسال
+    this.triggerToast(`جزاك الله خيرا للتاكيد قم بارسال تبرعك بمبلغ${this.donationAmount} درهم في الريب وسيتم ارسال فيديو التوثيق لهاتفك.`, 'success');
+    
+    setTimeout(() => {
+        this.showStep2 = false;
+        this.donorName = ''; this.donorPhone = ''; this.donorEmail = '';
+    }, 2000);
   }
 }
