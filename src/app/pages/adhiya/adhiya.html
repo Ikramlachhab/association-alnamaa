@@ -1,5 +1,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
+<div class="toast-container" [class.show]="toastActive">
+  <div class="toast-content" [ngClass]="toastType">
+    <i class="fas" [ngClass]="toastType === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'"></i>
+    <span>{{ toastMessage }}</span>
+  </div>
+</div>
+
 <div class="creative-page" dir="rtl">
   <div class="container-wrapper">
 
@@ -18,7 +25,7 @@
 
     <section class="axe-section reveal">
       <div class="axe-container-boxed">
-        <h3 class="axe-header-gold">✨ ميثاق الجودة والإحسان</h3>
+        <h3 class="axe-header-gold"> ميثاق الجودة والإحسان</h3>
         <p class="axe-subtitle">تزامناً مع قدسية الشعيرة، نلتزم بأعلى معايير الإتقان لضمان وصول أمانتكم بصورتها الأجمل.</p>
         <div class="axe-list-vertical">
           <div class="axe-item-card">
@@ -142,8 +149,8 @@
               <input type="text" [(ngModel)]="donorName" placeholder="الاسم الكريم" class="step-field">
             </div>
             <div class="step-input-group">
-              <label>رقم الهاتف</label>
-              <input type="text" [(ngModel)]="donorPhone" placeholder="06XXXXXXXX" class="step-field">
+              <label>رقم الهاتف (مع رمز الدولة)</label>
+              <input type="tel" dir="ltr" [(ngModel)]="donorPhone" placeholder="+212 600000000" class="step-field">
             </div>
             <div class="step-input-group" style="grid-column: span 2;">
               <label>البريد الإلكتروني</label>
