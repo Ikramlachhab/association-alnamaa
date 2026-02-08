@@ -1,9 +1,7 @@
-<<<<<<< HEAD
 /* هاد الكود كيطبق على كاع الصفحات اللي كيدوزو من router-outlet */
 main {
   display: block;
-  padding-top: 90px; /* هادي هي المساحة اللي كتحمي المحتوى باش ما يتخباش ورا النافبار */
-=======
+  padding-top: 90px;} /* هادي هي المساحة اللي كتحمي المحتوى باش ما يتخباش ورا النافبار */
 /* الزر العائم الثابت */
 .floating-donate-btn {
   position: fixed;
@@ -150,5 +148,5 @@ main {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
->>>>>>> fac1aebf509f40a12ceead912408894dcad794dd
+
 }

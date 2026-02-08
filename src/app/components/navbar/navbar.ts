@@ -12,7 +12,10 @@ import { RouterLink, Router } from '@angular/router';
 export class NavbarComponent {
 
   constructor(private router: Router) {}
-
+  goToPage(path: string) {
+    console.log('جاري الانتقال إلى:', path); // هادي باش تشوفي في الـ Console واش الزر كيتبرك
+    this.router.navigate([path]);
+  }
   /**
    * دالة عامة للسكرول داخل الصفحة الرئيسية
    * كتخدم حتى إيلا كان المستخدم في صفحة أخرى (بحر الزهروان)

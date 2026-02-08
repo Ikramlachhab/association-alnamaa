@@ -18,6 +18,7 @@
   max-width: 1400px;
   margin: 0 auto;
   display: flex;
+  flex-direction: row; /* كيبقى عادي والـ direction: rtl هو اللي كيخدم */
   justify-content: space-between;
   align-items: center;
   padding: 0 40px;
@@ -29,7 +30,7 @@
   display: flex;
   align-items: center;
   gap: 15px;
-  flex: 1;
+  justify-content: flex-end; /* لضمان التصاق اللوغو باليمين تماماً */
 }
 
 .huge-logo {
