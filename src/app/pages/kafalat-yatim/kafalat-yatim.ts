@@ -96,7 +96,15 @@ export class KafalatYatimComponent implements AfterViewInit {
       this.triggerToast('المبلغ الأدنى للتبرع هو 20 درهم', 'error');
     }
   }
-
+   getOptionLabel(opt: string): string {
+    const labels: any = {
+      'month': 'كفالة شهرية ليتيم',
+      'year': 'كفالة سنوية كاملة ليتيم',
+      'share': 'مساهمة في صندوق رعاية الأيتام',
+      'full-support': 'كفالة تعليمية وصحية شاملة'
+    };
+    return labels[opt] || 'كفالة يتيم';
+  }
   finalSubmit() {
     // 1. التحقق من ملء جميع الحقول أولاً
     if (!this.donorName || !this.donorPhone || !this.donorEmail) {
@@ -119,15 +127,34 @@ export class KafalatYatimComponent implements AfterViewInit {
 
     // في حال نجاح جميع الفحوصات
     this.formError = false;
-    this.triggerToast(`جزاك الله خيرا للتاكيد قم بارسال تبرعك بمبلغ${this.donationAmount} درهم في الريب وسيتم ارسال فيديو التوثيق لهاتفك`, 'success');
+    const phoneNumber = '212642732997'; // رقم الواتساب الخاص بالجمعية
+    const selectedLabel = this.getOptionLabel(this.selectedOption);
+
+    const message = `السلام عليكم ورحمة الله،
+أود الاستفسار عن إجراءات: *${selectedLabel}* 🕊️
+
+*بيانات الكافل:*
+- الاسم: ${this.donorName}
+- الهاتف: ${this.donorPhone}
+- البريد: ${this.donorEmail}
+
+*تفاصيل الكفالة:*
+- النوع المختار: ${selectedLabel}
+- المبلغ المرصود: ${this.donationAmount} درهم
+
+أرغب في الحصول على ملف اليتيم وتأكيد الكفالة عبر تحويل بنكي. جزاكم الله خيراً.`;
+
+    this.triggerToast(`جزاك الله خيراً يا ${this.donorName}، سيتم توجيهك للواتساب الآن.`, 'success');
     
-    // تصفير البيانات وإغلاق المودال بعد فترة قصيرة
     setTimeout(() => {
-        this.showStep2 = false;
-        this.donorName = '';
-        this.donorPhone = '';
-        this.donorEmail = '';
-        this.donationAmount = 300; // إعادة المبلغ للقيمة الافتراضية
-    }, 2500);
+      const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+
+      this.showStep2 = false;
+      this.donorName = '';
+      this.donorPhone = '';
+      this.donorEmail = '';
+      this.donationAmount = 300; 
+    }, 2000);
   }
 }

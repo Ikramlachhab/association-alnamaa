@@ -1,6 +1,72 @@
 /* --- استيراد الخطوط --- */
 @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Reem+Kufi:wght@600;700&family=Cairo:wght@400;700&family=Aref+Ruqaa:wght@400;700&display=swap');
+/* --- التكيف مع الهاتف (Responsive) --- */
+@media (max-width: 992px) {
+  /* 1. نخليو الحاوية تسمح بنزول العناصر للسطر الثاني */
+  .nav-container {
+    padding: 10px;
+    flex-direction: column; /* العناصر ترتب عمودياً */
+    gap: 15px;
+    height: auto;
+  }
 
+  /* 2. اللوغو يبقى هو الأول وفوق */
+  .brand-wrapper {
+    width: 100%;
+    justify-content: center; /* يتوسط في الموبايل */
+  }
+
+  .huge-logo {
+    height: 50px; /* نصغروه شوية ف الموبايل */
+  }
+
+  .brand-title-main {
+    font-size: 1.4rem;
+  }
+
+  /* 3. المنيو تولي عبارة عن سطر مرن تحت اللوغو */
+  .nav-menu {
+    display: flex; /* نرجعوها باينة */
+    flex-wrap: wrap; /* إيلا كترو الروابط ينزلو لتحت */
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+    flex: none;
+  }
+
+  .menu-item {
+    font-size: 0.95rem; /* نصغرو الخط شوية */
+    border-bottom: 1px solid #b38138;
+  }
+
+  /* 4. الأزرار تولي في السطر الأخير */
+  .nav-actions {
+    display: flex; /* نرجعوها باينة */
+    justify-content: center;
+    width: 100%;
+    flex: none;
+    gap: 10px;
+  }
+
+  .action-btn {
+    min-width: 90px;
+    padding: 6px 15px;
+    font-size: 0.9rem;
+  }
+
+  /* 5. بالنسبة للـ Dropdown في الموبايل */
+  .dropdown-content {
+    right: 50%;
+    transform: translateX(50%); /* يجي ف الوسط */
+  }
+}
+
+/* إضافات لتحسين الشكل */
+.luxury-nav {
+  /* تأكدي أن الطول ميكونش ثابت باش يقدر يكبر مع المحتوى ف الموبايل */
+  height: auto; 
+  min-height: 70px;
+}
 /* --- تنسيق الحاوية الرئيسية للـ Navbar --- */
 .luxury-nav {
   position: fixed;
@@ -17,6 +83,7 @@
 .nav-container {
   max-width: 1400px;
   margin: 0 auto;
+  
   display: flex;
   flex-direction: row; /* كيبقى عادي والـ direction: rtl هو اللي كيخدم */
   justify-content: space-between;
@@ -39,14 +106,16 @@
 }
 
 .brand-title-main {
-  font-family: 'Aref Ruqaa', serif;
+  
+  font-family: 'Amiri', sans-serif !important;
   font-size: 1.8rem;
   color: #004d26;
   margin: 0;
 }
 
 .brand-subtitle {
-  font-family: 'Reem Kufi', sans-serif;
+  
+  font-family: 'Amiri', sans-serif !important;
   color: #b38138;
   font-size: 0.8rem;
   margin: 0;
@@ -61,7 +130,8 @@
 }
 
 .menu-item {
-  font-family: 'Reem Kufi', sans-serif;
+  border-bottom: 2px solid #b38138;
+  font-family: 'Amiri', sans-serif !important;
   color: #004d26;
   text-decoration: none;
   font-weight: 700;
@@ -84,7 +154,7 @@
 }
 
 .action-btn {
-  font-family: 'Reem Kufi', sans-serif;
+  font-family: 'Amiri', sans-serif !important;
   text-decoration: none;
   font-weight: 700;
   font-size: 1rem;
@@ -135,7 +205,7 @@
   text-decoration: none;
   display: block;
   text-align: right;
-  font-family: 'Cairo', sans-serif;
+  font-family: 'Amiri', sans-serif !important;
   border-bottom: 1px solid #f2f2f2;
 }
 

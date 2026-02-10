@@ -105,6 +105,15 @@ export class SalatRamadanComponent implements AfterViewInit {
       }, 1500);
     }
   }
+  getOptionLabel(opt: string): string {
+    const labels: any = {
+      'full': 'سلة رمضانية كاملة',
+      'half': 'نصف سلة رمضانية',
+      'family': 'سلتين غذائيتين',
+      'open': 'سهم بركة (مبلغ مفتوح)'
+    };
+    return labels[opt] || 'مساهمة في سلال رمضان';
+  }
 
   finalSubmit() {
     if (!this.donorName || !this.donorPhone || !this.donorEmail) {
@@ -122,14 +131,35 @@ export class SalatRamadanComponent implements AfterViewInit {
     }
 
     this.formError = false;
-    this.triggerToast(`جزاك الله خيرا! للتاكيد قم بارسال مبلغ ${this.donationAmount} درهم لحسابنا البنكي.`, 'success');
-    
+    const phoneNumber = '212642732997'; // رقم الواتساب
+    const selectedLabel = this.getOptionLabel(this.selectedOption);
+
+    // تجهيز نص الرسالة الخاص برمضان
+    const message = `السلام عليكم ورحمة الله،
+أريد تأكيد مساهمتي في مشروع: *سلة رمضان (ميثاق الجود)* 🌙
+
+*بيانات المتبرع:*
+- الاسم: ${this.donorName}
+- الهاتف: ${this.donorPhone}
+- البريد: ${this.donorEmail}
+
+*تفاصيل المساهمة:*
+- نوع المساهمة: ${selectedLabel}
+- المبلغ المرصود: ${this.donationAmount} درهم
+
+سأرسل لكم وصل التحويل البنكي حالاً لإتمام عملية التبرع. جزاكم الله خيراً.`;
+
+    this.triggerToast(`جزاك الله خيراً يا ${this.donorName}، سيتم توجيهك للواتساب الآن.`, 'success');
+
     setTimeout(() => {
-        this.showStep2 = false;
-        this.donorName = '';
-        this.donorPhone = '';
-        this.donorEmail = '';
-        this.donationAmount = 450;
+      const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+
+      this.showStep2 = false;
+      this.donorName = '';
+      this.donorPhone = '';
+      this.donorEmail = '';
+      this.donationAmount = 450;
     }, 2000);
   }
 }

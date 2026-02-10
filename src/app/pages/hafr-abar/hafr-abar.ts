@@ -83,6 +83,15 @@ export class HafrAbarComponent implements AfterViewInit {
     this.triggerToast('تم نسخ رقم الحساب البنكي بنجاح', 'success');
     setTimeout(() => { this.copyButtonText = 'نسخ الحساب الآن'; }, 2000);
   }
+  getOptionLabel(opt: string): string {
+    const labels: any = {
+      'share': 'سهم في بئر ارتوازي',
+      'surface': 'بئر سطحي كامل',
+      'deep': 'بئر ارتوازي عميق',
+      'full': 'مشروع سلسبيلاً المتكامل'
+    };
+    return labels[opt] || 'مساهمة في سُقيا الماء';
+  }
 
   finalSubmit() {
     if (!this.donorName || !this.donorPhone || !this.donorEmail) {
@@ -100,9 +109,29 @@ export class HafrAbarComponent implements AfterViewInit {
       return;
     }
 
-    this.triggerToast(`جزاك الله خيرا يا${this.donorName}!للتاكيد قم بارسال تبرعك في الريب`, 'success');
-    
+    const phoneNumber = '212642732997'; // رقم الجمعية للواتساب
+    const selectedLabel = this.getOptionLabel(this.selectedOption);
+
+    const message = `السلام عليكم ورحمة الله،
+أريد تأكيد مساهمتي في مشروع: *سُقيا الماء (الآبار)* 💧
+
+*بيانات المتبرع:*
+- الاسم (للوحة الرخامية): ${this.donorName}
+- الهاتف: ${this.donorPhone}
+- البريد: ${this.donorEmail}
+
+*تفاصيل المساهمة:*
+- نوع السُقيا: ${selectedLabel}
+- المبلغ المرصود: ${this.donationAmount} درهم
+
+سأرسل لكم وصل التحويل البنكي فوراً. جزاكم الله خيراً.`;
+
+    this.triggerToast(`جزاك الله خيراً يا ${this.donorName}، سيتم توجيهك للواتساب الآن.`, 'success');
+
     setTimeout(() => {
+      const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+
       this.showStep2 = false;
       this.donorName = ''; 
       this.donorPhone = ''; 

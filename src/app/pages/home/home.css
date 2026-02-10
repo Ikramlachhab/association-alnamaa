@@ -7,112 +7,89 @@
   left: 0;
 }
 
-/* هادي ضرورية باش السكرول يجي لديد وسلس */
 html {
   scroll-behavior: smooth !important;
 }
 
-/* هاد الجزء كيخلي العنوان ما يتخباش ورا الـ Navbar ملي تهبطي */
 #detailed-about {
   scroll-margin-top: 100px;
 }
-/* --- إعدادات الصفحة والخلفية --- */
-:host {
-  display: block;
-  min-height: 100vh;
-  /* هاد السطر هو اللي كيجبد الصورة من الـ public */
-  background: url('/background.jpeg') no-repeat center center fixed !important;
-  background-size: cover !important;
-}
-/* استيراد خط احترافي */
-
-/* تطبيق الخط على الصفحة كاملة */
-body, p, span, div {
-    font-family: 'Cairo', sans-serif !important;
-}
-
-h1, h2, h3 {
-    font-family: 'Tajawal', sans-serif !important;
-    font-weight: 700;
-}
-
-/* --- تعديل زر "اكتشف المزيد" --- */
-.hero-btn-primary {
-    background-color: #b38138 !important; /* لون ذهبي قهوي بحال زر إنشاء الحساب */
-    color: #ffffff !important;
-    padding: 12px 30px !important;
-    border-radius: 50px !important; /* شكل دائري أنيق */
-    text-decoration: none !important;
-    font-weight: 700 !important;
-    font-size: 1.1rem !important;
-    display: inline-block !important;
-    box-shadow: 0 4px 15px rgba(179, 129, 56, 0.3) !important;
-    transition: all 0.3s ease !important;
-    border: none !important;
-}
-
-.hero-btn-primary:hover {
-    background-color: #966b2f !important; /* كيتغلق شوية عند تمرير الماوس */
-    transform: translateY(-3px) !important; /* حركة خفيفة للفوق */
-    box-shadow: 0 6px 20px rgba(179, 129, 56, 0.4) !important;
-}
-
 
 :host {
   display: block;
   min-height: 100vh;
-  /* زدت هاد التدرج الأبيض الفوق باش يخفف الصورة */
   background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), 
               url('/background.jpeg') no-repeat center center fixed !important;
   background-size: cover !important;
 }
 
+body, p, span, div {
+  font-family: 'Amiri', sans-serif !important;
+}
 
-/* --- محتوى الصفحة الشفاف --- */
+h1, h2, h3 {
+  font-family: 'Amiri', sans-serif !important;
+  font-weight: 700;
+}
+
+.hero-btn-primary {
+  background-color: #b38138 !important;
+  color: #ffffff !important;
+  padding: 12px 30px !important;
+  border-radius: 50px !important;
+  text-decoration: none !important;
+  font-weight: 700 !important;
+  font-size: 1.1rem !important;
+  display: inline-block !important;
+  box-shadow: 0 4px 15px rgba(179, 129, 56, 0.3) !important;
+  transition: all 0.3s ease !important;
+  border: none !important;
+}
+
+.hero-btn-primary:hover {
+  background-color: #966b2f !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 6px 20px rgba(179, 129, 56, 0.4) !important;
+}
+
 .main-content {
   background: transparent !important;
   padding: 50px 0;
   min-height: 100vh;
 }
 
-
-/* تنسيق رابط تسجيل الدخول الجديد */
 .login-link {
   background-color: #b38138;
-  font-family: 'Reem Kufi', sans-serif;
-  color: #e6f1ec; /* الأخضر الملكي اللي في اللوغو */
+  font-family: 'Amiri', sans-serif !important;
+  color: #e6f1ec;
   text-decoration: none;
   font-weight: 700;
   font-size: 1rem;
   transition: 0.3s;
   cursor: pointer;
-  
 }
 
 .login-link:hover {
-  color: #b38138; /* كيتحول للذهبي عند تمرير الماوس */
+  color: #b38138;
   text-decoration: underline;
-  
 }
 
 .hero-header {
   position: relative;
-  height: 80vh; /* كياخد 80% من طول الشاشة */
+  height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   text-align: center;
-  /* استعملي هنا صورة واضحة للنشاط ديال الجمعية أو خليها بالخلفية المزخرفة */
   background: url('/background.jpeg') no-repeat center center;
   background-size: cover;
 }
 
-/* طبقة باهتة باش الكتبه تبان واضحة */
 .hero-overlay {
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(255, 255, 255, 0.7); /* طبقة بيضاء شفافة */
+  background: rgba(255, 255, 255, 0.7);
   z-index: 1;
 }
 
@@ -121,34 +98,118 @@ h1, h2, h3 {
   z-index: 2;
   max-width: 1300px;
   width: 100%;
-  padding: 0 40px;
+  padding: 0 20px; /* تقليل البادينغ ف الجناب */
   display: flex;
-  flex-direction: row-reverse; /* باش يبدا التعريف من اليمين */
+  flex-direction: row-reverse;
+  flex-wrap: wrap; /* أهم سطر: كيسمح للعناصر تنزل لتحت ف الصغير */
   align-items: center;
-  gap: 50px;
+  justify-content: center;
+  gap: 30px; /* تقليل الفراغ شوية */
 }
 
 .hero-content {
   flex: 1;
-  text-align: right; /* محاذاة النص لليمين */
-  
+  text-align: right;
+  min-width: 320px; /* كيمنع العناصر تصغار بزاف، وكيجبرها تنزل لتحت ف الموبايل */
 }
 
 .hero-video-box {
+  min-width: 320px; /* كيمنع العناصر تصغار بزاف، وكيجبرها تنزل لتحت ف الموبايل */
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px;
 }
 
 .video-placeholder {
+  position: relative; /* ضروري باش الـ overlay يجي فوقو */
   width: 100%;
+  max-width: 800px;
   aspect-ratio: 16 / 9;
-  background: #000;
-  border-radius: 20px;
+  background: #f5f5dc; /* لون بيج خفيف في حالة ما خدمتش الصورة */
+  border-radius: 30px;
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-  border: 4px solid #ffffff;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+  border: 8px solid#c5a059;
+}
+
+/* الطبقة المغطية للفيديو */
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* home.css */
+
+  /* زيدي / قبل assets */
+  background: url('/assets/video-thumbnail.jpg') no-repeat center center;
+  background-size: cover;
+  /* باقي الكود... */
+
+  filter: brightness(0.9); /* تغميق الصورة شوية باش يبان النص */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+/* تأثير الضبابة عند الوقوف بالفأرة */
+.video-placeholder:hover .video-overlay {
+  filter: brightness(1) blur(2px);
+  transform: scale(1.02);
+}
+
+.overlay-content {
+  text-align: center;
+  color: #c59f5985;
+}
+
+/* أيقونة Play بحال Zad */
+.play-icon {
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 3px solid #c5a059; /* لون ذهبي */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 15px;
+  font-size: 24px;
+  color: #c5a059;
+  transition: 0.3s;
+  backdrop-filter: blur(5px);
+}
+
+.play-icon::after {
+  content: '';
+  display: block;
+  width: 0; height: 0;
+  border-style: solid;
+  border-width: 10px 0 10px 18px;
+  border-color: transparent transparent transparent #c5a059;
+  margin-left: 5px;
+}
+
+.video-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+}
+
+.video-subtitle {
+  display: inline-block;
+  background: #fff;
+  color: #c5a059;
+  padding: 5px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-top: 10px;
 }
 
 .custom-video {
@@ -157,71 +218,70 @@ h1, h2, h3 {
   object-fit: cover;
 }
 
-/* تعديل قياسات الخط باش تناسب المساحة الجديدة */
 .hero-title {
-  font-family: 'Aref Ruqaa', serif !important;
-  font-size: 3.2rem; /* صغرناه شوية باش يجي مقاد مع الفيديو */
-  color: #004d26;
+  font-family: 'Amiri', sans-serif !important;
+  font-size: 3.2rem;
+  color: #03331b;
   margin-bottom: 20px;
 }
 
 .hero-btns {
   display: flex;
   gap: 15px;
-  justify-content: flex-start; /* الأزرار يبداو من اليمين */
+  justify-content: flex-start;
 }
 
-/* إخفاء الفيديو في الشاشات الصغيرة (Mobile) باش ما يخسرش المنظر */
 @media (max-width: 992px) {
-  .hero-container {
-    flex-direction: column;
-    text-align: center;
-  }
+  .hero-container { flex-direction: column; text-align: center; }
   .hero-content { text-align: center; }
   .hero-btns { justify-content: center; }
 }
-/* تنسيق قسم المعلومات الجديد */
+
 .detailed-info-section {
   padding: 80px 0;
-  background: transparent; /* باش تبقى الخلفية المزخرفة باينة */
+  background: transparent;
 }
 
-/* الحاوية الكبيرة للكروت */
 .info-grid {
   display: flex;
   gap: 30px;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
-  align-items: stretch; /* هادي هي اللي كتخليهم بنفس الطول */
-  flex-direction: row-reverse; /* للحفاظ على الترتيب العربي */
+  align-items: stretch;
+  flex-direction: row-reverse;
 }
 
-/* تنسيق الكارط الموحد */
 .info-card {
-  flex: 1; /* باش ياخدو نفس العرض */
+  flex: 1;
   display: flex;
-  flex-direction: column; /* ترتيب المحتوى داخليا */
+  flex-direction: column;
   background: white;
   padding: 40px;
   border-radius: 20px;
   text-align: right;
-  
-  /* إضافة الإطار الذهبي اللي بغيتي */
-  border: 2px solid #b38138 !important; 
-  
+  border: 2px solid #b38138 !important;
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
   transition: all 0.3s ease;
 }
 
-/* تأثير عند تمرير الماوس */
-.info-card:hover {
-  transform: translateY(-10px);
-  background-color: #b38138; /* لون ذهبي باهت جدا */
-  box-shadow: 0 15px 35px rgba(39, 39, 38, 0.2);
+.card-description {
+  line-height: 1.8;
+  text-align: justify;
+  font-size: 1.1rem;
+  color: #444;
 }
 
+.text-highlight {
+  color: #3d2d02;
+  font-weight: bold;
+}
 
+.info-card:hover {
+  transform: translateY(-10px);
+  background-color: #b38138;
+  box-shadow: 0 15px 35px rgba(39, 39, 38, 0.2);
+}
 
 .gold-line {
   width: 60px;
@@ -229,13 +289,14 @@ h1, h2, h3 {
   background: #b38138;
   margin-bottom: 20px;
 }
+
 .highlight-card:hover {
-  background-color: #b38138 !important; /* ذهبي خفيف */
+  background-color: #b38138 !important;
   border: 1px solid #b38238d2 !important;
 }
 
 .card-title {
-  font-family: 'Aref Ruqaa', serif !important;
+  font-family: 'Amiri', sans-serif !important;
   font-size: 2rem;
   color: #03331b;
   margin-bottom: 15px;
@@ -260,54 +321,41 @@ h1, h2, h3 {
   right: 0;
 }
 
-/* حركة التمرير السلس (Smooth Scroll) */
-html {
-  scroll-behavior: smooth;
-}
 .cultural-premium-text {
-  font-family: 'Cairo', sans-serif;
-  font-size: 1.3rem; /* حجم الخط مناسب جداً للقراءة */
-  line-height: 1; /* مسافة كافية بين الأسطر للفخامة */
-  color: #2c3e50; /* لون احترافي هادئ */
+  font-family: 'Amiri', sans-serif !important;
+  font-size: 1.3rem;
+  line-height: 1.6;
+  color: #2c3e50;
   text-align: right;
   max-width: 900px;
-  margin-right: 1;
   padding-right: 20px;
-  border-right: 4px solid #b38138; /* سطر ذهبي عمودي على اليمين يعطي جمالية */
+  border-right: 4px solid #b38138;
 }
 
-.hero-title {
-  color: #03331b; /* الأخضر الملكي للعنوان الرئيسي */
-  font-family: 'Reem Kufi', sans-serif;
-  font-weight: 200;
-}
-
-/* المساحة بين التعريف والمشاريع */
 .projects-slider-container {
-  margin-top: 100px !important; /* مساحة كبيرة باش يتنفس التصميم */
-  padding: 20px 0;
+  margin-top: 100px !important;
+  padding: 10px 0;
   max-width: 1100px;
   margin: 0 auto;
 }
 
-/* السطر اللي فيه الصور */
 .projects-track {
+  height: 350px;
   display: flex;
-  gap: 25px; /* مسافة بين الصور */
+  gap: 20px;
   overflow-x: auto;
   scroll-behavior: smooth;
-  padding: 20px 5px;
-  scrollbar-width: none; /* إخفاء الـ scrollbar */
+  padding: 65px 5px;
+  scrollbar-width: none;
 }
 
-/* تصغير الكارت (الصورة) */
 .project-card {
-  min-width: 220px !important; /* عرض صغير وأنيق */
+  min-width: 220px !important;
   max-width: 220px !important;
-  height: 310px !important;    /* طول متناسق */
-  border: 2px solid #b38138 !important; /* الإطار الذهبي */
+  height: 250px !important;
+  border: 2px solid #b38138 !important;
   border-radius: 12px;
-  flex-shrink: 0; /* باش ميتجمعوش ويحافظو على حجمهم */
+  flex-shrink: 0;
   transition: transform 0.3s ease;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
@@ -315,43 +363,427 @@ html {
 .project-card img {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* هادي مهمة باش الملصق يبان كامل ميتكطعش */
+  object-fit: contain;
   background: #f9f9f9;
 }
 
-/* تأثير عند مرور الماوس */
 .project-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 10px 20px rgba(179, 129, 56, 0.2);
 }
 
 .project-card:hover img {
-  filter: brightness(0.8); /* الصورة كتظلام شوية */
-  transition: 0.3s;
+  filter: brightness(0.8);
 }
 
 .project-card:hover h3 {
-    font-family: 'Aref Ruqaa', serif !important;
-
-  color: #004d26; /* العنوان كيولي ذهبي ملي تحطي الماوس */
+  font-family: 'Amiri', sans-serif !important;
+  color: #004d26;
 }
+.project-info h3{
+  font-family: 'Amiri', sans-serif !important;
+  white-space: normal !important; /* باش النص يرجع للسطر وما يبقاش في سطر واحد مخفي */
+  overflow: visible !important;
+  height: auto !important;
+}
+
 .section-subtitle {
-    font-family: 'Aref Ruqaa', serif !important;
-  text-align: center !important; /* هادي هي اللي كتجيبو للوسط */
-  font-family: 'Tajawal', sans-serif;
-  color: #004d26; /* الأخضر الملكي للجمعية */
+  font-family: 'Amiri', sans-serif !important;
+  text-align: center !important;
+  color: #004d26;
   font-size: 2.2rem;
   font-weight: 800;
-  margin-bottom: 40px; /* مسافة بين العنوان والصور */
-  width: 100%; /* باش ياخد العرض كامل ويقدر يتسنطر */
+  margin-bottom: 0px;
+  width: 100%;
   display: block;
+  
 }
+
 .section-subtitle::after {
   content: '';
   display: block;
-  width: 80px;
+  width: 200px;
   height: 3px;
-  background: #b38138; /* اللون الذهبي */
-  margin: 10px auto 0; /* auto هنا هي اللي كتجيب السطر للوسط تحت العنوان */
+  background: #b38138;
+  margin: 10px auto 0;
   border-radius: 2px;
+  
+}
+
+.values-zigzag-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 0;
+  width: 100%;
+}
+
+.value-zigzag-item {
+  position: relative;
+  width: 75%;
+  height: 80px;
+  background: white;
+  border: 2px solid #b38138;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  animation: zigzag-float 3s infinite ease-in-out;
+}
+
+.value-zigzag-item.right {
+  align-self: flex-start;
+  border-radius: 15px 50px 15px 50px;
+}
+
+.value-zigzag-item.left {
+  align-self: flex-end;
+  border-radius: 50px 15px 50px 15px;
+}
+
+.value-hover-text {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: #03331b;
+  color: white;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.85rem;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: 0.4s;
+}
+
+.value-zigzag-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(179, 129, 56, 0.2);
+}
+
+.value-zigzag-item:hover .value-hover-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.value-zigzag-item:hover .value-main {
+  opacity: 0;
+}
+
+.value-zigzag-item:nth-child(even) { animation-delay: 1.5s; }
+
+@keyframes zigzag-float {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(5px); }
+}
+/* الحاوية الأساسية اللي كاتجمعهم بجوج */
+.modern-info-grid {
+  display: flex;
+  gap: 30px; /* المسافة بين الكرتين */
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: stretch; /* يخليهم بنفس الطول */
+  direction: rtl; /* التأكد من الترتيب من اليمين لليسار */
+}
+
+/* تعديل كرت التعريف (الجهة اليمنى) */
+.definition-card {
+  flex: 1.2; /* خدينا عرض أكبر شوية للنص الطويل */
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 25px;
+  border: 2px solid #b38138;
+}
+
+/* تعديل كرت القيم (الجهة اليسرى) */
+.values-card {
+  flex: 1;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 25px;
+  border: 2px solid #b38138;
+}
+
+/* رد القيم على شكل شبكة ثابتة (باينة ديما) */
+.values-zigzag-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* جوج مربعات في السطر */
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.value-zigzag-item {
+  background: #fdfaf5;
+  border: 1px solid rgba(179, 129, 56, 0.3);
+  padding: 15px;
+  border-radius: 15px;
+  text-align: center;
+  position: relative;
+  height: auto; /* النص غايكون باين ديما */
+}
+
+
+
+.value-hover-text {
+  position: static; /* رد النص للمكان الطبيعي ديالو */
+  opacity: 1;
+  visibility: visible;
+  color: #666;
+  font-size: 0.85rem;
+  transform: none;
+  background: transparent;
+  padding: 0;
+}
+
+/* للموبايل: يرجعو فوق بعضياتهم باش ما يضياقوش */
+@media (max-width: 992px) {
+  .modern-info-grid {
+    flex-direction: column;
+  }
+}
+
+/* الحاوية الأساسية: جنباً إلى جنب */
+.modern-info-grid {
+  display: flex;
+  gap: 30px;
+  align-items: stretch;
+  direction: rtl;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.definition-card { flex: 1.2; } /* كرت التعريف شوية أعرض */
+.values-card { flex: 1; }
+
+.info-card {
+  background: #ffffff;
+  padding: 35px;
+  border-radius: 25px;
+  border: 2px solid #b38138;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* شبكة القيم الأربعة */
+.values-interactive-wrapper {
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.value-box {
+  
+  position: relative;
+  height: 110px;
+  background: #f3f1eed5;
+  border: 2px solid rgba(233, 192, 11, 0.3);
+  border-radius: 15px;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* العنوان (كيبان ف اللول) */
+.value-title-front {
+  color: #03331b;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: 0.3s;
+}
+
+.value-title-front span {
+  color: #b38138;
+  margin-left: 5px;
+  font-size: 0.9rem;
+
+}
+
+/* التعريف (كينزلق من التحت) */
+.value-slide-back {
+  
+  position: absolute;
+  top: 100%; /* كيكون تحت المربع */
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #03331b;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  text-align: center;
+  transition: top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.value-slide-back p {
+  
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* تفاعل الماوس */
+.value-box:hover .value-slide-back {
+  top: 0; /* كيطلع يغطي المربع */
+}
+
+.value-box:hover .value-title-front {
+  opacity: 0; /* العنوان كيغبر باش ما يتزاحمش */
+}
+
+/* للموبايل: كيرجعو فوق بعضياتهم */
+@media (max-width: 992px) {
+  .modern-info-grid {
+    flex-direction: column;
+  }
+}
+
+
+.hadith-section-final {
+  background-color: #f2eee4; /* نفس لون خلفية الصورة تقريباً */
+  padding: 100px 20px;
+  position: relative;
+  text-align: center;
+  direction: rtl;
+  overflow: hidden;
+}
+
+.hadith-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* علامات الاقتباس الضخمة (99) */
+.bg-quote {
+  position: absolute;
+  top: 5%; /* تحريكها قليلاً للأعلى لتتوسط النص */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 40rem; /* حجم ضخم جداً للفواصل */
+  color: rgba(29, 28, 27, 0.04); /* لون ذهبي خفيف جداً (شفاف) */
+  font-family: 'Georgia', serif; /* خط كلاسيكي للفواصل */
+  z-index: 1;
+  line-height: 0;
+  user-select: none;
+  letter-spacing: -20px; /* تقريب الفواصل من بعضها البعض */
+}
+
+.hadith-inner-content {
+  position: relative;
+  z-index: 2; /* باش يجي النص فوق علامات الاقتباس */
+}
+
+.narrator-line, .prophet-line {
+  font-family: 'Tajawal', sans-serif;
+  color: #03331b; /* أخضر غامق */
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.main-hadith {
+  font-family: 'Amiri', serif;
+  color: #b38138; /* اللون الذهبي للحديث */
+  font-size: 2.5rem;
+  line-height: 1.6;
+  margin: 20px 0;
+  font-weight: 700;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.05);
+}
+
+.hadith-source {
+  font-family: 'Tajawal', sans-serif;
+  color: #03331b;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-top: 15px;
+}
+
+/* ضبط المسافات للموبايل */
+@media (max-width: 768px) {
+  .main-hadith {
+    font-size: 1.8rem;
+  }
+  .bg-quote {
+    font-size: 15rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.2rem !important; /* تصغير العنوان باش ما يخرجش على الشاشة */
+  }
+  
+  .hero-header {
+    height: auto; /* يولي الطول على حساب المحتوى */
+    padding: 100px 0 50px;
+  }
+
+  .video-placeholder {
+    max-width: 100%;
+    border-width: 4px solid #c5a059; /* تصغير الإطار */
+  }
+
+  /* تعديل شبكة المعلومات (Definition & Values) */
+  .modern-info-grid {
+    flex-direction: column !important; /* يرجعو فوق بعضياتهم */
+    padding: 0 15px;
+  }
+
+  /* تصغير الحديث */
+  .main-hadith {
+    font-size: 1.6rem !important;
+    line-height: 1.4;
+  }
+
+  .bg-quote {
+    font-size: 10rem !important; /* تصغير علامة الاقتباس باش ما تغطيش النص */
+    top: 20%;
+  }
+}
+
+/* 4. تعديل سلايدر المشاريع (Projects Slider) */
+.projects-track {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding: 20px 10px;
+  scrollbar-width: thin; /* إظهار سكرول خفيف للموبايل */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 5. تعديل شبكة القيم (Interactive Values) */
+.values-interactive-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* يرجعو 1 ف السطر إيلا ضياقت الحال */
+  gap: 10px;
+}
+
+/* 6. تعديل الـ Cards باش ما يخرجوش على الشاشة */
+.info-card {
+  width: 100%;
+  padding: 25px;
+  box-sizing: border-box; /* كيحسب البادينغ داخل العرض */
+}
+
+/* 7. تحسين الأزرار ف الموبايل */
+@media (max-width: 480px) {
+  .hero-btns {
+    flex-direction: column; /* الأزرار فوق بعضياتهم ف الموبايل الصغير */
+    width: 100%;
+  }
+  .hero-btn-primary {
+    width: 100%;
+    text-align: center;
+  }
 }

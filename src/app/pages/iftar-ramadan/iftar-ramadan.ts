@@ -17,6 +17,7 @@ export class IftarRamadanComponent implements AfterViewInit {
   activeCard = 0;
   addedToCartMsg = false; 
 
+
   // نظام التنبيهات (Toast) المنسوخ من الأضحية
   toastActive = false;
   toastMessage = '';
@@ -88,17 +89,56 @@ export class IftarRamadanComponent implements AfterViewInit {
     }, 1500);
   }
 
+  getOptionLabel(opt: string): string {
+    const labels: any = {
+      'baraka': 'تقديم الفطور',
+      'family': 'تقديم السحور',
+      'month': 'قفة المؤونة',
+      'open': 'ضمان التنقل'
+    };
+    return labels[opt] || 'مساهمة عامة';
+  }
+
+  // 1. دالة لتحويل الكود لاسم مفهوم (ضعيها فوق finalSubmit)
+  
+  // 2. الدالة النهائية المعدلة (استبدلي القديمة بهذه)
   finalSubmit() {
     if (!this.donorName || !this.donorPhone || !this.donorEmail) {
       this.triggerToast('يرجى ملء جميع البيانات المطلوبة', 'error');
       return;
     }
-    // محاكاة الإرسال
-    this.triggerToast(`جزاك الله خيرا للتاكيد قم بارسال تبرعك بمبلغ${this.donationAmount} درهم في الريب وسيتم ارسال فيديو التوثيق لهاتفك.`, 'success');
+
+    const phoneNumber = '212642732997'; // رقم الجمعية
+    const selectedLabel = this.getOptionLabel(this.selectedOption);
     
+    // تجهيز نص الرسالة
+    const message = `السلام عليكم ورحمة الله،
+أريد تأكيد مساهمتي في مشروع: *إفطار الصائم*
+
+*بيانات المتبرع:*
+- الاسم: ${this.donorName}
+- الهاتف: ${this.donorPhone}
+- البريد: ${this.donorEmail}
+
+*تفاصيل المساهمة:*
+- نوع العطاء: ${selectedLabel}
+- المبلغ: ${this.donationAmount} درهم
+
+سأرسل لكم وصل التحويل البنكي حالاً. جزاكم الله خيراً.`;
+
+    // إظهار تنبيه نجاح
+    this.triggerToast(`جزاك الله خيراً يا ${this.donorName}، سيتم توجيهك للواتساب الآن.`, 'success');
+
+    // فتح واتساب بعد ثانيتين
     setTimeout(() => {
-        this.showStep2 = false;
-        this.donorName = ''; this.donorPhone = ''; this.donorEmail = '';
+      const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+
+      // إغلاق المودال وتفريغ البيانات
+      this.showStep2 = false;
+      this.donorName = ''; 
+      this.donorPhone = ''; 
+      this.donorEmail = '';
     }, 2000);
   }
 }

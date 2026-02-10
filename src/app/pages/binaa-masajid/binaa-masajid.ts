@@ -101,6 +101,16 @@ export class BinaaMasajidComponent implements AfterViewInit {
       }, 1500);
     }
   }
+  getOptionLabel(opt: string): string {
+    const labels: any = {
+      'roof': 'المساهمة في سقف المسجد',
+      'walls': 'بناء الجدران والأساسات',
+      'carpet': 'فرش وتجهيز المسجد',
+      'minaret': 'بناء المئذنة',
+      'open': 'صدقة جارية (مبلغ مفتوح)'
+    };
+    return labels[opt] || 'مساهمة في بناء مسجد';
+  }
 
   finalSubmit() {
     if (!this.donorName || !this.donorPhone || !this.donorEmail) {
@@ -118,14 +128,34 @@ export class BinaaMasajidComponent implements AfterViewInit {
     }
 
     this.formError = false;
-    this.triggerToast(`جزاك الله خيرا للتاكيد قم بارسال تبرعك بمبلغ${this.donationAmount} درهم في الريب وسيتم ارسال فيديو التوثيق لهاتفك`, 'success');
-    
+    const phoneNumber = '212642732997'; 
+    const selectedLabel = this.getOptionLabel(this.selectedOption);
+
+    const message = `السلام عليكم ورحمة الله،
+أريد تأكيد مساهمتي في مشروع: *بناء وتشييد المساجد* 🕌
+
+*بيانات المتبرع:*
+- الاسم الكامل: ${this.donorName}
+- الهاتف: ${this.donorPhone}
+- البريد: ${this.donorEmail}
+
+*تفاصيل المساهمة:*
+- نوع العطاء: ${selectedLabel}
+- المبلغ المرصود: ${this.donationAmount} درهم
+
+سأرسل لكم وصل التحويل البنكي فوراً. جزاكم الله خيراً.`;
+
+    this.triggerToast(`جزاك الله خيراً يا ${this.donorName}، سيتم توجيهك للواتساب الآن.`, 'success');
+
     setTimeout(() => {
-        this.showStep2 = false;
-        this.donorName = '';
-        this.donorPhone = '';
-        this.donorEmail = '';
-        this.donationAmount = 500;
+      const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+
+      this.showStep2 = false;
+      this.donorName = '';
+      this.donorPhone = '';
+      this.donorEmail = '';
+      this.donationAmount = 500;
     }, 2000);
   }
 }

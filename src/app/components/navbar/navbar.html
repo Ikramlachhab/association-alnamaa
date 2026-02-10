@@ -24,8 +24,8 @@
     </div>
 
     <div class="nav-actions">
-  <button type="button" (click)="goToPage('/registration')" class="action-btn btn-register">إنشاء حساب</button>
-  <button type="button" (click)="goToPage('/login')" class="action-btn btn-login">تسجيل الدخول</button>
+<a href="javascript:void(0)" (click)="createNewAccount()" class="action-btn btn-register">إنشاء حساب</a>
+  <a [routerLink]="['/login']" class="action-btn btn-login">تسجيل الدخول</a>
 </div>
 
   </div>

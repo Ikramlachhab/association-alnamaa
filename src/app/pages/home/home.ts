@@ -13,7 +13,37 @@ import { RouterLink } from '@angular/router';
   styleUrl: './home.css'
 })
 export class HomeComponent {
+
+  @ViewChild('myVideo') videoElement!: ElementRef<HTMLVideoElement>;
   
+  isVideoPlaying = false;
+
+  playVideo() {
+    this.isVideoPlaying = true;
+    
+    // كنعطيو واحد المهلة صغييييرة باش الـ DOM يتحدث والـ Overlay يختفي
+    setTimeout(() => {
+      const video = this.videoElement.nativeElement;
+      if (video) {
+        video.play().catch(err => console.error("Video play failed:", err));
+        video.controls = true; // كنبينو الـ Play/Pause بار
+      }
+    }, 100);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   // 1. تعريف السلايدر الثقافي
   @ViewChild('sliderTrack') sliderTrack!: ElementRef;
   

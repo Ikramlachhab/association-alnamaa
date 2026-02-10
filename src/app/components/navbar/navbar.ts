@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, Router } from '@angular/router';
-
+// التصحيح: نرجع لـ components تم لـ app باش نلقاو registration.ts
+import { RegistrationService } from '../../services/registration';
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -11,23 +12,33 @@ import { RouterLink, Router } from '@angular/router';
 })
 export class NavbarComponent {
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    // استعملي public باش نضمنوا أن Angular يشوفو مزيان
+    public regService: RegistrationService 
+  ) {}
+
+  createNewAccount() {
+    console.log('Clearing data...');
+    // هادي دابا غتمسح البيانات اللي مخبية في السيرفيس اللي وسط registration.ts
+    this.regService.formData = null; 
+    this.router.navigate(['/registration']); 
+  }
+
   goToPage(path: string) {
-    console.log('جاري الانتقال إلى:', path); // هادي باش تشوفي في الـ Console واش الزر كيتبرك
+    console.log('جاري الانتقال إلى:', path);
     this.router.navigate([path]);
   }
+
   /**
    * دالة عامة للسكرول داخل الصفحة الرئيسية
-   * كتخدم حتى إيلا كان المستخدم في صفحة أخرى (بحر الزهروان)
    */
   scrollToSection(event: Event, sectionId: string) {
     event.preventDefault();
 
-    // إيلا كنا ديجا في الهوم
     if (this.router.url === '/' || this.router.url === '/home') {
       this.doScroll(sectionId);
     } else {
-      // إيلا كنا فصفحة أخرى، كنرجعو للهوم عاد كنقلبو على القسم
       this.router.navigate(['/home']).then(() => {
         setTimeout(() => {
           this.doScroll(sectionId);
@@ -36,17 +47,14 @@ export class NavbarComponent {
     }
   }
 
-  // هادي هي الدالة اللي كتحيد الخطأ ديال "عن الجمعية"
   scrollToAbout(event: Event) {
     this.scrollToSection(event, 'detailed-about');
   }
 
-  // هادي هي الدالة اللي كتحيد الخطأ ديال "مشاريع ثقافية"
   scrollToCultural(event: Event) {
     this.scrollToSection(event, 'cultural-projects-section');
   }
 
-  // تنفيذ عملية السكرول الفعلي
   private doScroll(sectionId: string) {
     const element = document.getElementById(sectionId);
     if (element) {

@@ -78,6 +78,15 @@ export class HakibaMadrasiyaComponent implements AfterViewInit {
     navigator.clipboard.writeText(this.bankAccount);
     this.triggerToast('تم نسخ رقم الحساب البنكي بنجاح', 'success');
   }
+  getOptionLabel(opt: string): string {
+    const labels: any = {
+      'full': 'حقيبة مدرسية متكاملة بجميع اللوازم',
+      'share': 'مساهمة جزئية في حقيبة',
+      'tools': 'طقم أدوات هندسية ودفاتر',
+      'open': 'مساهمة مفتوحة لدعم التعليم'
+    };
+    return labels[opt] || 'مساهمة في الحقيبة المدرسية';
+  }
 
   finalSubmit() {
     if (!this.donorName || !this.donorPhone || !this.donorEmail) {
@@ -95,13 +104,34 @@ export class HakibaMadrasiyaComponent implements AfterViewInit {
       return;
     }
 
-    this.triggerToast(`جزاك الله خيرا يا${this.donorName}! للتاكيد قم بارسال تبرعك في الريب`, 'success');
-    
+    const phoneNumber = '212642732997'; // رقم الواتساب
+    const selectedLabel = this.getOptionLabel(this.selectedOption);
+
+    const message = `السلام عليكم ورحمة الله،
+أريد تأكيد مساهمتي في مشروع: *الحقيبة المدرسية* 🎒
+
+*بيانات المتبرع:*
+- الاسم: ${this.donorName}
+- الهاتف: ${this.donorPhone}
+- البريد: ${this.donorEmail}
+
+*تفاصيل المساهمة:*
+- نوع العطاء: ${selectedLabel}
+- المبلغ المرصود: ${this.donationAmount} درهم
+
+سأرسل لكم وصل التحويل البنكي حالاً لدعم تلاميذنا. جزاكم الله خيراً.`;
+
+    this.triggerToast(`جزاك الله خيراً يا ${this.donorName}، سيتم توجيهك للواتساب الآن.`, 'success');
+
     setTimeout(() => {
+      const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+
       this.showStep2 = false;
       this.donorName = ''; 
       this.donorPhone = ''; 
       this.donorEmail = '';
+      this.donationAmount = 250;
     }, 2000);
   }
 

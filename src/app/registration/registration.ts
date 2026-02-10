@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { RegistrationService } from '../services/registration';
+import { RegistrationService } from '../services/registration'; // تأكدي من المسار الصحيح
 
-// 1. المعطيات والقواعد (Data & Rules)
 const ALL_COURSES = [
   { id: 'nartaki', name: 'بكتاب ربي نرتقي' },
   { id: 'zahrawan', name: 'الزهروان (البقرة وآل عمران)' },
@@ -36,7 +35,7 @@ const COURSE_RULES: any = {
 })
 export class RegistrationComponent implements OnInit {
   registrationForm!: FormGroup;
-  courses = ALL_COURSES; // باش نخدموا بها في HTML
+  courses = ALL_COURSES;
 
   constructor(
     private fb: FormBuilder,
@@ -44,119 +43,120 @@ export class RegistrationComponent implements OnInit {
     private route: ActivatedRoute,
     private regService: RegistrationService
   ) {}
+
   calculateAge(birthDate: string): number {
-  const birth = new Date(birthDate);
-  const today = new Date();
-  let age = today.getFullYear() - birth.getFullYear();
-  const monthDiff = today.getMonth() - birth.getMonth();
-  
-  // تصحيح السن إيلا كان عيد ميلادو مزال ما وصلش هاد العام
-  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
-    age--;
-  }
-  return age;
-}
-get filteredCourses() {
-  const { age, gender } = this.registrationForm.value;
-  
-  // إيلا باقي ما دخل والو يبانو كاملين
-  if (!age || !gender) return this.courses; 
-
-  return this.courses.filter(course => {
-    const rule = COURSE_RULES[course.id];
-    if (!rule) return true;
-
-    // التصحيح هنا: استعملنا rule.sexe عوض rule.gender
-    const genderMatch = gender === rule.sexe;
-
-    // تصفية حسب السن
-    const userAge = Number(age);
-    const ageMatch = (!rule.minAge || userAge >= rule.minAge) && 
-                     (!rule.maxAge || userAge <= rule.maxAge);
-
-    // سطر للـ Debug باش تشوفي القيم في المتصفح (F12)
-    if (genderMatch && ageMatch) {
-        console.log(`الدورة ${course.name} مطابقة لشروطك.`);
+    const birth = new Date(birthDate);
+    const today = new Date();
+    let age = today.getFullYear() - birth.getFullYear();
+    const monthDiff = today.getMonth() - birth.getMonth();
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
+      age--;
     }
+    return age;
+  }
 
-    return genderMatch && ageMatch;
+  // دالة الفلترة (Filtered Courses)
+  get filteredCourses() {
+    const { age, gender } = this.registrationForm.value;
+    if (!age || !gender) return this.courses; 
+
+    return this.courses.filter(course => {
+      const rule = COURSE_RULES[course.id];
+      if (!rule) return true;
+      const genderMatch = gender === rule.sexe;
+      const userAge = Number(age);
+      const ageMatch = (!rule.minAge || userAge >= rule.minAge) && 
+                       (!rule.maxAge || userAge <= rule.maxAge);
+      return genderMatch && ageMatch;
+    });
+  }
+
+  ngOnInit(): void {
+  // 1. إنشاء الـ Form أولاً
+  this.registrationForm = this.fb.group({
+    firstName: ['', Validators.required],
+    lastName: ['', Validators.required],
+    birthDate: ['', Validators.required],
+    age: ['', [Validators.required, Validators.min(5)]],
+    nationality: ['', Validators.required],
+    address: ['', Validators.required],
+    phone: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+    email: ['', [Validators.required, Validators.email]],
+    gender: ['', Validators.required],
+    courseName: ['', Validators.required],
+    password: ['', [Validators.required, Validators.minLength(8)]],
+    confirmPassword: ['', Validators.required]
+  });
+
+  // 2. التحقق من الـ URL (واش المستخدم جاي يسجل ف دورة جديدة؟)
+  this.route.queryParams.subscribe(params => {
+    const courseId = params['course'];
+
+    if (courseId) {
+      // إيلا كاين كورس ف الـ URL، يعني المستخدم بغا دورة جديدة
+      // إذن نمسحو البيانات القديمة من السيرفيس ومن الفورم
+      this.regService.formData = null; 
+      this.registrationForm.reset();
+      
+      this.registrationForm.patchValue({
+        courseName: courseId
+      });
+            this.registrationForm.get('courseName')?.disable();
+      
+      // إيلا بغيتي تحبسي الاختيار
+      // this.registrationForm.get('courseName')?.disable();
+
+    } else if (this.regService.formData) {
+      // إيلا ما كاينش كورس ف الـ URL (يعني راجع من صفحة التعديل)
+      // والبيانات كاينة ف السيرفيس، كنعمرو الفورم
+      this.registrationForm.patchValue(this.regService.formData);
+    }
+  });
+
+  // 3. حساب السن تلقائياً
+  this.registrationForm.get('birthDate')?.valueChanges.subscribe(value => {
+    if (value) {
+      const age = this.calculateAge(value);
+      this.registrationForm.patchValue({ age: age }, { emitEvent: false });
+    }
   });
 }
-  ngOnInit(): void {
-    const preSelectedCourse = this.route.snapshot.queryParamMap.get('course') || '';
-
-    this.registrationForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      birthDate: ['', Validators.required], // تأكدي أن الإدخال كيعطي العمر
-      age: ['', [Validators.required, Validators.min(5)]], // زدنا حقل السن للتحقق
-      nationality: ['', Validators.required],
-      address: ['', Validators.required],
-      phone: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
-      email: ['', [Validators.required, Validators.email]],
-      gender: ['', Validators.required],
-      courseName: [preSelectedCourse, Validators.required],
-      password: ['', [Validators.required, Validators.minLength(8)]],
-      confirmPassword: ['', Validators.required]
-    });
-    this.registrationForm.get('birthDate')?.valueChanges.subscribe(value => {
-  if (value) {
-    const age = this.calculateAge(value);
-    // كنعمروا حقل السن أوتوماتيكياً (خاص يكون عندك حقل age في الفورم)
-    this.registrationForm.patchValue({ age: age }, { emitEvent: false });
-    console.log('السن المحسوب هو:', age);
-  }
-});
-
-    if (preSelectedCourse) {
-       // استعملي patchValue عوض disable إيلا بغيتي القيمة توصل في onSubmit
-       // أو خليها disable واستعملي getRawValue() كما سأوضح في onSubmit
-       this.registrationForm.get('courseName')?.disable();
-    }
-  }
 
   onSubmit() {
-    // 1. استعمال getRawValue() باش نجيبو حتى الحقول اللي درنا ليها disable
     const formValues = this.registrationForm.getRawValue();
-     const { password, confirmPassword } = formValues;
     if (this.registrationForm.valid) {
       const { password, confirmPassword, age, gender, courseName } = formValues;
-    if (password.length < 8) {
-    alert('خطأ: كلمة المرور يجب أن تتكون من 8 خانات على الأقل! 🔑');
-    return;
-  }
-      // 2. تأكيد كلمة المرور
+
       if (password !== confirmPassword) {
         alert('خطأ: كلمات المرور غير متطابقة! ❌');
         return;
       }
 
-      // 3. تطبيق منطق الشروط (Validation Logic)
+      // حفظ البيانات في السيرفيس قبل الانتقال
       const rule = COURSE_RULES[courseName];
-      if (rule) {
-        // التحقق من الجنس
-        if (rule.sexe && gender !== rule.sexe) {
-          alert(`هذه الدورة مخصصة للـ ${rule.sexe} فقط. ⚠️`);
-          return;
-        }
+    if (rule) {
+      const genderMatch = gender === rule.sexe;
+      const userAge = Number(age);
+      const ageMatch = (!rule.minAge || userAge >= rule.minAge) && 
+                       (!rule.maxAge || userAge <= rule.maxAge);
 
-        // التحقق من السن
-        if ((rule.minAge && age < rule.minAge) || (rule.maxAge && age > rule.maxAge)) {
-          let errorMsg = `السن غير مناسب لهذه الدورة. المطلوب: `;
-          if (rule.minAge) errorMsg += `من ${rule.minAge} سنة `;
-          if (rule.maxAge) errorMsg += `إلى ${rule.maxAge} سنة`;
-          alert(errorMsg + '. ⚠️');
-          return;
-        }
+      if (!genderMatch || !ageMatch) {
+        // رسالة الخطأ التي طلبتِها
+        let errorMsg = `عذراً، لا يمكنك التسجيل في هذه الدورة لأن الشروط لا تنطبق عليك:\n`;
+        if (!genderMatch) errorMsg += `- هذه الدورة مخصصة لـ (${rule.sexe}) فقط.\n`;
+        if (!ageMatch) errorMsg += `- السن المطلوب ما بين ${rule.minAge || 0} و ${rule.maxAge || 'ما فوق'} سنة.`;
+        
+        alert(errorMsg); // يمكنك استبدال alert بـ Toast إذا كنتِ تستخدمينه
+        return; // منع الانتقال لصفحة الدفع
       }
-
-      // 4. إيلا داز كلشي بنجاح
-      this.regService.formData = formValues;
-      console.log('تم التحقق والتسجيل بنجاح ✅:', formValues);
-      this.router.navigate(['/payment']);
-
-    } else {
-      alert('المرجو ملء جميع الخانات المطلوبة بشكل صحيح. ⚠️');
     }
+
+    // 3. إذا كان كل شيء صحيحاً، ننتقل للدفع
+    this.regService.formData = formValues;
+    this.router.navigate(['/payment']);
+
+  } else {
+    alert('المرجو ملء جميع الخانات المطلوبة بشكل صحيح. ⚠️');
+  }
   }
 }

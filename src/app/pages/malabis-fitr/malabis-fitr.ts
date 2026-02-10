@@ -106,6 +106,15 @@ export class MalabisFitrComponent implements AfterViewInit {
       }, 1500);
     }
   }
+  getOptionLabel(opt: string): string {
+    const labels: any = {
+      'full': 'كسوة عيد كاملة (ملابس + حذاء)',
+      'clothes': 'ملابس العيد فقط',
+      'shoes': 'حذاء العيد',
+      'open': 'مساهمة في فرحة العيد (مبلغ مفتوح)'
+    };
+    return labels[opt] || 'مساهمة في كسوة العيد';
+  }
 
   finalSubmit() {
     if (!this.donorName || !this.donorPhone || !this.donorEmail) {
@@ -123,14 +132,35 @@ export class MalabisFitrComponent implements AfterViewInit {
     }
 
     this.formError = false;
-    this.triggerToast(`جزاك الله خيرا! اتمم العمليه بارسال هديتك في الريب لكي يتم تاكيد مساهمتك بمبلغ${this.donationAmount} درهم لكسوة العيد.`, 'success');
+    const phoneNumber = '212642732997'; // رقم الواتساب
+    const selectedLabel = this.getOptionLabel(this.selectedOption);
+
+    // تجهيز رسالة الواتساب
+    const message = `السلام عليكم ورحمة الله،
+أريد تأكيد مساهمتي في مشروع: *كسوة عيد الفطر* 👕👞
+
+*بيانات المتبرع:*
+- الاسم: ${this.donorName}
+- الهاتف: ${this.donorPhone}
+- البريد: ${this.donorEmail}
+
+*تفاصيل المساهمة:*
+- نوع الكسوة: ${selectedLabel}
+- المبلغ المرصود: ${this.donationAmount} درهم
+
+سأرسل لكم وصل التحويل البنكي فوراً لرسم الفرحة على وجه طفل يتيم. جزاكم الله خيراً.`;
+
+    this.triggerToast(`جزاك الله خيراً يا ${this.donorName}، سيتم توجيهك للواتساب الآن.`, 'success');
     
     setTimeout(() => {
-        this.showStep2 = false;
-        this.donorName = '';
-        this.donorPhone = '';
-        this.donorEmail = '';
-        this.donationAmount = 450;
+      const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+
+      this.showStep2 = false;
+      this.donorName = '';
+      this.donorPhone = '';
+      this.donorEmail = '';
+      this.donationAmount = 450;
     }, 2000);
   }
 }

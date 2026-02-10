@@ -108,6 +108,15 @@ export class AdhiyaComponent implements AfterViewInit {
       }, 1500);
     }
   }
+  getOptionLabel(opt: string): string {
+    const labels: any = {
+      'khrouf': 'أضحية خروف كاملة',
+      'maiz': 'أضحية ماعز كاملة',
+      'baqar-share': 'سهم في بقرة (1/7)',
+      'open': 'مساهمة عامة في مشروع الأضاحي'
+    };
+    return labels[opt] || 'مساهمة في الأضاحي';
+  }
 
   finalSubmit() {
     if (!this.donorName || !this.donorPhone || !this.donorEmail) {
@@ -125,15 +134,34 @@ export class AdhiyaComponent implements AfterViewInit {
     }
 
     this.formError = false;
-    this.triggerToast(`جزاك الله خيرا! للتاكيد قم بارسال تبرعك بمبلغ${this.donationAmount} درهم في الريب. وسيتم ارسال فيديو التوثيق لهاتفك`, 'success');
-    
-    // تصفير البيانات بعد النجاح
+    const phoneNumber = '212642732997'; 
+    const selectedLabel = this.getOptionLabel(this.selectedOption);
+
+    const message = `السلام عليكم ورحمة الله،
+أريد تأكيد مساهمتي في مشروع: *أضاحي العيد* 🐑
+
+*بيانات المتبرع:*
+- الاسم: ${this.donorName}
+- الهاتف: ${this.donorPhone}
+- البريد: ${this.donorEmail}
+
+*تفاصيل الأضحية:*
+- النوع: ${selectedLabel}
+- المبلغ المرصود: ${this.donationAmount} درهم
+
+سأرسل لكم وصل التحويل البنكي حالاً لتثبيت الأضحية. جزاكم الله خيراً.`;
+
+    this.triggerToast(`جزاك الله خيراً يا ${this.donorName}، سيتم توجيهك للواتساب الآن.`, 'success');
+
     setTimeout(() => {
-        this.showStep2 = false;
-        this.donorName = '';
-        this.donorPhone = '';
-        this.donorEmail = '';
-        this.donationAmount = 2500;
+      const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+
+      this.showStep2 = false;
+      this.donorName = '';
+      this.donorPhone = '';
+      this.donorEmail = '';
+      this.donationAmount = 2500;
     }, 2000);
   }
 }

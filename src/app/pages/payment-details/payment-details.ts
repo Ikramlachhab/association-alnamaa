@@ -13,6 +13,7 @@ import { RegistrationService } from '../../services/registration'; // تأكدي
 export class PaymentDetailsComponent implements OnInit {
   // 1. كنعرفو المتغيرات بلا ما نعطيوهم قيمة دابا
   userName: string = '';
+  userLastName: string = ''; // زدنا هادي
   selectedCourse: string = '';
   selectedCount: number = 1;
   pricePerCourse: number = 200;
@@ -23,6 +24,7 @@ export class PaymentDetailsComponent implements OnInit {
   ngOnInit(): void {
     // 3. هنا فين كنعطيو القيم ملي كتحل الصفحة
     this.userName = this.regService.formData?.firstName || 'أخي/أختي';
+    this.userLastName = this.regService.formData?.lastName || ''; // زدنا هادي
     this.selectedCourse = this.getCourseName(this.regService.formData?.courseName);
   }
 
@@ -55,8 +57,9 @@ export class PaymentDetailsComponent implements OnInit {
   }
 
   sendToWhatsApp() {
-    const phoneNumber = '212612345678';
-    const message = `السلام عليكم، أنا ${this.userName}، سجلت في ${this.selectedCourse}. أريد إرسال وصل الأداء.`;
+    const phoneNumber = '212642732997';
+    const fullName = `${this.userName} ${this.userLastName}`.trim();
+    const message = `السلام عليكم، أنا ${fullName}، سجلت في ${this.selectedCourse}. أريد إرسال وصل الأداء.`;
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   }

@@ -6,19 +6,30 @@
   <div class="hero-container">
     <div class="hero-video-box">
   <div class="video-placeholder">
-    <video controls preload="metadata" class="custom-video" poster="assets/video-thumbnail.jpg">
-      <source src="/video.mp4" type="video/mp4">
-      عذراً، متصفحك لا يدعم تشغيل الفيديو.
-    </video>
+  <div class="video-overlay" *ngIf="!isVideoPlaying" (click)="playVideo()">
+    <div class="overlay-content">
+      <div class="play-icon"></div>
+      <h3 class="video-title">إعرف أكثر</h3>
+      <div class="video-subtitle">عن جمعية النماء</div>
+    </div>
   </div>
+
+  <video #myVideo preload="metadata" class="custom-video" poster="/assets/video-thumbnail.jpg">
+    <source src="video.mp4" type="video/mp4">
+    متصفحك لا يدعم تشغيل الفيديو.
+  </video>
+</div>
 </div>
 
     <div class="hero-content">
       <h1 class="hero-title">جمعية النماء للتنمية والتضامن</h1>
 <div class="hero-description">
   <p class="cultural-premium-text">
-    تأسست <strong>جمعية النماء</strong> عام 2013 كقوة تطوعية تسعى لخدمة المجتمع. نحن نجمع بين العمل الخيري لدعم الفئات المحتاجة، وبين الأنشطة الثقافية التي تنمي الفكر وتصون الهوية، هدفنا دائماً هو بناء مجتمع متضامن وواعٍ.
-  </p>
+  منذ انطلاقتها عام <strong>2013</strong>، اتخذت <strong>جمعية النماء</strong> من العطاء درباً ومن التكافل نهجاً لبناء الإنسان. 
+  نحن جسرٌ يمتد من الدعم المادي إلى <span class="text-highlight">الإشعاع الثقافي والفكري</span>، 
+  عبر منظومة مشاريع مستدامة (اجتماعية، تنموية، وثقافية) تهدف لصون كرامة الإنسان وتحقيق أثرٍ مجتمعي يبقى، لبناء مجتمعٍ واعي ومزدهر.
+</p>
+  
 </div>
       <div class="hero-btns">
         <a href="#detailed-about" class="hero-btn-primary" (click)="scrollToSection($event, 'detailed-about')">اكتشف المزيد</a>
@@ -139,29 +150,73 @@
   </div>
 </div>
 
-<section id="detailed-about" class="detailed-info-section">
-  <div class="container">
-    <div class="info-grid">
-      <div class="info-card">
-  <h3 class="card-title">تعريف شامل</h3>
-  <div class="gold-line"></div>
-  <p class="card-description">
-    تعتبر <strong>جمعية النماء</strong> فاعلاً مدنياً يطمح إلى إحداث تغيير حقيقي في المجتمع. نحن لا نكتفي بتقديم الدعم المادي، بل نركز على 
-    <span class="text-highlight">التنمية البشرية المستدامة</span> عبر ثلاثة ركائز أساسية: 
-    التمكين الاجتماعي للأسر، دعم التمدرس والتعليم، والنهوض بالمشهد الثقافي والتربوي للشباب، لضمان مستقبل تسوده كرامة الإنسان.
-  </p>
-</div>
-      <div class="info-card highlight-card">
-        <h3 class="card-title">قيمنا</h3>
-        <div class="gold-line"></div>
-        <ul class="values-list">
-          <li><strong>التضامن:</strong> روح العمل الجماعي ومساندة الآخر.</li>
-          <li><strong>الشفافية:</strong> الوضوح والنزاهة في كل مبادراتنا.</li>
-          <li><strong>العطاء:</strong> التطوع بحب من أجل تنمية الوطن.</li>
-        </ul>
-      </div>
+<section class="hadith-section-final">
+  <div class="hadith-wrapper">
+    <div class="bg-quote">,,</div> 
+    
+    <div class="hadith-inner-content">
+      <p class="narrator-line">عن معاوية بن أبي سفيان رضي الله عنه أن:</p>
+      <p class="prophet-line"> رَسُولُ اللَّهِ ﷺ قال: </p>
+      <h2 class="main-hadith">
+        «مَنْ سَلَّكَ طَرِيقاً يَلْتَمِسُ فِيهِ عِلماً؛ سَهَّلَ اللَّهُ لَهُ بِهِ طَرِيقاً إِلَى الجَنَّةِ»
+      </h2>
+      <p class="hadith-source">رواه البخاري و مسلم</p>
     </div>
   </div>
 </section>
 
+<section id="detailed-about" class="detailed-info-section">
+  <div class="container">
+    <div class="modern-info-grid">
+      
+      <div class="info-card definition-card animate-right">
+        <h3 class="card-title">تعريف شامل</h3>
+        <div class="animated-gold-line"></div>
+        <p class="card-description">
+          منذ انطلاقتها عام <strong>2013</strong>، لم تكن <strong>جمعية النماء</strong> مجرد محطة عابرة، بل تأسست لتكون رؤية متكاملة للتنمية والتضامن. نحن نؤمن بأن بناء المجتمع يبدأ من بناء الإنسان؛ لذا اتخذنا من العطاء درباً ومن التكافل نهجاً أصيلاً.
+          <br><br>
+          لا تقتصر رسالتنا على الدعم المادي، بل تمتد لتشمل <span class="text-highlight">الجانب الروحي والفكري</span>؛ حيث نولي أهمية قصوى لـ <strong>مشاريعنا الثقافية</strong> التي تهدف إلى إحيـاء القيم وتحصين الهوية، لبناء مجتمعٍ واعي ومزدهر.
+        </p>
+      </div>
+
+      <div class="info-card values-card animate-left">
+        <h3 class="card-title">قيمنا الأساسية</h3>
+        <div class="animated-gold-line"></div>
+        
+        <div class="values-interactive-wrapper">
+          
+          <div class="value-box">
+            <div class="value-title-front"><span>01</span> التضامن</div>
+            <div class="value-slide-back">
+              <p>روح العمل الجماعي ومساندة الآخرين لتحقيق الخير المشترك.</p>
+            </div>
+          </div>
+
+          <div class="value-box">
+            <div class="value-title-front"><span>02</span> الشفافية</div>
+            <div class="value-slide-back">
+              <p>الوضوح التام والنزاهة المطلقة في جميع معاملاتنا ومبادراتنا.</p>
+            </div>
+          </div>
+
+          <div class="value-box">
+            <div class="value-title-front"><span>03</span> العطاء</div>
+            <div class="value-slide-back">
+              <p>بذل الجهد والمال بحب وإخلاص من أجل تنمية مجتمعنا.</p>
+            </div>
+          </div>
+
+          <div class="value-box">
+            <div class="value-title-front"><span>04</span> الاستدامة</div>
+            <div class="value-slide-back">
+              <p>بناء مشاريع تنموية ذات أثر مستمر يخدم الأجيال القادمة.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
